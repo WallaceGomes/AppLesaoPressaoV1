@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 
 @Component({
     selector: 'app-ficha-list',
@@ -11,7 +11,5 @@ export class FichaListComponent {
     //      { nome: 'Nome paciente3', matricula: 'Matricula3' }
     // ];
 
-    fichas = [
-        
-   ];
+    @Input() fichas = [];
 }
