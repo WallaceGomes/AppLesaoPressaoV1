@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>Base de dados</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <mat-accordion multi="true" *ngIf="fichas.length > 0">
+        <mat-expansion-panel *ngFor="let ficha of fichas">
+            <mat-expansion-panel-header>
+                {{ ficha.nome}}
+            </mat-expansion-panel-header>
+            <p>{{ ficha.matricula }}</p>
+        </mat-expansion-panel>
+    </mat-accordion>
+</ion-content>
