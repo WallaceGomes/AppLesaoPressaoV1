@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pagina-ficha-avaliacao.page.scss'],
 })
 export class PaginaFichaAvaliacaoPage implements OnInit {
+  fichasSalvas = [];
+
+  onFichaSalva(ficha) {
+    this.fichasSalvas.push(ficha);
+  }
 
   constructor() { }
 
