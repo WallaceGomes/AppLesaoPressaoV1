@@ -14,19 +14,19 @@
   <ion-list>
     <ion-item>
       <!---<ion-label position="stacked">Nome do paciente</ion-label>-->
-      <ion-input placeholder="Nome do paciente" name="nomePaciente" [(ngModel)]="nomePaciente"></ion-input>
+      <ion-input placeholder="Nome do paciente" name="nomePaciente"></ion-input>
     </ion-item>
     <ion-item>
       <!--<ion-label position="stacked">Matrícula</ion-label>-->
-      <ion-input type="number" placeholder="Matrícula" name="matriculaPaciente" [(ngModel)]="matriculaPaciente"></ion-input>
+      <ion-input type="number" placeholder="Matrícula" name="matriculaPaciente"></ion-input>
     </ion-item>
     <ion-item>
       <!--<ion-label position="stacked">Leito</ion-label>-->
-      <ion-input type="number" placeholder="Número do leito" name="leitoPaciente" [(ngModel)]="leitoPaciente"></ion-input>
+      <ion-input type="number" placeholder="Número do leito" name="leitoPaciente"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Data</ion-label>
-      <ion-datetime display-format="DD/MM/YYYY" name="dataFichaPaciente" [(ngModel)]="dataFichaPaciente"></ion-datetime>
+      <ion-datetime display-format="DD/MM/YYYY" name="dataFichaPaciente"></ion-datetime>
     </ion-item>
 
     <ion-item>
@@ -93,7 +93,7 @@
     <p><span>Score: </span><b>{{score}}</b></p>  
   </ion-item>
   <ion-list>
-    <ion-button expand="full" (click)="onSalvarFicha()">
+    <ion-button expand="full" (click)="loadingEnvioFormulario()">
       <ion-icon name="save" slot="start"></ion-icon>
       Salvar
     </ion-button>

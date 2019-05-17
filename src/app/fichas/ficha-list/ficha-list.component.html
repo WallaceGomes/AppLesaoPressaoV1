@@ -8,19 +8,12 @@
 </ion-header>
 
 <ion-content>
-    <mat-accordion multi="true">
+    <mat-accordion multi="true" *ngIf="fichas.length > 0">
         <mat-expansion-panel *ngFor="let ficha of fichas">
             <mat-expansion-panel-header>
-                Ficha de {{ficha.data}} do paciente {{ ficha.nome}}
+                {{ ficha.nome}}
             </mat-expansion-panel-header>
-            <p>{{ ficha.nome }}</p>
             <p>{{ ficha.matricula }}</p>
-            <p>{{ ficha.data }}</p>
-            <p>{{ ficha.nome }}</p>
-            <p>{{ ficha.nome }}</p>
-            <p>{{ ficha.nome }}</p>
-            <p>{{ ficha.nome }}</p>
-            <p>{{ ficha.nome }}</p>
         </mat-expansion-panel>
     </mat-accordion>
 </ion-content>
