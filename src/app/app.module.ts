@@ -9,10 +9,15 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import {
   MatInputModule,
   MatCardModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatDividerModule,
+  MatButtonModule,
+  MatToolbarModule
 } from '@angular/material';
 
 @NgModule({
@@ -24,7 +29,12 @@ import {
     BrowserAnimationsModule,
     MatInputModule,
     MatCardModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatButtonModule,
+    MatToolbarModule,
+    FormsModule,
+    MatDividerModule,
+    HttpClientModule
   ],
   providers: [
     StatusBar,

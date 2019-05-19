@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { PaginaBaseDadosPage } from './pagina-base-dados.page';
 import { FichaListComponent } from './../fichas/ficha-list/ficha-list.component';
-import { MatExpansionModule } from '@angular/material';
+import { MatExpansionModule, MatButtonModule } from '@angular/material';
 
 const routes: Routes = [
   {
@@ -23,6 +23,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes),
     MatExpansionModule,
+    MatButtonModule
   ],
   declarations: [PaginaBaseDadosPage, FichaListComponent]
 })
