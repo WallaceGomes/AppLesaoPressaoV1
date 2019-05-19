@@ -1,7 +1,7 @@
 <ion-header>
     <ion-toolbar>
         <ion-buttons slot="start">
-            <ion-back-button></ion-back-button>
+                <ion-back-button defaultHref="home"></ion-back-button>
         </ion-buttons>
         <ion-title>Base de dados</ion-title>
     </ion-toolbar>
@@ -16,13 +16,17 @@
             <p>Nome: {{ ficha.nome }}</p>
             <p>Matrícula {{ ficha.matricula }}</p>
             <p>Data: {{ ficha.data }}</p>
-            <p>Percepção Sensorial{{ ficha.percepSens }}</p>
+            <p>Percepção Sensorial: {{ ficha.percepSens }}</p>
             <p>Umidade: {{ ficha.umidade }}</p>
             <p>Atividade: {{ ficha.atividade }}</p>
             <p>Mobilidade: {{ ficha.mobilidade }}</p>
             <p>Nutrição: {{ ficha.nutricao }}</p>
             <p>Fricção e Cisalhamento: {{ ficha.fricscisal }}</p>
             <p>Score: {{ ficha.score }}</p>
+            <mat-action-row>
+                <button mat-raised-button color="warn" (click)="onDelete(ficha.id)">Excluir</button>
+                <!-- <a mat-raised-button color="primary" [routerLink]="['/edit, ficha.id']">Editar</a> -->
+            </mat-action-row>
         </mat-expansion-panel>
     </mat-accordion>
 </ion-content>

@@ -18,14 +18,18 @@ export class FichaListComponent implements OnInit, OnDestroy {
     fichas: Ficha[] = [];
     private fichasSub: Subscription;
 
-    constructor(public fichasService: FichasService) { }
+    constructor(public fichasService: FichasService) {}
 
     ngOnInit() {
-        this.fichas = this.fichasService.getFichas();
+        this.fichasService.getFichas();
         this.fichasSub = this.fichasService.getFichasUpdateListener()
-            .subscribe((fichas: Ficha[]) => {
-                this.fichas = fichas;
-            });
+        .subscribe((fichas: Ficha[]) => {
+            this.fichas = fichas;
+        });
+    }
+
+    onDelete(fichaId: string) {
+        this.fichasService.deleteFicha(fichaId);
     }
 
     ngOnDestroy() {

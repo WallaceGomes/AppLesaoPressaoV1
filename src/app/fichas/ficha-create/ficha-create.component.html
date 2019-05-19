@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
     <ion-title>Ficha Avaliação de Risco</ion-title>
   </ion-toolbar>
@@ -11,31 +11,28 @@
   <mat-card class="spacep">
     <h3>Preencha a ficha de acordo com a escala de Bradem</h3>
   </mat-card>
-  <form (submit)="onSalvarFicha(fichaForm)" #fichaForm="ngForm">
+  <form [formGroup]="form" (submit)="onSalvarFicha()">
     <div class="formfield">
       <mat-form-field>
         <!---<ion-label position="stacked">Nome do paciente</ion-label>-->
-        <input matInput type="text" placeholder="Nome do paciente" name="nomePaciente" ngModel required #nome="ngModel">
-        <mat-error *ngIf="nome.invalid">Favor digitar o nome do paciente.</mat-error>
+        <input matInput type="text" placeholder="Nome do paciente" formControlName="nomePaciente" required>
+        <mat-error *ngIf="form.get('nomePaciente').invalid">Favor digitar o nome do paciente.</mat-error>
       </mat-form-field>
     </div>
     <mat-form-field>
       <!--<ion-label position="stacked">Matrícula</ion-label>-->
-      <input matInput type="number" placeholder="Matrícula" name="matriculaPaciente" ngModel required
-        #matricula="ngModel">
-      <mat-error *ngIf="matricula.invalid">Favor digitar a matrícula do paciente.</mat-error>
+      <input matInput type="number" placeholder="Matrícula" formControlName="matriculaPaciente" required>
+      <mat-error *ngIf="form.get('matriculaPaciente').invalid">Favor digitar a matrícula do paciente.</mat-error>
     </mat-form-field>
     <mat-form-field class="alindir">
       <!--<ion-label position="stacked">Leito</ion-label>-->
-      <input matInput type="number" placeholder="Número do leito" name="leitoPaciente" ngModel required
-        #leito="ngModel">
-      <mat-error *ngIf="leito.invalid">Favor digitar leito do paciente.</mat-error>
+      <input matInput type="number" placeholder="Número do leito" formControlName="leitoPaciente" required>
+      <mat-error *ngIf="form.get('leitoPaciente').invalid">Favor digitar leito do paciente.</mat-error>
     </mat-form-field>
     <div>
       <mat-form-field>
-        <input matInput type="date" display-format="DD/MM/YYYY" name="dataFichaPaciente" ngModel required
-          #data="ngModel">
-        <mat-error *ngIf="data.invalid">Favor entrar com a data da avaliação.</mat-error>
+        <input matInput type="date" display-format="DD/MM/YYYY" formControlName="dataFichaPaciente" required>
+        <mat-error *ngIf="form.get('dataFichaPaciente').invalid">Favor entrar com a data da avaliação.</mat-error>
       </mat-form-field>
     </div>
 
@@ -108,10 +105,13 @@
       <p><span>Score: </span><b>{{score}}</b></p>
     </ion-item>
 
-
-    <button mat-raised-button color="primary" type="submit">
+    <ion-button expand="block" color="primary" type="submit">
       <ion-icon name="save" slot="start"></ion-icon>
       Salvar
-    </button>
+    </ion-button>
   </form>
+  <ion-button expand="block" color="primary" routerLink="/pagina-base-dados">
+    <ion-icon name="analytics" slot="start"></ion-icon>
+    Acessar base de dados
+  </ion-button>
 </mat-card>

@@ -1,4 +1,5 @@
 export interface Ficha {
+    id: string;
     nome: string;
     matricula: string;
     leito: string;

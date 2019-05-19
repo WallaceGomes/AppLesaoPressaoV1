@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FichasService } from '../fichas.service';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Ficha } from './../ficha.model';
 
 @Component({
   selector: 'app-ficha-create',
@@ -12,8 +14,10 @@ export class FichaCreateComponent implements OnInit {
   matriculaPaciente = '';
   leitoPaciente = '';
   dataFichaPaciente = '';
-
-  constructor(public fichasService: FichasService) { }
+  ficha: Ficha;
+  form: FormGroup;
+  private mode = 'create';
+  private fichaId: string;
 
   itemFichaPercepSens: any = {
     // header: 'Percepção Sensorial',
@@ -102,37 +106,81 @@ export class FichaCreateComponent implements OnInit {
       Number(this.scoreFricCis);
   }
 
-  onSalvarFicha(form: NgForm) {
-    if (form.invalid) {
+  onSalvarFicha() {
+    if (this.form.invalid) {
       return;
     }
-    this.fichasService.addFicha(
-      form.value.nomePaciente,
-      form.value.matriculaPaciente,
-      form.value.leitoPaciente,
-      form.value.dataFichaPaciente,
-      this.scorePercepSens,
-      this.scoreUmidade,
-      this.scoreAtividade,
-      this.scoreMobilidade,
-      this.scoreNutricao,
-      this.scoreFricCis,
-      this.score);
-    form.resetForm();
+    if (this.mode === 'create') {
+      this.fichasService.addFicha(
+        this.form.value.nomePaciente,
+        this.form.value.matriculaPaciente,
+        this.form.value.leitoPaciente,
+        this.form.value.dataFichaPaciente,
+        this.scorePercepSens,
+        this.scoreUmidade,
+        this.scoreAtividade,
+        this.scoreMobilidade,
+        this.scoreNutricao,
+        this.scoreFricCis,
+        this.score);
+    } else {
+      this.fichasService.updateFicha(
+        this.fichaId,
+        this.form.value.nomePaciente,
+        this.form.value.matriculaPaciente,
+        this.form.value.leitoPaciente,
+        this.form.value.dataFichaPaciente,
+        this.scorePercepSens,
+        this.scoreUmidade,
+        this.scoreAtividade,
+        this.scoreMobilidade,
+        this.scoreNutricao,
+        this.scoreFricCis,
+        this.score
+      );
+    }
+    this.form.reset();
   }
 
-  // constructor(private loadingCtrl: LoadingController) { }
+  constructor(public fichasService: FichasService, public route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.form = new FormGroup({
+      'nomePaciente': new FormControl(null, {validators: [Validators.required]}),
+      'matriculaPaciente': new FormControl(null, {validators: [Validators.required]}),
+      'leitoPaciente': new FormControl(null, {validators: [Validators.required]}),
+      'dataFichaPaciente': new FormControl(null, {validators: [Validators.required]})
+    });
+    this.route.paramMap.subscribe((paramMap: ParamMap) => {
+      if (paramMap.has('fichaId')) {
+        this.mode = 'edit';
+        this.fichaId = paramMap.get('fichaId');
+        this.fichasService.getFicha(this.fichaId).subscribe(fichaDados => {
+          this.ficha = {
+            id: fichaDados._id,
+            nome: fichaDados.nome,
+            matricula: fichaDados.matricula,
+            leito: fichaDados.leito,
+            data: fichaDados.data,
+            percepSens: fichaDados.percepSens,
+            umidade: fichaDados.umidade,
+            atividade: fichaDados.atividade,
+            mobilidade: fichaDados.mobilidade,
+            nutricao: fichaDados.nutricao,
+            fricscisal: fichaDados.fricscisal,
+            score: fichaDados.score
+          };
+          this.form.setValue({
+              'nomePaciente': this.ficha.nome,
+              'matriculaPaciente': this.ficha.matricula,
+              'leitoPaciente': this.ficha.leito,
+              'dataFichaPaciente': this.ficha.data
+            });
+        });
+      } else {
+        this.mode = 'create';
+        this.fichaId = null;
+      }
+    });
   }
-
-  // async loadingEnvioFormulario() {
-  //   const loading = await this.loadingCtrl.create({
-  //     message : 'Salvando...',
-  //     duration: 1500,
-  //     translucent: true
-  //   });
-  //   return await loading.present();
-  // }
-
 }
