@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Ficha } from './../fichas/ficha.model';
 
 @Component({
   selector: 'app-pagina-base-dados',

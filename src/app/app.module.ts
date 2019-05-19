@@ -12,8 +12,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatInputModule,
   MatCardModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatDividerModule
 } from '@angular/material';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +26,9 @@ import {
     BrowserAnimationsModule,
     MatInputModule,
     MatCardModule,
-    MatExpansionModule
+    MatExpansionModule,
+    FormsModule,
+    MatDividerModule
   ],
   providers: [
     StatusBar,

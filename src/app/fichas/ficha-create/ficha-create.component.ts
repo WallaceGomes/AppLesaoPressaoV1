@@ -1,16 +1,19 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { FichasService } from '../fichas.service';
 
 @Component({
-    selector: 'app-ficha-create',
-    templateUrl: './ficha-create.component.html'
+  selector: 'app-ficha-create',
+  templateUrl: './ficha-create.component.html',
+  styleUrls: ['./ficha-create.component.css']
 })
 export class FichaCreateComponent implements OnInit {
   nomePaciente = '';
   matriculaPaciente = '';
   leitoPaciente = '';
   dataFichaPaciente = '';
-  @Output() fichaCreated = new EventEmitter();
+
+  constructor(public fichasService: FichasService) { }
 
   itemFichaPercepSens: any = {
     // header: 'Percepção Sensorial',
@@ -48,16 +51,16 @@ export class FichaCreateComponent implements OnInit {
     message: 'Condições de pele do paciente'
   };
 
-  opcaoSelecionada: number ;
+  opcaoSelecionada: number;
 
-  scorePercepSens: any = 0 ;
-  scoreUmidade: any = 0 ;
-  scoreAtividade: any = 0 ;
-  scoreMobilidade: any = 0 ;
-  scoreNutricao: any = 0 ;
-  scoreFricCis: any = 0 ;
+  scorePercepSens: any = 0;
+  scoreUmidade: any = 0;
+  scoreAtividade: any = 0;
+  scoreMobilidade: any = 0;
+  scoreNutricao: any = 0;
+  scoreFricCis: any = 0;
 
-  score: any = 0 ;
+  score: any = 0;
 
   selectChangeHandlerPercpSens(event: any) {
     this.scorePercepSens = (event.target.value);
@@ -91,43 +94,45 @@ export class FichaCreateComponent implements OnInit {
 
   calculoScore() {
     this.score =
-    Number(this.scorePercepSens) +
-    Number(this.scoreUmidade) +
-    Number(this.scoreAtividade) +
-    Number(this.scoreMobilidade) +
-    Number(this.scoreNutricao) +
-    Number(this.scoreFricCis);
+      Number(this.scorePercepSens) +
+      Number(this.scoreUmidade) +
+      Number(this.scoreAtividade) +
+      Number(this.scoreMobilidade) +
+      Number(this.scoreNutricao) +
+      Number(this.scoreFricCis);
   }
 
-  onSalvarFicha() {
-    const ficha = {
-      nome: this.nomePaciente,
-      matricula: this.matriculaPaciente,
-      leito: this.leitoPaciente,
-      data: this.dataFichaPaciente,
-      percepsens: this.scorePercepSens,
-      umidade: this.scoreUmidade,
-      atividade: this.scoreAtividade,
-      mobilidade: this.scoreMobilidade,
-      Nutricao: this.scoreNutricao,
-      friccis: this.scoreFricCis,
-      score: this.score
-    };
-    this.fichaCreated.emit(ficha);
+  onSalvarFicha(form: NgForm) {
+    if (form.invalid) {
+      return;
+    }
+    this.fichasService.addFicha(
+      form.value.nomePaciente,
+      form.value.matriculaPaciente,
+      form.value.leitoPaciente,
+      form.value.dataFichaPaciente,
+      this.scorePercepSens,
+      this.scoreUmidade,
+      this.scoreAtividade,
+      this.scoreMobilidade,
+      this.scoreNutricao,
+      this.scoreFricCis,
+      this.score);
+    form.resetForm();
   }
 
-  constructor(private loadingCtrl: LoadingController) { }
+  // constructor(private loadingCtrl: LoadingController) { }
 
   ngOnInit() {
   }
 
-  async loadingEnvioFormulario() {
-    const loading = await this.loadingCtrl.create({
-      message : 'Salvando...',
-      duration: 1500,
-      translucent: true
-    });
-    return await loading.present();
-  }
+  // async loadingEnvioFormulario() {
+  //   const loading = await this.loadingCtrl.create({
+  //     message : 'Salvando...',
+  //     duration: 1500,
+  //     translucent: true
+  //   });
+  //   return await loading.present();
+  // }
 
 }

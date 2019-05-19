@@ -1,9 +1,9 @@
 <ion-header>
     <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
-      </ion-buttons>
-      <ion-title>Base de dados</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Base de dados</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -11,16 +11,18 @@
     <mat-accordion multi="true">
         <mat-expansion-panel *ngFor="let ficha of fichas">
             <mat-expansion-panel-header>
-                Ficha de {{ficha.data}} do paciente {{ ficha.nome}}
+                Ficha de {{ ficha.data }} do paciente {{ ficha.nome}}
             </mat-expansion-panel-header>
-            <p>{{ ficha.nome }}</p>
-            <p>{{ ficha.matricula }}</p>
-            <p>{{ ficha.data }}</p>
-            <p>{{ ficha.nome }}</p>
-            <p>{{ ficha.nome }}</p>
-            <p>{{ ficha.nome }}</p>
-            <p>{{ ficha.nome }}</p>
-            <p>{{ ficha.nome }}</p>
+            <p>Nome: {{ ficha.nome }}</p>
+            <p>Matrícula {{ ficha.matricula }}</p>
+            <p>Data: {{ ficha.data }}</p>
+            <p>Percepção Sensorial{{ ficha.percepSens }}</p>
+            <p>Umidade: {{ ficha.umidade }}</p>
+            <p>Atividade: {{ ficha.atividade }}</p>
+            <p>Mobilidade: {{ ficha.mobilidade }}</p>
+            <p>Nutrição: {{ ficha.nutricao }}</p>
+            <p>Fricção e Cisalhamento: {{ ficha.fricscisal }}</p>
+            <p>Score: {{ ficha.score }}</p>
         </mat-expansion-panel>
     </mat-accordion>
 </ion-content>

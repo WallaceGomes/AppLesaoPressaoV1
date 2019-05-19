@@ -1,37 +1,48 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
-      </ion-buttons>
-      <ion-title>Ficha Avaliação de Risco</ion-title>
-    </ion-toolbar>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Ficha Avaliação de Risco</ion-title>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content color="primary" padding>
-  <ion-item>
+<mat-card>
+  <mat-card class="spacep">
     <h3>Preencha a ficha de acordo com a escala de Bradem</h3>
-  </ion-item>
-  <ion-list>
-    <ion-item>
-      <!---<ion-label position="stacked">Nome do paciente</ion-label>-->
-      <ion-input placeholder="Nome do paciente" name="nomePaciente" [(ngModel)]="nomePaciente"></ion-input>
-    </ion-item>
-    <ion-item>
+  </mat-card>
+  <form (submit)="onSalvarFicha(fichaForm)" #fichaForm="ngForm">
+    <div class="formfield">
+      <mat-form-field>
+        <!---<ion-label position="stacked">Nome do paciente</ion-label>-->
+        <input matInput type="text" placeholder="Nome do paciente" name="nomePaciente" ngModel required #nome="ngModel">
+        <mat-error *ngIf="nome.invalid">Favor digitar o nome do paciente.</mat-error>
+      </mat-form-field>
+    </div>
+    <mat-form-field>
       <!--<ion-label position="stacked">Matrícula</ion-label>-->
-      <ion-input type="number" placeholder="Matrícula" name="matriculaPaciente" [(ngModel)]="matriculaPaciente"></ion-input>
-    </ion-item>
-    <ion-item>
+      <input matInput type="number" placeholder="Matrícula" name="matriculaPaciente" ngModel required
+        #matricula="ngModel">
+      <mat-error *ngIf="matricula.invalid">Favor digitar a matrícula do paciente.</mat-error>
+    </mat-form-field>
+    <mat-form-field class="alindir">
       <!--<ion-label position="stacked">Leito</ion-label>-->
-      <ion-input type="number" placeholder="Número do leito" name="leitoPaciente" [(ngModel)]="leitoPaciente"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Data</ion-label>
-      <ion-datetime display-format="DD/MM/YYYY" name="dataFichaPaciente" [(ngModel)]="dataFichaPaciente"></ion-datetime>
-    </ion-item>
+      <input matInput type="number" placeholder="Número do leito" name="leitoPaciente" ngModel required
+        #leito="ngModel">
+      <mat-error *ngIf="leito.invalid">Favor digitar leito do paciente.</mat-error>
+    </mat-form-field>
+    <div>
+      <mat-form-field>
+        <input matInput type="date" display-format="DD/MM/YYYY" name="dataFichaPaciente" ngModel required
+          #data="ngModel">
+        <mat-error *ngIf="data.invalid">Favor entrar com a data da avaliação.</mat-error>
+      </mat-form-field>
+    </div>
 
     <ion-item>
       <ion-label>Percepção Sensorial</ion-label>
-      <ion-select (ionChange)="selectChangeHandlerPercpSens($event)" value="percepSens" name="percepSens" [interfaceOptions]="itemFichaPercepSens" interface="popover">
+      <ion-select (ionChange)="selectChangeHandlerPercpSens($event)" value="percepSens" name="percepSens"
+        [interfaceOptions]="itemFichaPercepSens" interface="popover">
         <ion-select-option value="1">1- Totalmente Limitada</ion-select-option>
         <ion-select-option value="2">2- Muito Limitada</ion-select-option>
         <ion-select-option value="3">3- Levemente Limitada</ion-select-option>
@@ -41,7 +52,8 @@
 
     <ion-item>
       <ion-label>Umidade</ion-label>
-      <ion-select (ionChange)="selectChangeHandlerUmidade($event)" value="umidade" name="umidade" [interfaceOptions]="itemFichaUmidade" interface="popover">
+      <ion-select (ionChange)="selectChangeHandlerUmidade($event)" value="umidade" name="umidade"
+        [interfaceOptions]="itemFichaUmidade" interface="popover">
         <ion-select-option value="1">1- Completamente Molhada</ion-select-option>
         <ion-select-option value="2">2- Muito Molhada</ion-select-option>
         <ion-select-option value="3">3- Ocasionalmente Molhada</ion-select-option>
@@ -51,7 +63,8 @@
 
     <ion-item>
       <ion-label>Atividade</ion-label>
-      <ion-select (ionChange)="selectChangeHandlerAtividade($event)" value="atividade" name="atividade" [interfaceOptions]="itemFichaAtividade" interface="popover">
+      <ion-select (ionChange)="selectChangeHandlerAtividade($event)" value="atividade" name="atividade"
+        [interfaceOptions]="itemFichaAtividade" interface="popover">
         <ion-select-option value="1">1- Acamado</ion-select-option>
         <ion-select-option value="2">2- Confinado à cadeira</ion-select-option>
         <ion-select-option value="3">3- Caminha ocasionalmente</ion-select-option>
@@ -61,7 +74,8 @@
 
     <ion-item>
       <ion-label>Mobilidade</ion-label>
-      <ion-select (ionChange)="selectChangeHandlerMobilidade($event)" value="mobilidade" name="mobilidade" [interfaceOptions]="itemFichaMobilidade" interface="popover">
+      <ion-select (ionChange)="selectChangeHandlerMobilidade($event)" value="mobilidade" name="mobilidade"
+        [interfaceOptions]="itemFichaMobilidade" interface="popover">
         <ion-select-option value="1">1- Totalmente Imóvel</ion-select-option>
         <ion-select-option value="2">2- Bastante Limitada</ion-select-option>
         <ion-select-option value="3">3- Levemente Limitada</ion-select-option>
@@ -71,7 +85,8 @@
 
     <ion-item>
       <ion-label>Nutrição</ion-label>
-      <ion-select (ionChange)="selectChangeHandlerNutricao($event)" value="nutricao" name="nutricao" [interfaceOptions]="itemFichaNutricao" interface="popover">
+      <ion-select (ionChange)="selectChangeHandlerNutricao($event)" value="nutricao" name="nutricao"
+        [interfaceOptions]="itemFichaNutricao" interface="popover">
         <ion-select-option value="1">1- Muito Pobre</ion-select-option>
         <ion-select-option value="2">2- Provavelmente Inadequada</ion-select-option>
         <ion-select-option value="3">3- Adequada</ion-select-option>
@@ -81,22 +96,22 @@
 
     <ion-item>
       <ion-label>Fricção e Cisalhamento</ion-label>
-      <ion-select (ionChange)="selectChangeHandlerFricCis($event)" value="fricscisal" name="fricscisal" [interfaceOptions]="itemFichaFricaoCisalh" interface="popover">
+      <ion-select (ionChange)="selectChangeHandlerFricCis($event)" value="fricscisal" name="fricscisal"
+        [interfaceOptions]="itemFichaFricaoCisalh" interface="popover">
         <ion-select-option value="1">1- Problema</ion-select-option>
         <ion-select-option value="2">2- Problema em potencial</ion-select-option>
         <ion-select-option value="3">3- Nenhum Problema</ion-select-option>
       </ion-select>
     </ion-item>
-  </ion-list>
 
-  <ion-item>
-    <p><span>Score: </span><b>{{score}}</b></p>  
-  </ion-item>
-  <ion-list>
-    <ion-button expand="full" (click)="onSalvarFicha()">
+    <ion-item>
+      <p><span>Score: </span><b>{{score}}</b></p>
+    </ion-item>
+
+
+    <button mat-raised-button color="primary" type="submit">
       <ion-icon name="save" slot="start"></ion-icon>
       Salvar
-    </ion-button>
-  </ion-list>
-
-</ion-content>
+    </button>
+  </form>
+</mat-card>

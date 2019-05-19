@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { PaginaFichaAvaliacaoPage } from './pagina-ficha-avaliacao.page';
 import { FichaCreateComponent } from './../fichas/ficha-create/ficha-create.component';
+import { MatCardModule, MatInputModule, MatButtonModule, MatToolbarModule, MatDividerModule} from '@angular/material';
 
 const routes: Routes = [
   {
@@ -20,7 +21,12 @@ const routes: Routes = [
   CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatDividerModule,
   ],
   declarations: [
     PaginaFichaAvaliacaoPage,

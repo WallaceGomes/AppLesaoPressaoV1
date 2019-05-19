@@ -1,0 +1,21 @@
+.formfield {
+    display: flex;
+    flex-direction: column;
+}
+.formfield > * {
+    width: 100%;
+}
+textarea {
+  width: 100%;
+}
+mat-spinner {
+  margin: auto;
+}
+.alindir {
+  float: right;
+  clear: both;
+}
+.spacep {
+  margin-bottom: 20px
+}
+
