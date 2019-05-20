@@ -48,7 +48,17 @@ router.put("/:id", (req, res, next) => {
 });
 
 router.get("", (req, res, next) => {
-    Ficha.find().then(documents => {
+    const pageSize = +req.query.pagesize;
+    const paginaAtual = +req.query.page;
+    const fichaQuery = Ficha.find();
+    let fichasLoad;
+    if (pageSize && paginaAtual) {
+        fichaQuery
+        .skip(pageSize * (paginaAtual - 1))
+        .limit(pageSize);
+    }
+
+    fichaQuery.then(documents => {
         res.status(200).json({
             message: 'fichas carregadas com sucesso!',
             fichas: documents

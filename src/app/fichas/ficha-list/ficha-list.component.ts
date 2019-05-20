@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 
 import { Ficha } from './../ficha.model';
 import { FichasService } from '../fichas.service';
+import { PageEvent } from '@angular/material';
 
 @Component({
     selector: 'app-ficha-list',
@@ -17,6 +18,9 @@ export class FichaListComponent implements OnInit, OnDestroy {
 
     fichas: Ficha[] = [];
     private fichasSub: Subscription;
+    totalFichas = 10;
+    fichasPorPage = 5;
+    pageSizeOptions = [1 , 2, 5, 10];
 
     constructor(public fichasService: FichasService) {}
 
@@ -26,6 +30,10 @@ export class FichaListComponent implements OnInit, OnDestroy {
         .subscribe((fichas: Ficha[]) => {
             this.fichas = fichas;
         });
+    }
+
+    onChangePage(pageData: PageEvent) {
+        console.log(pageData);
     }
 
     onDelete(fichaId: string) {

@@ -17,7 +17,8 @@ import {
   MatExpansionModule,
   MatDividerModule,
   MatButtonModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatPaginatorModule
 } from '@angular/material';
 
 @NgModule({
@@ -32,6 +33,7 @@ import {
     MatExpansionModule,
     MatButtonModule,
     MatToolbarModule,
+    MatPaginatorModule,
     FormsModule,
     MatDividerModule,
     HttpClientModule
