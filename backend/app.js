@@ -1,7 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+
 const fichasRoutes = require("./routes/fichas");
+const usuarioRoutes = require("./routes/usuario");
 
 const app = express();
 
@@ -24,6 +26,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/fichas", fichasRoutes);
+app.use("/api/usuario", usuarioRoutes);
 // cluster usuário: applesao senha: KnGVmJ7tRoWynMYQ
 // mongodb+srv://applesao:<password>@cluster0-xjqwz.mongodb.net/test?retryWrites=true
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 @Component({
     selector: 'app-cadastro',
@@ -8,7 +9,12 @@ import { NgForm } from '@angular/forms';
 })
 export class CadastroComponent {
 
+    constructor(public authService: AuthService) {}
+
     onCadastro(form: NgForm) {
-        console.log(form.value);
+        if (form.invalid) {
+            return;
+        }
+        this.authService.createUsuario(form.value.email, form.value.senha);
     }
 }
