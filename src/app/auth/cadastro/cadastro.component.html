@@ -32,15 +32,14 @@
     <mat-form-field>
       <input
         matInput
-        name="password"
+        name="senha"
         ngModel
         type="password"
         placeholder="Senha"
-        #passwordInput="ngModel"
+        #senhaInput="ngModel"
         required
-        email
       />
-      <mat-error *ngIf="passwordInput.invalid"
+      <mat-error *ngIf="senhaInput.invalid"
         >Senha inválida</mat-error
       >
     </mat-form-field>

@@ -9,6 +9,6 @@ import { NgForm } from '@angular/forms';
 export class LoginComponent {
 
     onLogin(form: NgForm) {
-        console.log(form.value)
+        console.log(form.value);
     }
 }
