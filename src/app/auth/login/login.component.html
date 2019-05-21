@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<mat-card>
+  <mat-card>
+    <h3>Login</h3>
+  </mat-card>
+  <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
+     <div class="formfield"> 
+      <mat-form-field>
+        <input
+          matInput
+          name="email"
+          ngModel
+          type="email"
+          placeholder="E-Mail"
+          #emailInput="ngModel"
+          required
+          email
+        />
+        <mat-error *ngIf="emailInput.invalid"
+          >Entre com um email válido</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <mat-form-field>
+      <input
+        matInput
+        name="password"
+        ngModel
+        type="password"
+        placeholder="Senha"
+        #passwordInput="ngModel"
+        required
+        email
+      />
+      <mat-error *ngIf="passwordInput.invalid"
+        >Senha inválida</mat-error
+      >
+    </mat-form-field>
+    <ion-button expand="block" color="primary" type="submit">
+      Login
+    </ion-button>
+  </form>
+</mat-card>
