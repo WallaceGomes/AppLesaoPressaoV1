@@ -36,7 +36,7 @@ import {
     MatPaginatorModule,
     FormsModule,
     MatDividerModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     StatusBar,

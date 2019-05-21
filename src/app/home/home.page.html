@@ -24,6 +24,14 @@
     <ion-list-header>
       <ion-label>Menu</ion-label>
     </ion-list-header>
+    <ion-button expand="full" (click)="abrirPagina('pagina-login')">
+      <ion-icon name="log-in" slot="start"></ion-icon>
+      Login
+    </ion-button>
+    <ion-button expand="full" (click)="abrirPagina('pagina-cadastro')">
+      <ion-icon name="filing" slot="start"></ion-icon>
+      Cadastro
+      </ion-button>
     <ion-button expand="full" (click)="abrirPagina('pagina-ficha-avaliacao')">
       <ion-icon name="clipboard" slot="start"></ion-icon>
       Ficha de Avaliação de Risco
