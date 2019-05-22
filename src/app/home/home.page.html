@@ -24,27 +24,31 @@
     <ion-list-header>
       <ion-label>Menu</ion-label>
     </ion-list-header>
-    <ion-button expand="full" (click)="abrirPagina('pagina-login')">
+    <ion-button expand="full" (click)="abrirPagina('pagina-login')" *ngIf="!usuarioIsAutenticado">
       <ion-icon name="log-in" slot="start"></ion-icon>
       Login
     </ion-button>
-    <ion-button expand="full" (click)="abrirPagina('pagina-cadastro')">
+    <ion-button expand="full" *ngIf="usuarioIsAutenticado" (click)="onLogout()">
+      <ion-icon name="log-in" slot="start"></ion-icon>
+      Logout(sair)
+    </ion-button>
+    <ion-button expand="full" (click)="abrirPagina('pagina-cadastro')" *ngIf="!usuarioIsAutenticado">
       <ion-icon name="filing" slot="start"></ion-icon>
       Cadastro
-      </ion-button>
-    <ion-button expand="full" (click)="abrirPagina('pagina-ficha-avaliacao')">
+    </ion-button>
+    <ion-button expand="full" (click)="abrirPagina('pagina-ficha-avaliacao')" *ngIf="usuarioIsAutenticado">
       <ion-icon name="clipboard" slot="start"></ion-icon>
       Ficha de Avaliação de Risco
     </ion-button>
-    <ion-button expand="full" (click)="abrirPagina('pagina-escala-braden')">
+    <ion-button expand="full" (click)="abrirPagina('pagina-escala-braden')" *ngIf="usuarioIsAutenticado">
       <ion-icon name="help" slot="start"></ion-icon>
       Escala de Braden
     </ion-button>
-    <ion-button expand="full" (click)="abrirPagina('pagina-base-dados')">
+    <ion-button expand="full" (click)="abrirPagina('pagina-base-dados')" *ngIf="usuarioIsAutenticado">
       <ion-icon name="analytics" slot="start"></ion-icon>
       Base de dados
     </ion-button>
-    <ion-button expand="full" (click)="abrirPagina('pagina-desenvolvedor')">
+    <ion-button expand="full" (click)="abrirPagina('pagina-desenvolvedor')" *ngIf="usuarioIsAutenticado">
       <ion-icon name="construct" slot="start"></ion-icon>
       Desenvolvedor
     </ion-button>
