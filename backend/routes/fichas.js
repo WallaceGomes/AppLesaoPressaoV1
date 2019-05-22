@@ -1,10 +1,11 @@
 const express = require ("express");
 
 const Ficha = require('../models/ficha');
+const checkAuth = require("../middleware/check-auth"); //middleware para autenticar o usuário, se não estiver autenticado não pode criar, editar ou apagar ficha alguma
 
 const router = express.Router();
 
-router.post("", (req, res, next) => {
+router.post("", checkAuth, (req, res, next) => {
     const ficha = new Ficha({
         nome: req.body.nome,
         matricula: req.body.matricula,
@@ -26,7 +27,7 @@ router.post("", (req, res, next) => {
     });
 });
 
-router.put("/:id", (req, res, next) => {
+router.put("/:id", checkAuth, (req, res, next) => {
     const ficha = new Ficha({
         _id: req.body.id,
         nome: req.body.nome,
@@ -66,7 +67,7 @@ router.get("", (req, res, next) => {
     });
 });
 
-router.delete("/:id", (req, res, next) => {
+router.delete("/:id", checkAuth, (req, res, next) => {
     Ficha.deleteOne({_id: req.params.id}).then(result => {
         console.log(result);
         res.status(200).json({ message: "Ficha deletada" });
