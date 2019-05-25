@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: 'pagina-base-dados', loadChildren: './pagina-base-dados/pagina-base-dados.module#PaginaBaseDadosPageModule',
   canActivate: [AuthGuard]  },
   { path: 'pagina-login', loadChildren: './pagina-login/pagina-login.module#PaginaLoginPageModule' },
-  { path: 'pagina-cadastro', loadChildren: './pagina-cadastro/pagina-cadastro.module#PaginaCadastroPageModule' }
+  { path: 'pagina-cadastro', loadChildren: './pagina-cadastro/pagina-cadastro.module#PaginaCadastroPageModule' },
+  { path: 'pagina-listar-fichas', loadChildren: './pagina-listar-fichas/pagina-listar-fichas.module#PaginaListarFichasPageModule' }
 ];
 
 @NgModule({

@@ -4,15 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
-
-import { PaginaBaseDadosPage } from './pagina-base-dados.page';
-// import { FichaListComponent } from './../fichas/ficha-list/ficha-list.component';
+import { FichaListComponent } from './../fichas/ficha-list/ficha-list.component';
+import { PaginaListarFichasPage } from './pagina-listar-fichas.page';
 import { MatExpansionModule, MatButtonModule, MatPaginatorModule } from '@angular/material';
 
 const routes: Routes = [
   {
     path: '',
-    component: PaginaBaseDadosPage
+    component: PaginaListarFichasPage
   }
 ];
 
@@ -26,6 +25,6 @@ const routes: Routes = [
     MatButtonModule,
     MatPaginatorModule
   ],
-  declarations: [PaginaBaseDadosPage]
+  declarations: [PaginaListarFichasPage,  FichaListComponent]
 })
-export class PaginaBaseDadosPageModule {}
+export class PaginaListarFichasPageModule {}

@@ -29,7 +29,8 @@ export class FichasService {
           mobilidade: ficha.mobilidade,
           nutricao: ficha.nutricao,
           fricscisal: ficha.fricscisal,
-          score: ficha.score
+          score: ficha.score,
+          criador: ficha.criador
         };
       });
     }))

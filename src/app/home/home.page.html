@@ -40,13 +40,17 @@
       <ion-icon name="clipboard" slot="start"></ion-icon>
       Ficha de Avaliação de Risco
     </ion-button>
-    <ion-button expand="full" (click)="abrirPagina('pagina-escala-braden')" *ngIf="usuarioIsAutenticado">
-      <ion-icon name="help" slot="start"></ion-icon>
-      Escala de Braden
+    <ion-button expand="full" (click)="abrirPagina('pagina-listar-fichas')" *ngIf="usuarioIsAutenticado">
+      <ion-icon name="document" slot="start"></ion-icon>
+      Exibir fichas
     </ion-button>
     <ion-button expand="full" (click)="abrirPagina('pagina-base-dados')" *ngIf="usuarioIsAutenticado">
       <ion-icon name="analytics" slot="start"></ion-icon>
       Base de dados
+    </ion-button>
+    <ion-button expand="full" (click)="abrirPagina('pagina-escala-braden')" *ngIf="usuarioIsAutenticado">
+      <ion-icon name="help" slot="start"></ion-icon>
+      Escala de Braden
     </ion-button>
     <ion-button expand="full" (click)="abrirPagina('pagina-desenvolvedor')" *ngIf="usuarioIsAutenticado">
       <ion-icon name="construct" slot="start"></ion-icon>
