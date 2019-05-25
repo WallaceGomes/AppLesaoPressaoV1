@@ -93,7 +93,7 @@ export class FichasService {
         ficha.id = id;
         this.fichas.push(ficha);
         this.fichasUpdated.next([...this.fichas]);
-        this.loadingEnvioFormulario();
+        // this.loadingEnvioFormulario();
         // this.router.navigate(["/"]);
     });
   }
@@ -129,7 +129,7 @@ export class FichasService {
           fichasUpdate[oldFichaIndex] = ficha;
           this.fichas = fichasUpdate;
           this.fichasUpdated.next([...this.fichas]);
-          // this.router.navigate(["/"]);
+          this.router.navigate(["pagina-listar-fichas"]);
         });
     }
 

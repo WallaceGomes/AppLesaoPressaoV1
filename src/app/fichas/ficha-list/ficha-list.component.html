@@ -25,7 +25,7 @@
             <p>Score: {{ ficha.score }}</p>
             <mat-action-row>
                 <button mat-raised-button color="warn" (click)="onDelete(ficha.id)">Excluir</button>
-                <!-- <a mat-raised-button color="primary" [routerLink]="['/edit, ficha.id']">Editar</a> -->
+                <a mat-raised-button color="primary" [routerLink]="['/editar', ficha.id]">Editar</a>
             </mat-action-row>
         </mat-expansion-panel>
     </mat-accordion>

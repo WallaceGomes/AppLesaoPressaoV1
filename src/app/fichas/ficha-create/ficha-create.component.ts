@@ -14,7 +14,7 @@ export class FichaCreateComponent implements OnInit {
   matriculaPaciente = '';
   leitoPaciente = '';
   dataFichaPaciente = '';
-  ficha: Ficha;
+  private ficha: Ficha;
   form: FormGroup;
   private mode = 'create';
   private fichaId: string;
@@ -155,27 +155,26 @@ export class FichaCreateComponent implements OnInit {
       if (paramMap.has('fichaId')) {
         this.mode = 'edit';
         this.fichaId = paramMap.get('fichaId');
-        this.fichasService.getFicha(this.fichaId).subscribe(fichaDados => {
+        this.fichasService.getFicha(this.fichaId).subscribe(dadosFicha => {
           this.ficha = {
-            id: fichaDados._id,
-            nome: fichaDados.nome,
-            matricula: fichaDados.matricula,
-            leito: fichaDados.leito,
-            data: fichaDados.data,
-            percepSens: fichaDados.percepSens,
-            umidade: fichaDados.umidade,
-            atividade: fichaDados.atividade,
-            mobilidade: fichaDados.mobilidade,
-            nutricao: fichaDados.nutricao,
-            fricscisal: fichaDados.fricscisal,
-            score: fichaDados.score
-          };
+            id: dadosFicha._id,
+            nome: dadosFicha.nome,
+            matricula: dadosFicha.matricula,
+            leito: dadosFicha.leito,
+            data: dadosFicha.data,
+            percepSens: dadosFicha.percepSens,
+            umidade: dadosFicha.umidade,
+            atividade: dadosFicha.atividade,
+            mobilidade: dadosFicha.mobilidade,
+            nutricao: dadosFicha.nutricao,
+            fricscisal: dadosFicha.fricscisal,
+            score: dadosFicha.score};
           this.form.setValue({
-              'nomePaciente': this.ficha.nome,
-              'matriculaPaciente': this.ficha.matricula,
-              'leitoPaciente': this.ficha.leito,
-              'dataFichaPaciente': this.ficha.data
-            });
+            'nomePaciente': this.ficha.nome,
+            'matriculaPaciente': this.ficha.matricula,
+            'leitoPaciente': this.ficha.leito,
+            'dataFichaPaciente': this.ficha.data
+          });
         });
       } else {
         this.mode = 'create';
@@ -183,4 +182,44 @@ export class FichaCreateComponent implements OnInit {
       }
     });
   }
+
+  // ngOnInit() {
+  //   this.form = new FormGroup({
+  //     'nomePaciente': new FormControl(null, {validators: [Validators.required]}),
+  //     'matriculaPaciente': new FormControl(null, {validators: [Validators.required]}),
+  //     'leitoPaciente': new FormControl(null, {validators: [Validators.required]}),
+  //     'dataFichaPaciente': new FormControl(null, {validators: [Validators.required]})
+  //   });
+  //   this.route.paramMap.subscribe((paramMap: ParamMap) => {
+  //     if (paramMap.has('fichaId')) {
+  //       this.mode = 'edit';
+  //       this.fichaId = paramMap.get('fichaId');
+  //       this.fichasService.getFicha(this.fichaId).subscribe(fichaDados => {
+  //         this.ficha = {
+  //           id: fichaDados._id,
+  //           nome: fichaDados.nome,
+  //           matricula: fichaDados.matricula,
+  //           leito: fichaDados.leito,
+  //           data: fichaDados.data,
+  //           percepSens: fichaDados.percepSens,
+  //           umidade: fichaDados.umidade,
+  //           atividade: fichaDados.atividade,
+  //           mobilidade: fichaDados.mobilidade,
+  //           nutricao: fichaDados.nutricao,
+  //           fricscisal: fichaDados.fricscisal,
+  //           score: fichaDados.score
+  //         };
+  //         this.form.setValue({
+  //             'nomePaciente': this.ficha.nome,
+  //             'matriculaPaciente': this.ficha.matricula,
+  //             'leitoPaciente': this.ficha.leito,
+  //             'dataFichaPaciente': this.ficha.data
+  //           });
+  //       });
+  //     } else {
+  //       this.mode = 'create';
+  //       this.fichaId = null;
+  //     }
+  //   });
+  // }
 }
