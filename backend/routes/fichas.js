@@ -17,7 +17,8 @@ router.post("", checkAuth, (req, res, next) => {
         mobilidade: req.body.mobilidade,
         nutricao: req.body.nutricao,
         fricscisal: req.body.fricscisal,
-        score: req.body.score
+        score: req.body.score,
+        criador: req.dadosUsuario.usuarioId
     });
     ficha.save().then(fichacreated => {
         res.status(201).json({
@@ -68,8 +69,9 @@ router.get("", (req, res, next) => {
 });
 
 router.delete("/:id", checkAuth, (req, res, next) => {
-    Ficha.deleteOne({_id: req.params.id}).then(result => {
-        console.log(result);
+    Ficha.deleteOne({_id: req.params.id}).then(
+        result => {
+        //console.log(result);
         res.status(200).json({ message: "Ficha deletada" });
     });
 });
