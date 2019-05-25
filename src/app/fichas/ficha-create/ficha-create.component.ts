@@ -10,6 +10,7 @@ import { Ficha } from './../ficha.model';
   styleUrls: ['./ficha-create.component.css']
 })
 export class FichaCreateComponent implements OnInit {
+  
   nomePaciente = '';
   matriculaPaciente = '';
   leitoPaciente = '';
@@ -223,3 +224,4 @@ export class FichaCreateComponent implements OnInit {
   //   });
   // }
 }
+
