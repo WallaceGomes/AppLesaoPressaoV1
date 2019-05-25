@@ -42,29 +42,60 @@ router.put("/:id", checkAuth, (req, res, next) => {
         nutricao: req.body.nutricao,
         fricscisal: req.body.fricscisal,
         score: req.body.score
-    })
+    });
     Ficha.updateOne({_id: req.params.id}, ficha).then(result => {
         console.log(result);
-        res.status(200),json({ message: "Ficha editada com sucesso!" });
+        res.status(200).json({ message: "Ficha editada com sucesso!" });
     });
 });
 
-router.get("", (req, res, next) => {
-    const pageSize = +req.query.pagesize;
-    const paginaAtual = +req.query.page;
-    const fichaQuery = Ficha.find();
-    let fichasLoad;
-    if (pageSize && paginaAtual) {
-        fichaQuery
-        .skip(pageSize * (paginaAtual - 1))
-        .limit(pageSize);
-    }
+//5ce72a5361cba61abc8383d4
 
-    fichaQuery.then(documents => {
-        res.status(200).json({
+router.get("", checkAuth, (req, res, next) => {
+    if (req.dadosUsuario.usuarioId === '5ce72a5361cba61abc8383d4') {
+        Ficha.find().then(documents => {
+            res.status(200).json({
             message: 'fichas carregadas com sucesso!',
             fichas: documents
+            });
         });
+    }else {
+        Ficha.find({criador: req.dadosUsuario.usuarioId}).then(documents => {
+            res.status(200).json({
+            message: 'fichas carregadas com sucesso!',
+            fichas: documents
+            });
+        });
+    }
+});
+
+// router.get("", (req, res, next) => {
+//     const pageSize = +req.query.pagesize;
+//     const paginaAtual = +req.query.page;
+//     const fichaQuery = Ficha.find();
+//     // const fichaQuery = Ficha.find({criador: req.dadosUsuario.usuarioId});
+//     let fichasLoad;
+//     if (pageSize && paginaAtual) {
+//         fichaQuery
+//         .skip(pageSize * (paginaAtual - 1))
+//         .limit(pageSize);
+//     }
+
+//     fichaQuery.then(documents => {
+//         res.status(200).json({
+//             message: 'fichas carregadas com sucesso!',
+//             fichas: documents
+//         });
+//     });
+// });
+
+router.get("/:id", (req, res, next) => {
+    Ficha.findById(req.params.id).then(ficha => {
+        if(ficha) {
+            res.status(200).json(ficha);
+        } else {
+            res.status(404).json({message: 'Ficha não encontrada!'})
+        }
     });
 });
 
