@@ -1,10 +1,13 @@
-import { Ficha } from "./ficha.model";
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Subject } from "rxjs";
 import { map } from "rxjs/operators";
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
+
+import { environment } from './../../environments/environment';
+import { Ficha } from "./ficha.model";
+const BACKEND_URL = environment.apiUrl + "/fichas/";
 
 @Injectable({ providedIn: "root" })
 export class FichasService {
@@ -14,7 +17,7 @@ export class FichasService {
   constructor(private http: HttpClient, private router: Router, private loadingCtrl: LoadingController) {}
 
   getFichas() {
-    this.http.get<{message: string, fichas: any}>('http://localhost:3000/api/fichas')
+    this.http.get<{message: string, fichas: any}>(BACKEND_URL)
     .pipe(map((fichaData) => {
       return fichaData.fichas.map(ficha => {
         return {
@@ -57,7 +60,7 @@ export class FichasService {
       mobilidade: any,
       nutricao: any,
       fricscisal: any,
-      score: any }>('http://localhost:3000/api/fichas/' + id);
+      score: any }>(BACKEND_URL + id);
   }
 
   addFicha(
@@ -87,7 +90,7 @@ export class FichasService {
       fricscisal: fricscisal,
       score: score
     };
-    this.http.post<{message: string, fichaId: string}>('http://localhost:3000/api/fichas', ficha)
+    this.http.post<{message: string, fichaId: string}>(BACKEND_URL, ficha)
     .subscribe((respostaDado) => {
         const id = respostaDado.fichaId;
         ficha.id = id;
@@ -122,7 +125,7 @@ export class FichasService {
         fricscisal: fricscisal,
         score: score};
       this.http
-        .put('http://localhost:3000/api/fichas/' + id, ficha)
+        .put(BACKEND_URL + id, ficha)
         .subscribe(response => {
           const fichasUpdate = [...this.fichas];
           const oldFichaIndex = fichasUpdate.findIndex(p => p.id === ficha.id);
@@ -134,7 +137,7 @@ export class FichasService {
     }
 
   deleteFicha(fichaId: string){
-    this.http.delete('http://localhost:3000/api/fichas/' + fichaId)
+    this.http.delete(BACKEND_URL + fichaId)
     .subscribe(() => {
       const fichasUpdate = this.fichas.filter(ficha => ficha.id !== fichaId);
       this.fichas = fichasUpdate;
