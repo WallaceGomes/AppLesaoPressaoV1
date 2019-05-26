@@ -8,6 +8,6 @@ module.exports = (req, res, next) => {
         req.dadosUsuario = {email: decodedToken.email, usuarioId: decodedToken.usuarioId};
         next();
     }catch(error) {
-        res.status(401).json({ message: "Erro de autenticação"});
+        res.status(401).json({ message: "Erro de autenticação!"});
     }
 };

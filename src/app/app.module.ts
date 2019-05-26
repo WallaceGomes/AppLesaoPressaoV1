@@ -18,13 +18,16 @@ import {
   MatDividerModule,
   MatButtonModule,
   MatToolbarModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatDialogModule
 } from '@angular/material';
 import { AuthInterceptor } from './auth/auth-interceptor';
+import { ErrorInterceptor } from './error-interceptor';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent, ErrorComponent],
+  entryComponents: [ErrorComponent],
   imports: [BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
@@ -38,12 +41,14 @@ import { AuthInterceptor } from './auth/auth-interceptor';
     FormsModule,
     MatDividerModule,
     HttpClientModule,
+    MatDialogModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

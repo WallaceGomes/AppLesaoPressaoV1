@@ -22,7 +22,7 @@ router.post("/cadastro", (req, res, next) => {
       })
       .catch(err => {
         res.status(500).json({
-          error: err
+            message: "Usuário já existente ou formato errado!"
         });
       });
   });
@@ -34,7 +34,7 @@ router.post("/login", (req, res, next) => {
     .then(usuario => {
       if (!usuario) {
         return res.status(401).json({
-          message: "Autenticação falhou!"
+          message: "Autenticação falhou! Email ou senha errados"
         });
       }
       usuarioBusca = usuario;
@@ -43,7 +43,7 @@ router.post("/login", (req, res, next) => {
     .then(result => {
       if (!result) {
         return res.status(401).json({
-          message: "Autenticação falhou!"
+          message: "Autenticação falhou! Email ou senha errados"
         });
       }
       const token = jwt.sign(
@@ -58,7 +58,7 @@ router.post("/login", (req, res, next) => {
     })
     .catch(err => {
       return res.status(401).json({
-        message: "Autenticação falhou!"
+        message: "Email ou senha errados!"
       });
     });
 });

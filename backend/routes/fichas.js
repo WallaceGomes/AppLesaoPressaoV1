@@ -25,6 +25,11 @@ router.post("", checkAuth, (req, res, next) => {
             message: 'Ficha salva com sucesso!',
             fichaId: fichacreated._id
         });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Falha no envio da ficha!'
+        });
     });
 });
 
@@ -46,6 +51,11 @@ router.put("/:id", checkAuth, (req, res, next) => {
     Ficha.updateOne({_id: req.params.id}, ficha).then(result => {
         console.log(result);
         res.status(200).json({ message: "Ficha editada com sucesso!" });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Falha na edição da ficha!'
+        });
     });
 });
 
@@ -64,6 +74,11 @@ router.get("", checkAuth, (req, res, next) => {
             res.status(200).json({
             message: 'fichas carregadas com sucesso!',
             fichas: documents
+            });
+        })
+        .catch(error => {
+            res.status(500).json({
+                message: 'Falha ao carregar as fichas'
             });
         });
     }
@@ -96,6 +111,11 @@ router.get("/:id", (req, res, next) => {
         } else {
             res.status(404).json({message: 'Ficha não encontrada!'})
         }
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Falha ao carregar a ficha'
+        });
     });
 });
 
@@ -104,7 +124,12 @@ router.delete("/:id", checkAuth, (req, res, next) => {
         result => {
         //console.log(result);
         res.status(200).json({ message: "Ficha deletada" });
-    });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Não foi possível excluir a ficha'
+        });
+    });;
 });
 
 module.exports = router;

@@ -17,6 +17,5 @@ export class CadastroComponent {
             return;
         }
         this.authService.createUsuario(form.value.email, form.value.senha);
-        this.router.navigate(['/']);
     }
 }
