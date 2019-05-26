@@ -1,66 +1,11 @@
 const express = require("express");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 
-const Usuario = require("../models/usuario");
+const UsuarioController = require("../controllers/usuario");
 
 const router = express.Router();
 
-router.post("/cadastro", (req, res, next) => {
-  bcrypt.hash(req.body.senha, 10).then(hash => {
-    const usuario = new Usuario({
-      email: req.body.email,
-      senha: hash
-    });
-    usuario
-      .save()
-      .then(result => {
-        res.status(201).json({
-          message: "Usuário criado!",
-          result: result
-        });
-      })
-      .catch(err => {
-        res.status(500).json({
-            message: "Usuário já existente ou formato errado!"
-        });
-      });
-  });
-});
+router.post("/cadastro", UsuarioController.cadastro);
 
-router.post("/login", (req, res, next) => {
-    let usuarioBusca;
-  Usuario.findOne({ email: req.body.email })
-    .then(usuario => {
-      if (!usuario) {
-        return res.status(401).json({
-          message: "Autenticação falhou! Email ou senha errados"
-        });
-      }
-      usuarioBusca = usuario;
-      return bcrypt.compare(req.body.senha, usuario.senha);
-    })
-    .then(result => {
-      if (!result) {
-        return res.status(401).json({
-          message: "Autenticação falhou! Email ou senha errados"
-        });
-      }
-      const token = jwt.sign(
-        { email: usuarioBusca.email, usuarioId: usuarioBusca._id },
-        "senhamuitograndealgoritmo", // palavra para criar o hash, geralmente bem grande
-        { expiresIn: "1h" }
-      );
-      res.status(200).json({
-          token: token,
-          expiresIn: 3600
-      });
-    })
-    .catch(err => {
-      return res.status(401).json({
-        message: "Email ou senha errados!"
-      });
-    });
-});
+router.post("/login", UsuarioController.login);
 
 module.exports = router;
