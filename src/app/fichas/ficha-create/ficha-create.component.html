@@ -24,14 +24,23 @@
       <input matInput type="number" placeholder="Matrícula" formControlName="matriculaPaciente" required>
       <mat-error *ngIf="form.get('matriculaPaciente').invalid">Favor digitar a matrícula do paciente.</mat-error>
     </mat-form-field>
-    <mat-form-field class="alindir">
+    <div>
+      <mat-form-field>
+        <!--<ion-label position="stacked">Leito</ion-label>-->
+        <input matInput type="date" placeholder="Data de internação" formControlName="dataInternacao" required>
+        <mat-error *ngIf="form.get('dataInternacao').invalid">Favor digitar a data de internação.</mat-error>
+      </mat-form-field>
+      </div>
+    <div>
+    <mat-form-field>
       <!--<ion-label position="stacked">Leito</ion-label>-->
       <input matInput type="number" placeholder="Número do leito" formControlName="leitoPaciente" required>
       <mat-error *ngIf="form.get('leitoPaciente').invalid">Favor digitar leito do paciente.</mat-error>
     </mat-form-field>
+    </div>
     <div>
       <mat-form-field>
-        <input matInput type="date" display-format="DD/MM/YYYY" formControlName="dataFichaPaciente" required>
+        <input matInput type="date" placeholder="Data" display-format="DD/MM/YYYY" formControlName="dataFichaPaciente" required>
         <mat-error *ngIf="form.get('dataFichaPaciente').invalid">Favor entrar com a data da avaliação.</mat-error>
       </mat-form-field>
     </div>
@@ -111,7 +120,7 @@
     </ion-button>
   </form>
   <ion-button expand="block" color="primary" routerLink="/pagina-listar-fichas">
-    <ion-icon name="analytics" slot="start"></ion-icon>
+    <ion-icon name="document" slot="start"></ion-icon>
     Exibir fichas criadas
   </ion-button>
 </mat-card>

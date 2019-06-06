@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const fichaSchema = mongoose.Schema({
     nome: { type: String, required: true },
     matricula: { type: String, required: true },
+    dataInternacao: { type: String, required: true },
     leito: { type: String, required: true },
     data: { type: String, required: true },
     percepSens: { type: String, required: true },

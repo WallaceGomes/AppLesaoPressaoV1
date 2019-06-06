@@ -1,0 +1,7 @@
+{
+  "appId": "com.app.lesaopressao",
+  "appName": "AppLesaoPressaoV1",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}

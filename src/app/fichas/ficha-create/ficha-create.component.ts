@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FichasService } from '../fichas.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Ficha } from './../ficha.model';
+import { PacienteService } from './../../pacientes/paciente.service';
+import { Paciente } from './../../pacientes/paciente.model';
 
 @Component({
   selector: 'app-ficha-create',
@@ -15,10 +17,13 @@ export class FichaCreateComponent implements OnInit {
   matriculaPaciente = '';
   leitoPaciente = '';
   dataFichaPaciente = '';
+  dataInternacao = '';
   private ficha: Ficha;
   form: FormGroup;
   private mode = 'create';
   private fichaId: string;
+  private pacienteId: string;
+  private paciente: Paciente;
 
   itemFichaPercepSens: any = {
     // header: 'Percepção Sensorial',
@@ -115,6 +120,7 @@ export class FichaCreateComponent implements OnInit {
       this.fichasService.addFicha(
         this.form.value.nomePaciente,
         this.form.value.matriculaPaciente,
+        this.form.value.dataInternacao,
         this.form.value.leitoPaciente,
         this.form.value.dataFichaPaciente,
         this.scorePercepSens,
@@ -129,6 +135,7 @@ export class FichaCreateComponent implements OnInit {
         this.fichaId,
         this.form.value.nomePaciente,
         this.form.value.matriculaPaciente,
+        this.form.value.dataInternacao,
         this.form.value.leitoPaciente,
         this.form.value.dataFichaPaciente,
         this.scorePercepSens,
@@ -143,14 +150,15 @@ export class FichaCreateComponent implements OnInit {
     this.form.reset();
   }
 
-  constructor(public fichasService: FichasService, public route: ActivatedRoute) { }
+  constructor(public fichasService: FichasService, public route: ActivatedRoute, public pacientesService: PacienteService) { }
 
   ngOnInit() {
     this.form = new FormGroup({
-      'nomePaciente': new FormControl(null, {validators: [Validators.required]}),
-      'matriculaPaciente': new FormControl(null, {validators: [Validators.required]}),
-      'leitoPaciente': new FormControl(null, {validators: [Validators.required]}),
-      'dataFichaPaciente': new FormControl(null, {validators: [Validators.required]})
+      'nomePaciente': new FormControl('', [Validators.required]),
+      'matriculaPaciente': new FormControl('', [Validators.required]),
+      'dataInternacao': new FormControl('', [Validators.required]),
+      'leitoPaciente': new FormControl('', [Validators.required]),
+      'dataFichaPaciente': new FormControl('', [Validators.required])
     });
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('fichaId')) {
@@ -161,6 +169,7 @@ export class FichaCreateComponent implements OnInit {
             id: dadosFicha._id,
             nome: dadosFicha.nome,
             matricula: dadosFicha.matricula,
+            dataInternacao: dadosFicha.dataInternacao,
             leito: dadosFicha.leito,
             data: dadosFicha.data,
             percepSens: dadosFicha.percepSens,
@@ -173,6 +182,7 @@ export class FichaCreateComponent implements OnInit {
           this.form.setValue({
             'nomePaciente': this.ficha.nome,
             'matriculaPaciente': this.ficha.matricula,
+            'dataInternacao': this.ficha.dataInternacao,
             'leitoPaciente': this.ficha.leito,
             'dataFichaPaciente': this.ficha.data
           });
@@ -180,6 +190,21 @@ export class FichaCreateComponent implements OnInit {
       } else {
         this.mode = 'create';
         this.fichaId = null;
+        this.pacienteId = paramMap.get('pacienteId');
+        this.pacientesService.getPaciente(this.pacienteId).subscribe(dadosPaciente => {
+          this.paciente = {
+            id: dadosPaciente._id,
+            nome: dadosPaciente.nome,
+            matricula: dadosPaciente.matricula,
+            dataInternacao: dadosPaciente.dataInternacao};
+          this.form.setValue({
+            'nomePaciente': this.paciente.nome,
+            'matriculaPaciente': this.paciente.matricula,
+            'dataInternacao': this.paciente.dataInternacao,
+            'leitoPaciente': this.leitoPaciente,
+            'dataFichaPaciente': this.dataFichaPaciente
+            });
+        });
       }
     });
   }

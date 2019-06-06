@@ -1,0 +1,59 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="home"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Cadastro de pacientes</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <mat-card>
+    <mat-card>
+      <h3>Cadastrar novo paciente</h3>
+    </mat-card>
+    <form [formGroup]="form" (submit)="onCadastrarPaciente()">
+       <div class="formfield"> 
+        <mat-form-field>
+          <input
+            matInput
+            formControlName="nome"
+            type="text"
+            placeholder="Nome do paciente"
+            required
+          />
+          <mat-error *ngIf="form.get('nome').invalid"
+            >Nome inválido</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <mat-form-field>
+        <input
+          matInput
+          formControlName="matricula"
+          type="number"
+          placeholder="Matrícula"
+          required
+        />
+        <mat-error *ngIf="form.get('matricula').invalid"
+          >Matricula inválida</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          formControlName="dataInternacao"
+          type="date"
+          placeholder="Data da internação"
+          required
+          display-format="DD/MM/YYYY"
+        />
+        <mat-error *ngIf="form.get('dataInternacao').invalid"
+          >Formato de data errado</mat-error
+        >
+      </mat-form-field>
+      <ion-button expand="block" color="primary" type="submit">
+        Cadastrar paciente
+      </ion-button>
+    </form>
+  </mat-card>
+  

@@ -24,6 +24,7 @@ export class FichasService {
           id: ficha._id,
           nome: ficha.nome,
           matricula: ficha.matricula,
+          dataInternacao: ficha.dataInternacao,
           leito: ficha.leito,
           data: ficha.data,
           percepSens: ficha.percepSens,
@@ -52,6 +53,7 @@ export class FichasService {
       _id: string,
       nome: string,
       matricula: string,
+      dataInternacao: string,
       leito: string,
       data: string,
       percepSens: any,
@@ -66,6 +68,7 @@ export class FichasService {
   addFicha(
     nome: string,
     matricula: string,
+    dataInternacao: string,
     leito: string,
     data: string,
     percepSens: any,
@@ -80,6 +83,7 @@ export class FichasService {
         id: null,
       nome: nome,
       matricula: matricula,
+      dataInternacao: dataInternacao,
       leito: leito,
       data: data,
       percepSens: percepSens,
@@ -103,6 +107,7 @@ export class FichasService {
 
   updateFicha(id: string, nome: string,
     matricula: string,
+    dataInternacao: string,
     leito: string,
     data: string,
     percepSens: any,
@@ -115,6 +120,7 @@ export class FichasService {
       const ficha: Ficha = {  id: id,
         nome: nome,
         matricula: matricula,
+        dataInternacao: dataInternacao,
         leito: leito,
         data: data,
         percepSens: percepSens,
@@ -144,6 +150,17 @@ export class FichasService {
       this.fichasUpdated.next([...this.fichas]);
     });
   }
+
+  filtrarItens(pesquisa) {
+    return this.fichas.filter((item) => {
+        const x = pesquisa;
+        if (x.charAt(0) >= 0 && x.charAt(0) <= 9) { // verifica o primeiro caractere da string: se for numero pesquisa pela matricula
+            return item.matricula.toLowerCase().includes(pesquisa.toLowerCase());
+        } else {
+            return item.nome.toLowerCase().includes(pesquisa.toLowerCase());
+        }
+    });
+}
 
   async loadingEnvioFormulario() {
     const loading = await this.loadingCtrl.create({
