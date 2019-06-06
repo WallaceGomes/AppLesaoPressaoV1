@@ -18,9 +18,7 @@ export class FichaListComponent implements OnInit, OnDestroy {
 
     fichas: Ficha[] = [];
     private fichasSub: Subscription;
-    totalFichas = 10;
-    fichasPorPage = 5;
-    pageSizeOptions = [1 , 2, 5, 10];
+    pesquisa: any = "";
 
     constructor(public fichasService: FichasService) {}
 
@@ -28,7 +26,7 @@ export class FichaListComponent implements OnInit, OnDestroy {
         this.fichasService.getFichas();
         this.fichasSub = this.fichasService.getFichasUpdateListener()
         .subscribe((fichas: Ficha[]) => {
-            this.fichas = fichas;
+            this.fichas = fichas; // this.fichas guarda o array de fichas carregadas do banco
         });
     }
 
@@ -39,6 +37,11 @@ export class FichaListComponent implements OnInit, OnDestroy {
     onDelete(fichaId: string) {
         this.fichasService.deleteFicha(fichaId);
     }
+
+    filtrarItens() {
+        this.fichas = this.fichasService.filtrarItens(this.pesquisa);
+    }
+
 
     ngOnDestroy() {
         this.fichasSub.unsubscribe();

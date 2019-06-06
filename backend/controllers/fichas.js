@@ -4,6 +4,7 @@ exports.createFicha = (req, res, next) => {
     const ficha = new Ficha({
         nome: req.body.nome,
         matricula: req.body.matricula,
+        dataInternacao: req.body.dataInternacao,
         leito: req.body.leito,
         data: req.body.data,
         percepSens: req.body.percepSens,
@@ -33,6 +34,7 @@ exports.editFicha = (req, res, next) => {
         _id: req.body.id,
         nome: req.body.nome,
         matricula: req.body.matricula,
+        dataInternacao: req.body.dataInternacao,
         leito: req.body.leito,
         data: req.body.data,
         percepSens: req.body.percepSens,
@@ -54,30 +56,45 @@ exports.editFicha = (req, res, next) => {
     });
 }
 
+exports.getFichas = (req, res, next) => {
+    Ficha.find().then(documents => {
+        res.status(200).json({
+        message: 'fichas carregadas com sucesso!',
+        fichas: documents
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Falha ao carregar as fichas'
+        });
+    });
+}
+
+// Versão do getFichas com a autenticação de usuário
 //5ce72a5361cba61abc8383d4 ID ADM
 
-exports.getFichas = (req, res, next) => {
-    if (req.dadosUsuario.usuarioId === '5ce72a5361cba61abc8383d4') {
-        Ficha.find().then(documents => {
-            res.status(200).json({
-            message: 'fichas carregadas com sucesso!',
-            fichas: documents
-            });
-        });
-    }else {
-        Ficha.find({criador: req.dadosUsuario.usuarioId}).then(documents => {
-            res.status(200).json({
-            message: 'fichas carregadas com sucesso!',
-            fichas: documents
-            });
-        })
-        .catch(error => {
-            res.status(500).json({
-                message: 'Falha ao carregar as fichas'
-            });
-        });
-    }
-}
+// exports.getFichas = (req, res, next) => {
+//     if (req.dadosUsuario.usuarioId === '5ce72a5361cba61abc8383d4') {
+//         Ficha.find().then(documents => {
+//             res.status(200).json({
+//             message: 'fichas carregadas com sucesso!',
+//             fichas: documents
+//             });
+//         });
+//     }else {
+//         Ficha.find({criador: req.dadosUsuario.usuarioId}).then(documents => {
+//             res.status(200).json({
+//             message: 'fichas carregadas com sucesso!',
+//             fichas: documents
+//             });
+//         })
+//         .catch(error => {
+//             res.status(500).json({
+//                 message: 'Falha ao carregar as fichas'
+//             });
+//         });
+//     }
+// }
 
 exports.getFicha = (req, res, next) => {
     Ficha.findById(req.params.id).then(ficha => {

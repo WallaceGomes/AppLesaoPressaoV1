@@ -36,9 +36,17 @@
       <ion-icon name="filing" slot="start"></ion-icon>
       Cadastro
     </ion-button>
-    <ion-button expand="full" (click)="abrirPagina('pagina-ficha-avaliacao')" *ngIf="usuarioIsAutenticado">
+    <!-- <ion-button expand="full" (click)="abrirPagina('pagina-ficha-avaliacao')" *ngIf="usuarioIsAutenticado">
       <ion-icon name="clipboard" slot="start"></ion-icon>
       Ficha de Avaliação de Risco
+    </ion-button> -->
+    <ion-button expand="full" (click)="abrirPagina('pagina-cadastro-pacientes')" *ngIf="usuarioIsAutenticado">
+      <ion-icon name="clipboard" slot="start"></ion-icon>
+      Cadastrar novo paciente
+    </ion-button>
+    <ion-button expand="full" (click)="abrirPagina('pagina-listar-pacientes')" *ngIf="usuarioIsAutenticado">
+      <ion-icon name="filing" slot="start"></ion-icon>
+      Ver pacientes cadastrados
     </ion-button>
     <ion-button expand="full" (click)="abrirPagina('pagina-listar-fichas')" *ngIf="usuarioIsAutenticado">
       <ion-icon name="document" slot="start"></ion-icon>

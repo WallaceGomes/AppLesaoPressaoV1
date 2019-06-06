@@ -6,7 +6,7 @@
         <ion-title>Fichas</ion-title>
     </ion-toolbar>
 </ion-header>
-
+<ion-searchbar placeholder="Filtrar fichas" [(ngModel)]="pesquisa" (ionInput)="filtrarItens()" debounce="100"></ion-searchbar>
 <ion-content>
     <mat-accordion multi="true">
         <mat-expansion-panel *ngFor="let ficha of fichas">
@@ -14,7 +14,8 @@
                 Ficha de {{ ficha.data }} do paciente {{ ficha.nome}}
             </mat-expansion-panel-header>
             <p>Nome: {{ ficha.nome }}</p>
-            <p>Matrícula {{ ficha.matricula }}</p>
+            <p>Matrícula: {{ ficha.matricula }}</p>
+            <p>Data Internacao: {{ ficha.dataInternacao }}</p>
             <p>Data: {{ ficha.data }}</p>
             <p>Percepção Sensorial: {{ ficha.percepSens }}</p>
             <p>Umidade: {{ ficha.umidade }}</p>

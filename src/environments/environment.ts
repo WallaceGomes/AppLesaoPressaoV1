@@ -4,8 +4,13 @@
 
 export const environment = {
   production: false,
-  apiUrl: "http://localhost:3000/api"
+  apiUrl: "http://applesaopressaov1-env.md8nxtpwmx.sa-east-1.elasticbeanstalk.com/api"
 };
+
+//usar node local
+// apiUrl: "http://localhost:3000/api"
+//usar node na AWS
+// apiUrl: "http://applesaopressaov1-env.md8nxtpwmx.sa-east-1.elasticbeanstalk.com/api"
 
 /*
  * For easier debugging in development mode, you can import the following file
