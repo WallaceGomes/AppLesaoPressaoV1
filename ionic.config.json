@@ -1,8 +1,0 @@
-{
-  "name": "AppLesaoPressaoV1",
-  "integrations": {
-    "cordova": {},
-    "capacitor": {}
-  },
-  "type": "angular"
-}
