@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+                <ion-back-button defaultHref="home"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Ajuda</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-searchbar placeholder="Filtrar dúvida" debounce="100"></ion-searchbar>
+<ion-card>
+    <mat-nav-list>
+        <a mat-list-item [routerLink]= "['/percepsens']">
+            <h3>Percepção Sensorial</h3>
+        </a>
+        <mat-divider></mat-divider>
+        <a mat-list-item [routerLink]= "['/umidade']">
+            <h3>Umidade</h3>
+        </a>
+        <mat-divider></mat-divider>
+        <a mat-list-item [routerLink]= "['/atividade']">
+            <h3>Atividade</h3>
+        </a>
+        <mat-divider></mat-divider>
+        <a mat-list-item [routerLink]= "['/mobilidade']">
+            <h3>Mobilidade</h3>
+        </a>
+        <mat-divider></mat-divider>
+        <a mat-list-item [routerLink]= "['/nutricao']">
+            <h3>Nutrição</h3>
+        </a>
+        <mat-divider></mat-divider>
+        <a mat-list-item [routerLink]= "['/fricsis']">
+            <h3>Fricção e forças de deslizamento</h3>
+        </a>
+        <mat-divider></mat-divider>
+    </mat-nav-list>
+</ion-card>

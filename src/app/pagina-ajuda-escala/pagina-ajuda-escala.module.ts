@@ -6,7 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { PaginaAjudaEscalaPage } from './pagina-ajuda-escala.page';
-import { MatButtonModule, MatExpansionModule, MatPaginatorModule } from '@angular/material';
+import { MatButtonModule, MatExpansionModule, MatPaginatorModule, MatListModule, MatCardModule } from '@angular/material';
+import { ListaDuvidasEscalaBraden } from '../ajuda/escala-braden/escala-braden.component';
 
 const routes: Routes = [
   {
@@ -23,8 +24,10 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MatExpansionModule,
     MatButtonModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatListModule,
+    MatCardModule
   ],
-  declarations: [PaginaAjudaEscalaPage]
+  declarations: [PaginaAjudaEscalaPage, ListaDuvidasEscalaBraden]
 })
 export class PaginaAjudaEscalaPageModule {}
