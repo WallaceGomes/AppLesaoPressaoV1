@@ -3,7 +3,7 @@
         <ion-buttons slot="start">
                 <ion-back-button defaultHref="home"></ion-back-button>
         </ion-buttons>
-        <ion-title>Pacientes</ion-title>
+        <ion-title>Base de dados</ion-title>
     </ion-toolbar>
 </ion-header>
 <ion-searchbar placeholder="Filtrar pacientes" [(ngModel)]="pesquisa" (ionInput)="filtrarItens()" debounce="100"></ion-searchbar>
@@ -17,10 +17,9 @@
             <p>Matrícula: {{ paciente.matricula }}</p>
             <p>Data de internação: {{ paciente.dataInternacao }}</p>
             <mat-action-row>
-                <button mat-raised-button color="primary" >Ver estatísticas</button>
+                <button mat-raised-button color="primary" (click)="verStats(paciente.matricula)">Ver estatísticas</button>
             </mat-action-row>
         </mat-expansion-panel>
     </mat-accordion>
     <canvas id="canvas">{{chart}}</canvas>
 </ion-content>
-

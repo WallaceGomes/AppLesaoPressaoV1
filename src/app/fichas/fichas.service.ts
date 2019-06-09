@@ -7,12 +7,15 @@ import { LoadingController } from '@ionic/angular';
 
 import { environment } from './../../environments/environment';
 import { Ficha } from "./ficha.model";
+import { Chart } from 'chart.js';
 const BACKEND_URL = environment.apiUrl + "/fichas/";
 
 @Injectable({ providedIn: "root" })
 export class FichasService {
   private fichas: Ficha[] = [];
   private fichasUpdated = new Subject<Ficha[]>();
+
+  chart = [];
 
   constructor(private http: HttpClient, private router: Router, private loadingCtrl: LoadingController) {}
 

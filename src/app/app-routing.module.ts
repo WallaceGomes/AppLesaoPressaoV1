@@ -20,7 +20,9 @@ const routes: Routes = [
   { path: 'pagina-cadastro-pacientes',
   loadChildren: './pagina-cadastro-pacientes/pagina-cadastro-pacientes.module#PaginaCadastroPacientesPageModule' },
   { path: 'pagina-listar-pacientes',
-  loadChildren: './pagina-listar-pacientes/pagina-listar-pacientes.module#PaginaListarPacientesPageModule' }
+  loadChildren: './pagina-listar-pacientes/pagina-listar-pacientes.module#PaginaListarPacientesPageModule' },
+  { path: 'pagina-ver-graficos', loadChildren: './pagina-ver-graficos/pagina-ver-graficos.module#PaginaVerGraficosPageModule' },
+  { path: 'pagina-ajuda-escala', loadChildren: './pagina-ajuda-escala/pagina-ajuda-escala.module#PaginaAjudaEscalaPageModule' }
 ];
 
 @NgModule({
