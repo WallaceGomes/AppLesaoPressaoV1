@@ -236,9 +236,9 @@ export class AnalisePacientesComponent implements OnInit, OnDestroy {
              }
          })
         //this.fichasService.setChart(this.chart);
-        this.fichasService.chart = this.chart;
+        // this.fichasService.chart = this.chart;
         //this.teste = this.fichasService.chart;
-        this.router.navigate(['pagina-ver-graficos']);
+        // this.router.navigate(['pagina-ver-graficos']);
         // this.teste = this.fichasService.getChart();
 
     }
