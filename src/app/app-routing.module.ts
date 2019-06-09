@@ -2,6 +2,12 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthGuard } from './auth/auth-guard';
+import { PercepSensDuvidaComponent } from './ajuda/percepsens/percepsens-duvida.component';
+import { UmidadeDuvidaComponent } from './ajuda/umidade/umidade-duvida.component';
+import { AtividadeDuvidaComponent } from './ajuda/atividade/atividade-duvida.component';
+import { MobilidadeDuvidaComponent } from './ajuda/mobilidade/mobilidade-duvida.component';
+import { NutricaoDuvidaComponent } from './ajuda/nutricao/nutricao-duvida.component';
+import { FricsisDuvidaComponent } from './ajuda/fricsis/fricsis-duvida.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -22,7 +28,13 @@ const routes: Routes = [
   { path: 'pagina-listar-pacientes',
   loadChildren: './pagina-listar-pacientes/pagina-listar-pacientes.module#PaginaListarPacientesPageModule' },
   { path: 'pagina-ver-graficos', loadChildren: './pagina-ver-graficos/pagina-ver-graficos.module#PaginaVerGraficosPageModule' },
-  { path: 'pagina-ajuda-escala', loadChildren: './pagina-ajuda-escala/pagina-ajuda-escala.module#PaginaAjudaEscalaPageModule' }
+  { path: 'pagina-ajuda-escala', loadChildren: './pagina-ajuda-escala/pagina-ajuda-escala.module#PaginaAjudaEscalaPageModule' },
+  { path: 'percepsens', component: PercepSensDuvidaComponent},
+  { path: 'umidade', component: UmidadeDuvidaComponent},
+  { path: 'atividade', component: AtividadeDuvidaComponent},
+  { path: 'mobilidade', component: MobilidadeDuvidaComponent},
+  { path: 'nutricao', component: NutricaoDuvidaComponent},
+  { path: 'fricsis', component: FricsisDuvidaComponent}
 ];
 
 @NgModule({

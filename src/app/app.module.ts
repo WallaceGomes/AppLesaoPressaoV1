@@ -24,9 +24,23 @@ import {
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
+import { PercepSensDuvidaComponent } from './ajuda/percepsens/percepsens-duvida.component';
+import { UmidadeDuvidaComponent } from './ajuda/umidade/umidade-duvida.component';
+import { AtividadeDuvidaComponent } from './ajuda/atividade/atividade-duvida.component';
+import { MobilidadeDuvidaComponent } from './ajuda/mobilidade/mobilidade-duvida.component';
+import { NutricaoDuvidaComponent } from './ajuda/nutricao/nutricao-duvida.component';
+import { FricsisDuvidaComponent } from './ajuda/fricsis/fricsis-duvida.component';
 
 @NgModule({
-  declarations: [AppComponent, ErrorComponent],
+  declarations: [
+    AppComponent,
+    ErrorComponent,
+    PercepSensDuvidaComponent,
+    UmidadeDuvidaComponent,
+    AtividadeDuvidaComponent,
+    MobilidadeDuvidaComponent,
+    NutricaoDuvidaComponent,
+    FricsisDuvidaComponent],
   entryComponents: [ErrorComponent],
   imports: [BrowserModule,
     IonicModule.forRoot(),
