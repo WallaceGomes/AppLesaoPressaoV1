@@ -8,6 +8,7 @@ import { AtividadeDuvidaComponent } from './ajuda/atividade/atividade-duvida.com
 import { MobilidadeDuvidaComponent } from './ajuda/mobilidade/mobilidade-duvida.component';
 import { NutricaoDuvidaComponent } from './ajuda/nutricao/nutricao-duvida.component';
 import { FricsisDuvidaComponent } from './ajuda/fricsis/fricsis-duvida.component';
+import { GraficoPacientesComponent } from './analises/graficos/grafico-pacientes.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -34,7 +35,8 @@ const routes: Routes = [
   { path: 'atividade', component: AtividadeDuvidaComponent},
   { path: 'mobilidade', component: MobilidadeDuvidaComponent},
   { path: 'nutricao', component: NutricaoDuvidaComponent},
-  { path: 'fricsis', component: FricsisDuvidaComponent}
+  { path: 'fricsis', component: FricsisDuvidaComponent},
+  { path: 'gerargrafico/:matricula', component: GraficoPacientesComponent}
 ];
 
 @NgModule({

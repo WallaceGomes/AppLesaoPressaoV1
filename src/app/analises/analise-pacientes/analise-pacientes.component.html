@@ -17,9 +17,11 @@
             <p>Matrícula: {{ paciente.matricula }}</p>
             <p>Data de internação: {{ paciente.dataInternacao }}</p>
             <mat-action-row>
-                <button mat-raised-button color="primary" (click)="verStats(paciente.matricula)">Ver estatísticas</button>
+                <a mat-raised-button color="primary" [routerLink]= "['/gerargrafico', paciente.matricula]">Ver estatísticas</a>
             </mat-action-row>
         </mat-expansion-panel>
     </mat-accordion>
-    <canvas id="canvas">{{chart}}</canvas>
+    <!-- <canvas id="canvas">{{chart}}</canvas> -->
 </ion-content>
+
+<!-- (click)="verStats(paciente.matricula)" -->

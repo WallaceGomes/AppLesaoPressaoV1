@@ -30,6 +30,7 @@ import { AtividadeDuvidaComponent } from './ajuda/atividade/atividade-duvida.com
 import { MobilidadeDuvidaComponent } from './ajuda/mobilidade/mobilidade-duvida.component';
 import { NutricaoDuvidaComponent } from './ajuda/nutricao/nutricao-duvida.component';
 import { FricsisDuvidaComponent } from './ajuda/fricsis/fricsis-duvida.component';
+import { GraficoPacientesComponent } from './analises/graficos/grafico-pacientes.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { FricsisDuvidaComponent } from './ajuda/fricsis/fricsis-duvida.component
     AtividadeDuvidaComponent,
     MobilidadeDuvidaComponent,
     NutricaoDuvidaComponent,
-    FricsisDuvidaComponent],
+    FricsisDuvidaComponent,
+    GraficoPacientesComponent],
   entryComponents: [ErrorComponent],
   imports: [BrowserModule,
     IonicModule.forRoot(),
