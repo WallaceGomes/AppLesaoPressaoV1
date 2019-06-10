@@ -25,6 +25,9 @@ export class GraficoPacientesComponent implements OnInit {
     fricscisal: any;
     score: any;
     datas: any;
+    nome: any;
+    dataInternacao: any;
+    matriculaGraf: any;
 
     constructor(public fichasService: FichasService, public route: ActivatedRoute) {}
 
@@ -33,10 +36,19 @@ export class GraficoPacientesComponent implements OnInit {
             if (paramMap.has('matricula')) {
                 this.matricula = paramMap.get('matricula');
 
-                console.log(this.matricula);
+                // console.log(this.matricula);
 
                 this.fichas = this.fichasService.filtrarItens(this.matricula);
 
+                this.matriculaGraf = this.fichas.map((dadosFicha) => {
+                    return dadosFicha.matricula;
+                });
+                this.nome = this.fichas.map((dadosFicha) => {
+                    return dadosFicha.nome;
+                });
+                this.dataInternacao = this.fichas.map((dadosFicha) => {
+                    return dadosFicha.dataInternacao;
+                });
                 this.percepSens = this.fichas.map((dadosFicha) => {
                     return dadosFicha.percepSens;
                 });
@@ -62,7 +74,7 @@ export class GraficoPacientesComponent implements OnInit {
                     return dadosFicha.data;
                 });
 
-                console.log(this.fichas);
+                // console.log(this.fichas);
         
                 this.chart = new Chart('canvas', {
                     type: 'line',
@@ -123,7 +135,8 @@ export class GraficoPacientesComponent implements OnInit {
                             data: this.fricscisal,
                             hidden: true
                          }]
-                     }
+                     },
+                     responsive: true
                  });
                 //this.fichasService.setChart(this.chart);
                 // this.fichasService.chart = this.chart;
