@@ -135,8 +135,7 @@ export class GraficoPacientesComponent implements OnInit {
                             data: this.fricscisal,
                             hidden: true
                          }]
-                     },
-                     responsive: true
+                     }
                  });
                 //this.fichasService.setChart(this.chart);
                 // this.fichasService.chart = this.chart;

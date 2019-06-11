@@ -114,6 +114,46 @@
       <p><span>Score: </span><b>{{score}}</b></p>
     </ion-item>
 
+    <p *ngIf="score > 18"
+    >Fora de risco (+ q 16)</p>
+
+    <p *ngIf="score >= 15 && score <= 18 
+    && scorePercepSens >= 1
+    && scoreUmidade >= 1
+    && scoreAtividade >= 1
+    && scoreNutricao >= 1
+    && scoreMobilidade >= 1
+    && scoreFricCis >= 1"
+    >Risco baixo (15 a 18 pontos)</p>
+
+    <p *ngIf="score >= 13 && score <= 14 
+    && scorePercepSens >= 1
+    && scoreUmidade >= 1
+    && scoreAtividade >= 1
+    && scoreNutricao >= 1
+    && scoreMobilidade >= 1
+    && scoreFricCis >= 1"
+    >Risco moderado (13 a 14 pontos)</p>
+
+    <p *ngIf="score >= 10 && score <= 12 
+    && scorePercepSens >= 1
+    && scoreUmidade >= 1
+    && scoreAtividade >= 1
+    && scoreNutricao >= 1
+    && scoreMobilidade >= 1
+    && scoreFricCis >= 1"
+    >Risco alto (10 a 12 pontos)</p>
+
+    <p *ngIf="score <= 9 
+    && scorePercepSens >= 1
+    && scoreUmidade >= 1
+    && scoreAtividade >= 1
+    && scoreNutricao >= 1
+    && scoreMobilidade >= 1
+    && scoreFricCis >= 1"
+    >Risco muito alto (9 ou -)</p>
+
+
     <ion-button expand="block" color="primary" type="submit">
       <ion-icon name="save" slot="start"></ion-icon>
       Salvar
