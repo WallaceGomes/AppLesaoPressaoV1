@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Subject } from "rxjs";
 import { map } from "rxjs/operators";
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, AlertController } from '@ionic/angular';
 
 import { environment } from './../../environments/environment';
 import { Ficha } from "./ficha.model";
@@ -17,7 +17,12 @@ export class FichasService {
 
   chart = [];
 
-  constructor(private http: HttpClient, private router: Router, private loadingCtrl: LoadingController) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private alertCtrl: AlertController,
+    private loadingCtrl: LoadingController
+    ) {}
 
   getFichas() {
     this.http.get<{message: string, fichas: any}>(BACKEND_URL)
@@ -103,8 +108,7 @@ export class FichasService {
         ficha.id = id;
         this.fichas.push(ficha);
         this.fichasUpdated.next([...this.fichas]);
-        // this.loadingEnvioFormulario();
-        // this.router.navigate(["/"]);
+        this.alertConfirm();
     });
   }
 
@@ -165,6 +169,22 @@ export class FichasService {
     });
 }
 
+async alertConfirm() {
+  const alert = await this.alertCtrl.create({
+    header: 'Sucesso!',
+    message: 'Ficha salva na base de dados!',
+    buttons: [
+       {
+        text: 'OK',
+        handler: () => {
+          this.router.navigate(["/pagina-listar-pacientes"]);
+        }
+      }
+    ]
+  });
+
+  await alert.present();
+}
   async loadingEnvioFormulario() {
     const loading = await this.loadingCtrl.create({
     message : 'Salvando...',

@@ -3,6 +3,7 @@ import { FichasService } from 'src/app/fichas/fichas.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Ficha } from 'src/app/fichas/ficha.model';
 import { Chart } from 'chart.js';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 @Component({
     selector: 'app-grafico-pacientes',
@@ -74,8 +75,10 @@ export class GraficoPacientesComponent implements OnInit {
                     return dadosFicha.data;
                 });
 
+                // this.orientacao.lock("landscape");
+
                 // console.log(this.fichas);
-        
+
                 this.chart = new Chart('canvas', {
                     type: 'line',
                     data: {

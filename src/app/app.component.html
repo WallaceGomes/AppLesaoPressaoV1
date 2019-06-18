@@ -1,3 +1,22 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-router-outlet id="content1" main></ion-router-outlet>
+  <ion-menu end contentId="content1" *ngIf="usuarioIsAutenticado">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle auto-hide="false" *ngFor="let paginas of paginas">
+            <ion-item [routerDirection]="'root'" [routerLink]="[paginas.url]">
+              <ion-icon slot="start" [name]="paginas.icon"></ion-icon>
+              <ion-label>
+                {{paginas.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
 </ion-app>
