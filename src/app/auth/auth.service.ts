@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 
 import { environment } from './../../environments/environment';
+import { AlertController } from '@ionic/angular';
 const BACKEND_URL = environment.apiUrl + "/usuario/";
 
 @Injectable({ providedIn: 'root' })
@@ -14,7 +15,7 @@ export class AuthService {
     private authStatusListener = new Subject<boolean>();
     private isAutenticado = false;
 
-    constructor(private http: HttpClient, private router: Router) {}
+    constructor(private http: HttpClient, private router: Router, private alertCtrl: AlertController) {}
 
     getToken() {
         return this.token;
@@ -33,7 +34,8 @@ export class AuthService {
         this.http.post(BACKEND_URL + '/cadastro', authData)
         .subscribe(response => {
             console.log(response);
-            this.router.navigate(['/']);
+            this.alertConfirm();
+            // this.router.navigate(['/']);
         });
     }
 
@@ -79,6 +81,22 @@ export class AuthService {
         this.clearAuthData();
         this.router.navigate(['/']);
     }
+
+    async alertConfirm() {
+        const alert = await this.alertCtrl.create({
+          header: 'Sucesso!',
+          message: 'Usuário cadastrado!',
+          buttons: [
+             {
+              text: 'OK',
+              handler: () => {
+                this.router.navigate(["/"]);
+              }
+            }
+          ]
+        });
+        await alert.present();
+      }
 
     private setAuthTimer(duration: number) {
         console.log("Setting timer: " + duration);

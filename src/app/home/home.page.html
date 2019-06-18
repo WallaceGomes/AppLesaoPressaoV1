@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>
+    <ion-title slot="start">
       Início
     </ion-title>
   </ion-toolbar>
@@ -28,10 +28,6 @@
       <ion-icon name="log-in" slot="start"></ion-icon>
       Login
     </ion-button>
-    <ion-button expand="full" *ngIf="usuarioIsAutenticado" (click)="onLogout()">
-      <ion-icon name="log-in" slot="start"></ion-icon>
-      Logout(sair)
-    </ion-button>
     <ion-button expand="full" (click)="abrirPagina('pagina-cadastro')" *ngIf="!usuarioIsAutenticado">
       <ion-icon name="filing" slot="start"></ion-icon>
       Cadastro
@@ -54,15 +50,19 @@
     </ion-button>
     <ion-button expand="full" (click)="abrirPagina('pagina-base-dados')" *ngIf="usuarioIsAutenticado">
       <ion-icon name="analytics" slot="start"></ion-icon>
-      Base de dados
+      Estatísticas
     </ion-button>
     <ion-button expand="full" (click)="abrirPagina('pagina-ajuda-escala')" *ngIf="usuarioIsAutenticado">
       <ion-icon name="help" slot="start"></ion-icon>
       Escala de Braden
     </ion-button>
-    <ion-button expand="full" (click)="abrirPagina('pagina-desenvolvedor')" *ngIf="usuarioIsAutenticado">
+    <ion-button expand="full" *ngIf="usuarioIsAutenticado" (click)="onLogout()">
+      <ion-icon name="log-in" slot="start"></ion-icon>
+      Logout(sair)
+    </ion-button>
+    <!-- <ion-button expand="full" (click)="abrirPagina('pagina-desenvolvedor')" *ngIf="usuarioIsAutenticado">
       <ion-icon name="construct" slot="start"></ion-icon>
       Desenvolvedor
-    </ion-button>
+    </ion-button> -->
   </ion-list>
 </ion-content>

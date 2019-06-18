@@ -26,6 +26,7 @@ const routes: Routes = [
     MatButtonModule,
     MatPaginatorModule
   ],
+  providers: [ScreenOrientation],
   declarations: [PaginaVerGraficosPage, GraficoPacientesComponent]
 })
 export class PaginaVerGraficosPageModule {}

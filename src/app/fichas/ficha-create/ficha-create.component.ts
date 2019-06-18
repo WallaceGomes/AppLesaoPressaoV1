@@ -24,6 +24,7 @@ export class FichaCreateComponent implements OnInit {
   private fichaId: string;
   private pacienteId: string;
   private paciente: Paciente;
+  submitted = false;
 
   itemFichaPercepSens: any = {
     // header: 'Percepção Sensorial',
@@ -118,11 +119,11 @@ export class FichaCreateComponent implements OnInit {
     }
     if (this.mode === 'create') {
       this.fichasService.addFicha(
-        this.form.value.nomePaciente,
-        this.form.value.matriculaPaciente,
-        this.form.value.dataInternacao,
-        this.form.value.leitoPaciente,
-        this.form.value.dataFichaPaciente,
+        this.form.getRawValue().nomePaciente,
+        this.form.getRawValue().matriculaPaciente,
+        this.form.getRawValue().dataInternacao,
+        this.form.getRawValue().leitoPaciente,
+        this.form.getRawValue().dataFichaPaciente,
         this.scorePercepSens,
         this.scoreUmidade,
         this.scoreAtividade,
@@ -133,11 +134,11 @@ export class FichaCreateComponent implements OnInit {
     } else {
       this.fichasService.updateFicha(
         this.fichaId,
-        this.form.value.nomePaciente,
-        this.form.value.matriculaPaciente,
-        this.form.value.dataInternacao,
-        this.form.value.leitoPaciente,
-        this.form.value.dataFichaPaciente,
+        this.form.getRawValue().nomePaciente,
+        this.form.getRawValue().matriculaPaciente,
+        this.form.getRawValue().dataInternacao,
+        this.form.getRawValue().leitoPaciente,
+        this.form.getRawValue().dataFichaPaciente,
         this.scorePercepSens,
         this.scoreUmidade,
         this.scoreAtividade,
@@ -148,15 +149,32 @@ export class FichaCreateComponent implements OnInit {
       );
     }
     this.form.reset();
+    this.submitted = true;
+  }
+
+  get nomepaciente() {
+    return this.form.get('nomePaciente');
+  }
+  get matriculapaciente() {
+    return this.form.get('matriculaPaciente');
+  }
+  get datainternacao() {
+    return this.form.get('dataInternacao');
+  }
+  get leitopaciente() {
+    return this.form.get('leitoPaciente');
+  }
+  get dataFichapaciente() {
+    return this.form.get('dataFichaPaciente');
   }
 
   constructor(public fichasService: FichasService, public route: ActivatedRoute, public pacientesService: PacienteService) { }
 
   ngOnInit() {
     this.form = new FormGroup({
-      'nomePaciente': new FormControl('', [Validators.required]),
-      'matriculaPaciente': new FormControl('', [Validators.required]),
-      'dataInternacao': new FormControl('', [Validators.required]),
+      'nomePaciente': new FormControl({value: '', disabled: true}, [Validators.required]),
+      'matriculaPaciente': new FormControl({value: '', disabled: true}, [Validators.required]),
+      'dataInternacao': new FormControl({value: '', disabled: true}, [Validators.required]),
       'leitoPaciente': new FormControl('', [Validators.required]),
       'dataFichaPaciente': new FormControl('', [Validators.required])
     });

@@ -16,32 +16,32 @@
       <mat-form-field>
         <!---<ion-label position="stacked">Nome do paciente</ion-label>-->
         <input matInput type="text" placeholder="Nome do paciente" formControlName="nomePaciente" required>
-        <mat-error *ngIf="form.get('nomePaciente').invalid">Favor digitar o nome do paciente.</mat-error>
+        <mat-error *ngIf="(nomepaciente.dirty || nomepaciente.touched) && nomepaciente.invalid">Favor digitar o nome do paciente.</mat-error>
       </mat-form-field>
     </div>
     <mat-form-field>
       <!--<ion-label position="stacked">Matrícula</ion-label>-->
       <input matInput type="number" placeholder="Matrícula" formControlName="matriculaPaciente" required>
-      <mat-error *ngIf="form.get('matriculaPaciente').invalid">Favor digitar a matrícula do paciente.</mat-error>
+      <mat-error *ngIf="(matriculapaciente.dirty || matriculapaciente.touched) && matriculapaciente.invalid">Favor digitar a matrícula do paciente.</mat-error>
     </mat-form-field>
     <div>
       <mat-form-field>
         <!--<ion-label position="stacked">Leito</ion-label>-->
         <input matInput type="date" placeholder="Data de internação" formControlName="dataInternacao" required>
-        <mat-error *ngIf="form.get('dataInternacao').invalid">Favor digitar a data de internação.</mat-error>
+        <mat-error *ngIf="(datainternacao.dirty || datainternacao.touched) && datainternacao.invalid">Favor digitar a data de internação.</mat-error>
       </mat-form-field>
       </div>
     <div>
     <mat-form-field>
       <!--<ion-label position="stacked">Leito</ion-label>-->
       <input matInput type="number" placeholder="Número do leito" formControlName="leitoPaciente" required>
-      <mat-error *ngIf="form.get('leitoPaciente').invalid">Favor digitar leito do paciente.</mat-error>
+      <mat-error *ngIf="(leitopaciente.dirty || leitopaciente.touched) && leitopaciente.invalid">Favor digitar leito do paciente.</mat-error>
     </mat-form-field>
     </div>
     <div>
       <mat-form-field>
         <input matInput type="date" placeholder="Data" display-format="DD/MM/YYYY" formControlName="dataFichaPaciente" required>
-        <mat-error *ngIf="form.get('dataFichaPaciente').invalid">Favor entrar com a data da avaliação.</mat-error>
+        <mat-error *ngIf="(dataFichapaciente.dirty || dataFichapaciente.touched) && dataFichapaciente.invalid">Favor entrar com a data da avaliação.</mat-error>
       </mat-form-field>
     </div>
 
@@ -114,13 +114,60 @@
       <p><span>Score: </span><b>{{score}}</b></p>
     </ion-item>
 
-    <ion-button expand="block" color="primary" type="submit">
+    <p *ngIf="score > 18"
+    >Fora de risco (+ q 16)</p>
+
+    <p *ngIf="score >= 15 && score <= 18 
+    && scorePercepSens >= 1
+    && scoreUmidade >= 1
+    && scoreAtividade >= 1
+    && scoreNutricao >= 1
+    && scoreMobilidade >= 1
+    && scoreFricCis >= 1"
+    >Risco baixo (15 a 18 pontos)</p>
+
+    <p *ngIf="score >= 13 && score <= 14 
+    && scorePercepSens >= 1
+    && scoreUmidade >= 1
+    && scoreAtividade >= 1
+    && scoreNutricao >= 1
+    && scoreMobilidade >= 1
+    && scoreFricCis >= 1"
+    >Risco moderado (13 a 14 pontos)</p>
+
+    <p *ngIf="score >= 10 && score <= 12 
+    && scorePercepSens >= 1
+    && scoreUmidade >= 1
+    && scoreAtividade >= 1
+    && scoreNutricao >= 1
+    && scoreMobilidade >= 1
+    && scoreFricCis >= 1"
+    >Risco alto (10 a 12 pontos)</p>
+
+    <p *ngIf="score <= 9 
+    && scorePercepSens >= 1
+    && scoreUmidade >= 1
+    && scoreAtividade >= 1
+    && scoreNutricao >= 1
+    && scoreMobilidade >= 1
+    && scoreFricCis >= 1"
+    >Risco muito alto (9 ou -)</p>
+
+
+    <ion-button expand="block" color="primary" type="submit"
+    [disabled]="!form.valid
+    || scorePercepSens < 1
+    || scoreUmidade < 1
+    || scoreAtividade < 1
+    || scoreNutricao < 1
+    || scoreMobilidade < 1
+    || scoreFricCis < 1">
       <ion-icon name="save" slot="start"></ion-icon>
       Salvar
     </ion-button>
   </form>
-  <ion-button expand="block" color="primary" routerLink="/pagina-listar-fichas">
+  <!-- <ion-button expand="block" color="primary" routerLink="/pagina-listar-fichas">
     <ion-icon name="document" slot="start"></ion-icon>
     Exibir fichas criadas
-  </ion-button>
+  </ion-button> -->
 </mat-card>
