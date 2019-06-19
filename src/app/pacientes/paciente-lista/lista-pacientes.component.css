@@ -6,3 +6,11 @@
 mat-paginator {
     margin-top: 2rem;
 }
+
+.float{
+    padding: 0 6px 0 6px;
+}
+
+excluir-button{
+    color: red;
+}

@@ -9,6 +9,7 @@ import { MobilidadeDuvidaComponent } from './ajuda/mobilidade/mobilidade-duvida.
 import { NutricaoDuvidaComponent } from './ajuda/nutricao/nutricao-duvida.component';
 import { FricsisDuvidaComponent } from './ajuda/fricsis/fricsis-duvida.component';
 import { GraficoPacientesComponent } from './analises/graficos/grafico-pacientes.component';
+import { ManejoUmidadeDuvidaComponent } from './ajuda/manejoumidade/umidade-manejo-duvida.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'mobilidade', component: MobilidadeDuvidaComponent},
   { path: 'nutricao', component: NutricaoDuvidaComponent},
   { path: 'fricsis', component: FricsisDuvidaComponent},
+  { path: 'manejoumidade', component: ManejoUmidadeDuvidaComponent},
   { path: 'gerargrafico/:matricula', component: GraficoPacientesComponent}
 ];
 

@@ -21,7 +21,7 @@
             placeholder="Nome do paciente"
             required
           />
-          <mat-error *ngIf="form.get('nome').invalid"
+          <mat-error *ngIf="(nomepaciente.dirty || nomepaciente.touched) && nomepaciente.invalid"
             >Nome inválido</mat-error
           >
         </mat-form-field>
@@ -34,7 +34,7 @@
           placeholder="Matrícula"
           required
         />
-        <mat-error *ngIf="form.get('matricula').invalid"
+        <mat-error *ngIf="(matriculapaciente.dirty || matriculapaciente.touched) && matriculapaciente.invalid"
           >Matricula inválida</mat-error
         >
       </mat-form-field>
@@ -47,7 +47,7 @@
           required
           display-format="DD/MM/YYYY"
         />
-        <mat-error *ngIf="form.get('dataInternacao').invalid"
+        <mat-error *ngIf="(datainternacao.dirty || datainternacao.touched) && datainternacao.invalid"
           >Formato de data errado</mat-error
         >
       </mat-form-field>
