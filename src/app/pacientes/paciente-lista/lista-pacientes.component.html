@@ -17,7 +17,8 @@
             <p>Matrícula: {{ paciente.matricula }}</p>
             <p>Data de internação: {{ paciente.dataInternacao }}</p>
             <mat-action-row>
-                <button mat-raised-button color="warn" (click)="onDelete(paciente.id)">Excluir</button>
+                <button class="float" mat-raised-button color="warn" (click)="onDelete(paciente.id)">Excluir</button>
+                <div fxFlex></div>
                 <a mat-raised-button color="primary" [routerLink]="['/gerarficha', paciente.id]">Gerar ficha</a>
             </mat-action-row>
         </mat-expansion-panel>

@@ -4,6 +4,9 @@ import { Subscription } from 'rxjs';
 import { PacienteService } from '../paciente.service';
 import { PageEvent } from '@angular/material';
 import { Paciente } from '../paciente.model';
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { reduce } from 'rxjs/operators';
 
 @Component({
     selector: 'app-lista-pacientes',
@@ -15,7 +18,7 @@ export class ListaPacientesComponent implements OnInit, OnDestroy{
     pesquisa: any = "";
 
     private pacientesSub: Subscription;
-    constructor(public pacientesService: PacienteService) {}
+    constructor(public pacientesService: PacienteService, private alertCtrl: AlertController, private router: Router) {}
 
     ngOnInit() {
         this.pacientesService.getPacientes();
@@ -30,7 +33,8 @@ export class ListaPacientesComponent implements OnInit, OnDestroy{
     }
 
     onDelete(pacienteId: string) {
-        this.pacientesService.deletePaciente(pacienteId);
+        // this.pacientesService.deletePaciente(pacienteId);
+        this.alertConfirm(pacienteId);
     }
 
     filtrarItens() {
@@ -40,4 +44,26 @@ export class ListaPacientesComponent implements OnInit, OnDestroy{
     ngOnDestroy() {
         this.pacientesSub.unsubscribe();
     }
+
+    async alertConfirm(pacienteId: string) {
+        const alert = await this.alertCtrl.create({
+          header: 'Atenção!',
+          message: 'Confirma exclusão do paciente?',
+          cssClass: 'buttonCss',
+          buttons: [
+                {
+                    text: 'Excluir',
+                    cssClass: 'excluir-button',
+                    handler: () => {
+                    this.pacientesService.deletePaciente(pacienteId);
+                    this.router.navigate(["/pagina-listar-pacientes"]);
+                    }
+                },
+                    {
+                        text: 'Cancelar',
+                    }
+          ]
+        });
+        await alert.present();
+      }
 }

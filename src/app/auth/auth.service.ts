@@ -35,6 +35,7 @@ export class AuthService {
         .subscribe(response => {
             console.log(response);
             this.alertConfirm();
+            this.login(email, senha);
             // this.router.navigate(['/']);
         });
     }

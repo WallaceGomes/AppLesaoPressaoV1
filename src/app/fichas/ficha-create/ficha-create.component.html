@@ -114,44 +114,78 @@
       <p><span>Score: </span><b>{{score}}</b></p>
     </ion-item>
 
-    <p *ngIf="score > 18"
-    >Fora de risco (+ q 16)</p>
-
-    <p *ngIf="score >= 15 && score <= 18 
+    <div class="divrisco" *ngIf="score > 18
     && scorePercepSens >= 1
     && scoreUmidade >= 1
     && scoreAtividade >= 1
     && scoreNutricao >= 1
     && scoreMobilidade >= 1
-    && scoreFricCis >= 1"
-    >Risco baixo (15 a 18 pontos)</p>
+    && scoreFricCis >= 1">
+    <p class="thick">Paciente fora de risco (>16)</p>
+    <p>Para mais informações acesse a página de ajuda.</p>
+    </div>
 
-    <p *ngIf="score >= 13 && score <= 14 
+    <div class="divrisco" *ngIf="score >= 15 && score <= 18 
     && scorePercepSens >= 1
     && scoreUmidade >= 1
     && scoreAtividade >= 1
     && scoreNutricao >= 1
     && scoreMobilidade >= 1
-    && scoreFricCis >= 1"
-    >Risco moderado (13 a 14 pontos)</p>
+    && scoreFricCis >= 1">
+    <p class="thick">Risco baixo (15 a 18 pontos)</p>
+    <p class="thick">Medidas preventivas:</p>
+    <p>Cronograma de mudança de decúbito.
+    <p>Otimização da mobilização.</p>
+    <p>Proteção do calcanhar.</p>
+    <p>Manejo da umidade, nutrição, fricção e cisalhamento, bem como uso
+    de superfícies de redistribuição de pressão.</p>
+    <p>Para mais informações acesse a página de ajuda.</p>
+    </div>
 
-    <p *ngIf="score >= 10 && score <= 12 
+    <div class="divrisco" *ngIf="score >= 13 && score <= 14 
     && scorePercepSens >= 1
     && scoreUmidade >= 1
     && scoreAtividade >= 1
     && scoreNutricao >= 1
     && scoreMobilidade >= 1
-    && scoreFricCis >= 1"
-    >Risco alto (10 a 12 pontos)</p>
+    && scoreFricCis >= 1">
+    <p class="thick">Risco moderado (13 a 14 pontos)</p>
+    <p class="thick">Medidas preventivas:</p>
+    <p>Retomar as intervenções do risco baixo.
+    <p>Mudança de decúbito com posicionamento a 30º.</p>
+    <p>Para mais informações acesse a página de ajuda.</p>
+    </div>
 
-    <p *ngIf="score <= 9 
+    <div class="divrisco" *ngIf="score >= 10 && score <= 12 
     && scorePercepSens >= 1
     && scoreUmidade >= 1
     && scoreAtividade >= 1
     && scoreNutricao >= 1
     && scoreMobilidade >= 1
-    && scoreFricCis >= 1"
-    >Risco muito alto (9 ou -)</p>
+    && scoreFricCis >= 1">
+    <p class="thick">Risco alto (10 a 12 pontos)</p>
+    <p class="thick">Medidas preventivas:</p>
+    <p>Retomar as intervenções do risco moderado.
+    <p>Mudança de decúbito frequente</p>
+    <p>Utilização de coxins de espuma para facilitar a lateralização a 30º.</p>
+    <p>Para mais informações acesse a página de ajuda.</p>
+  </div>
+
+    <div class="divrisco" *ngIf="score <= 9 
+    && scorePercepSens >= 1
+    && scoreUmidade >= 1
+    && scoreAtividade >= 1
+    && scoreNutricao >= 1
+    && scoreMobilidade >= 1
+    && scoreFricCis >= 1">
+    <p class="thick">Risco muito alto ( < 9 )</p>
+    <p class="thick">Medidas preventivas:</p>
+    <p>Retomar as intervenções de risco alto.
+    <p>Utilização de superfícies de apoio dinâmico com pequena perda de ar, se possível</p>
+    <p>Proteção do calcanhar.</p>
+    <p>Manejo da dor.</p>
+    <p>Para mais informações acesse a página de ajuda.</p>
+  </div>
 
 
     <ion-button expand="block" color="primary" type="submit"

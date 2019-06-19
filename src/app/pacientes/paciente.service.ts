@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Subject } from "rxjs";
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, AlertController } from '@ionic/angular';
 
 import { environment } from './../../environments/environment';
 import { Paciente } from "./paciente.model";
@@ -14,7 +14,12 @@ export class PacienteService {
     private pacientes: Paciente[] = [];
     private pacientesUpdated = new Subject<Paciente[]>();
 
-    constructor(private http: HttpClient, private router: Router, private loadingCtrl: LoadingController) {}
+    constructor(
+        private http: HttpClient,
+        private router: Router,
+        private alertCtrl: AlertController,
+        private loadingCtrl: LoadingController
+        ) {}
 
     getPacientes() {
     this.http.get<{message: string, pacientes: any}>(BACKEND_URL)
@@ -64,6 +69,7 @@ export class PacienteService {
         paciente.id = id;
         this.pacientes.push(paciente);
         this.pacientesUpdated.next([...this.pacientes]);
+        this.alertConfirm();
         // this.loadingEnvioFormulario();
         // this.router.navigate(["/"]);
     });
@@ -108,6 +114,23 @@ export class PacienteService {
             }
         });
     }
+
+    async alertConfirm() {
+        const alert = await this.alertCtrl.create({
+          header: 'Sucesso!',
+          message: 'Paciente cadastrado!',
+          buttons: [
+             {
+              text: 'OK',
+              handler: () => {
+                this.router.navigate(["/"]);
+              }
+            }
+          ]
+        });
+      
+        await alert.present();
+      }
 
     async loadingEnvioFormulario() {
     const loading = await this.loadingCtrl.create({

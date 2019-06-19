@@ -40,7 +40,15 @@ export class CadastroPaciente implements OnInit{
         }
         this.form.reset();
       }
-
+    get nomepaciente() {
+      return this.form.get('nome');
+    }
+    get matriculapaciente() {
+      return this.form.get('matricula');
+    }
+    get datainternacao() {
+      return this.form.get('dataInternacao');
+    }
     constructor(public pacienteService: PacienteService, private router: ActivatedRoute) {}
 
     ngOnInit() {

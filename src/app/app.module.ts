@@ -31,6 +31,7 @@ import { MobilidadeDuvidaComponent } from './ajuda/mobilidade/mobilidade-duvida.
 import { NutricaoDuvidaComponent } from './ajuda/nutricao/nutricao-duvida.component';
 import { FricsisDuvidaComponent } from './ajuda/fricsis/fricsis-duvida.component';
 import { GraficoPacientesComponent } from './analises/graficos/grafico-pacientes.component';
+import { ManejoUmidadeDuvidaComponent } from './ajuda/manejoumidade/umidade-manejo-duvida.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { GraficoPacientesComponent } from './analises/graficos/grafico-pacientes
     MobilidadeDuvidaComponent,
     NutricaoDuvidaComponent,
     FricsisDuvidaComponent,
+    ManejoUmidadeDuvidaComponent,
     GraficoPacientesComponent],
   entryComponents: [ErrorComponent],
   imports: [BrowserModule,
