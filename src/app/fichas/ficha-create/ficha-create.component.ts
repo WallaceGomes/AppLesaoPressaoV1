@@ -213,13 +213,16 @@ export class FichaCreateComponent implements OnInit {
             id: dadosPaciente._id,
             nome: dadosPaciente.nome,
             matricula: dadosPaciente.matricula,
-            dataInternacao: dadosPaciente.dataInternacao};
+            dataInternacao: dadosPaciente.dataInternacao,
+            dataNascimento: dadosPaciente.dataNascimento,
+            patologia: dadosPaciente.patologia,
+            comorbidades: dadosPaciente.comorbidades};
           this.form.setValue({
             'nomePaciente': this.paciente.nome,
             'matriculaPaciente': this.paciente.matricula,
             'dataInternacao': this.paciente.dataInternacao,
             'leitoPaciente': this.leitoPaciente,
-            'dataFichaPaciente': this.dataFichaPaciente
+            'dataFichaPaciente': this.dataFichaPaciente,
             });
         });
       }

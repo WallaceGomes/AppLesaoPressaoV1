@@ -7,7 +7,10 @@ exports.cadastro = (req, res, next) => {
 bcrypt.hash(req.body.senha, 10).then(hash => {
     const usuario = new Usuario({
     email: req.body.email,
-    senha: hash
+    senha: hash,
+    nome: req.body.nome,
+    matricula: req.body.matricula,
+    unidade: req.body.unidade
     });
     usuario
     .save()
@@ -46,11 +49,11 @@ exports.login = (req, res, next) => {
       const token = jwt.sign(
         { email: usuarioBusca.email, usuarioId: usuarioBusca._id },
         process.env.JWT_KEY, // palavra para criar o hash, geralmente bem grande
-        { expiresIn: "1h" }
+        { expiresIn: "2h" }
       );
       res.status(200).json({
           token: token,
-          expiresIn: 3600
+          expiresIn: 7200
       });
     })
     .catch(err => {

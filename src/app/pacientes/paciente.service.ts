@@ -29,7 +29,10 @@ export class PacienteService {
             id: paciente._id,
             nome: paciente.nome,
             matricula: paciente.matricula,
-            dataInternacao: paciente.dataInternacao
+            dataInternacao: paciente.dataInternacao,
+            dataNascimento: paciente.dataNascimento,
+            patologia: paciente.patologia,
+            comorbidades: paciente.comorbidades
         };
         });
     }))
@@ -44,7 +47,10 @@ export class PacienteService {
         _id: string,
         nome: string,
         matricula: string,
-        dataInternacao: string
+        dataInternacao: string,
+        dataNascimento: string,
+        patologia: string,
+        comorbidades: string
      }>(BACKEND_URL + id);
     }
 
@@ -55,13 +61,19 @@ export class PacienteService {
     addPaciente(
     nome: string,
     matricula: string,
-    dataInternacao: string
+    dataInternacao: string,
+    dataNascimento: string,
+    patologia: string,
+    comorbidades: string
     ) {
     const paciente: Paciente = {
         id: null,
         nome: nome,
         matricula: matricula,
-        dataInternacao: dataInternacao
+        dataInternacao: dataInternacao,
+        dataNascimento: dataNascimento,
+        patologia: patologia,
+        comorbidades: comorbidades
     };
     this.http.post<{message: string, pacienteId: string}>(BACKEND_URL, paciente)
     .subscribe((respostaDado) => {
@@ -86,12 +98,18 @@ export class PacienteService {
 
     updatePaciente(id: string, nome: string,
         matricula: string,
-        dataInternacao: string
+        dataInternacao: string,
+        dataNascimento: string,
+        patologia: string,
+        comorbidades: string
         ) {
           const paciente: Paciente = {  id: id,
             nome: nome,
             matricula: matricula,
-            dataInternacao: dataInternacao
+            dataInternacao: dataInternacao,
+            dataNascimento: dataNascimento,
+            patologia: patologia,
+            comorbidades: comorbidades
         };
           this.http
             .put(BACKEND_URL + id, paciente)

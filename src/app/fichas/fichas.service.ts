@@ -25,6 +25,7 @@ export class FichasService {
     ) {}
 
   getFichas() {
+    // fichasPerPage: number, currentPage: number const queryParams = `?pagesize=${fichasPerPage}&page=${currentPage}`;
     this.http.get<{message: string, fichas: any}>(BACKEND_URL)
     .pipe(map((fichaData) => {
       return fichaData.fichas.map(ficha => {
@@ -51,6 +52,34 @@ export class FichasService {
         this.fichasUpdated.next([...this.fichas]);
     });
   }
+
+  // getFichasAnalise() {
+  //   this.http.get<{message: string, fichas: any}>(BACKEND_URL)
+  //   .pipe(map((fichaData) => {
+  //     return fichaData.fichas.map(ficha => {
+  //       return {
+  //         id: ficha._id,
+  //         nome: ficha.nome,
+  //         matricula: ficha.matricula,
+  //         dataInternacao: ficha.dataInternacao,
+  //         leito: ficha.leito,
+  //         data: ficha.data,
+  //         percepSens: ficha.percepSens,
+  //         umidade: ficha.umidade,
+  //         atividade: ficha.atividade,
+  //         mobilidade: ficha.mobilidade,
+  //         nutricao: ficha.nutricao,
+  //         fricscisal: ficha.fricscisal,
+  //         score: ficha.score,
+  //         criador: ficha.criador
+  //       };
+  //     });
+  //   }))
+  //   .subscribe(fichastransf => {
+  //       this.fichas = fichastransf;
+  //       this.fichasUpdated.next([...this.fichas]);
+  //   });
+  // }
 
   getFichasUpdateListener() {
     return this.fichasUpdated.asObservable();
