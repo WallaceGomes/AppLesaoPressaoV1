@@ -6,6 +6,8 @@ const fichaSchema = mongoose.Schema({
     dataInternacao: { type: String, required: true },
     leito: { type: String, required: true },
     data: { type: String, required: true },
+    presencaLesao: { type: String, required: true },
+    localLesao: { type: String, required: true },
     percepSens: { type: String, required: true },
     umidade: { type: String, required: true },
     atividade: { type: String, required: true },

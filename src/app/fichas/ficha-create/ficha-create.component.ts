@@ -6,6 +6,11 @@ import { Ficha } from './../ficha.model';
 import { PacienteService } from './../../pacientes/paciente.service';
 import { Paciente } from './../../pacientes/paciente.model';
 
+// export interface Local {
+//   value: string;
+//   viewValue: string;
+// }
+
 @Component({
   selector: 'app-ficha-create',
   templateUrl: './ficha-create.component.html',
@@ -17,13 +22,40 @@ export class FichaCreateComponent implements OnInit {
   leitoPaciente = '';
   dataFichaPaciente = '';
   dataInternacao = '';
+  presencaLesao = '';
+  localLesao = '0';
   private ficha: Ficha;
   form: FormGroup;
   private mode = 'create';
   private fichaId: string;
   private pacienteId: string;
   private paciente: Paciente;
+
+  // locais: Local[] = [
+  //   {value: 'sacra', viewValue: 'Sacra'},
+  //   {value: 'escapula', viewValue: 'Escápula'},
+  //   {value: 'ombros', viewValue: 'Ombros'},
+  //   {value: 'cotovelo', viewValue: 'Cotovelo'},
+  //   {value: 'isquio', viewValue: 'Ísquio'},
+  //   {value: 'calcaneo', viewValue: 'Calcâneo'},
+  //   {value: 'halux', viewValue: 'Hálux'},
+  //   {value: 'trocanter', viewValue: 'Trocanter'},
+  //   {value: 'joelho', viewValue: 'Joelho'},
+  //   {value: 'maleolo', viewValue: 'Maléolo'},
+  //   {value: '0', viewValue: 'Não possui'}
+  // ];
+
   submitted = false;
+
+  itemFichaPresencaLesao: any = {
+    subHeader: 'Presença de lesão no paciente',
+    message: 'O paciente possui alguma lesão por pressão?'
+  };
+
+  itemFichaLocalLesao: any = {
+    subHeader: 'Local da lesão do paciente',
+    message: 'Qual o local que houve desenvolvimento da lesão no paciente?'
+  };
 
   itemFichaPercepSens: any = {
     // header: 'Percepção Sensorial',
@@ -71,6 +103,14 @@ export class FichaCreateComponent implements OnInit {
   scoreFricCis: any = 0;
 
   score: any = 0;
+
+  selectChangeHandlerPresencaLesao(event: any) {
+    this.presencaLesao = (event.target.value);
+  }
+
+  selectChangeHandlerLocalLesao(event: any) {
+    this.localLesao = (event.target.value);
+  }
 
   selectChangeHandlerPercpSens(event: any) {
     this.scorePercepSens = (event.target.value);
@@ -123,6 +163,8 @@ export class FichaCreateComponent implements OnInit {
         this.form.getRawValue().dataInternacao,
         this.form.getRawValue().leitoPaciente,
         this.form.getRawValue().dataFichaPaciente,
+        this.presencaLesao,
+        this.localLesao,
         this.scorePercepSens,
         this.scoreUmidade,
         this.scoreAtividade,
@@ -138,6 +180,8 @@ export class FichaCreateComponent implements OnInit {
         this.form.getRawValue().dataInternacao,
         this.form.getRawValue().leitoPaciente,
         this.form.getRawValue().dataFichaPaciente,
+        this.presencaLesao,
+        this.localLesao,
         this.scorePercepSens,
         this.scoreUmidade,
         this.scoreAtividade,
@@ -147,7 +191,8 @@ export class FichaCreateComponent implements OnInit {
         this.score
       );
     }
-    this.form.reset();
+    // this.form.reset();
+    // console.log(this.form);
     this.submitted = true;
   }
 
@@ -165,6 +210,9 @@ export class FichaCreateComponent implements OnInit {
   }
   get dataFichapaciente() {
     return this.form.get('dataFichaPaciente');
+  }
+  get presencalesao() {
+    return this.form.get('presencaLesao');
   }
 
   constructor(public fichasService: FichasService, public route: ActivatedRoute, public pacientesService: PacienteService) { }
@@ -189,6 +237,8 @@ export class FichaCreateComponent implements OnInit {
             dataInternacao: dadosFicha.dataInternacao,
             leito: dadosFicha.leito,
             data: dadosFicha.data,
+            presencaLesao: dadosFicha.presencaLesao,
+            localLesao: dadosFicha.localLesao,
             percepSens: dadosFicha.percepSens,
             umidade: dadosFicha.umidade,
             atividade: dadosFicha.atividade,
@@ -222,7 +272,7 @@ export class FichaCreateComponent implements OnInit {
             'matriculaPaciente': this.paciente.matricula,
             'dataInternacao': this.paciente.dataInternacao,
             'leitoPaciente': this.leitoPaciente,
-            'dataFichaPaciente': this.dataFichaPaciente,
+            'dataFichaPaciente': this.dataFichaPaciente
             });
         });
       }

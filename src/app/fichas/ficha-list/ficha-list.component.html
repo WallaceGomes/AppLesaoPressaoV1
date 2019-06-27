@@ -16,7 +16,9 @@
             <p>Nome: {{ ficha.nome }}</p>
             <p>Matrícula: {{ ficha.matricula }}</p>
             <p>Data Internacao: {{ ficha.dataInternacao }}</p>
-            <p>Data: {{ ficha.data }}</p>
+            <p>Data da ficha: {{ ficha.data }}</p>
+            <p>Presença de lesão: {{ ficha.presencaLesao }}</p>
+            <p *ngIf="ficha.presencaLesao =='sim'">Local da lesão: {{ ficha.localLesao}}</p>
             <p>Percepção Sensorial: {{ ficha.percepSens }}</p>
             <p>Umidade: {{ ficha.umidade }}</p>
             <p>Atividade: {{ ficha.atividade }}</p>

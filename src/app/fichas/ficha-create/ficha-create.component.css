@@ -27,3 +27,13 @@ p.thick {
   font-weight: bold;
 }
 
+.labelRadioGroup {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.radioButton {
+  margin: 1px;
+  padding: 2px
+}
