@@ -5,6 +5,8 @@ export interface Ficha {
     dataInternacao: string;
     leito: string;
     data: string;
+    presencaLesao: string;
+    localLesao: string;
     percepSens: any;
     umidade: any;
     atividade: any;
