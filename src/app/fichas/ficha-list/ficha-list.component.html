@@ -4,19 +4,57 @@
                 <ion-back-button defaultHref="home"></ion-back-button>
         </ion-buttons>
         <ion-title>Fichas</ion-title>
+        <ion-buttons slot="end">
+                <ion-menu-button autoHide="false"></ion-menu-button>
+            </ion-buttons>
     </ion-toolbar>
 </ion-header>
 <ion-searchbar placeholder="Filtrar fichas" [(ngModel)]="pesquisa" (ionInput)="filtrarItens()" debounce="100"></ion-searchbar>
-<ion-content>
+<!-- <ion-content>
+        <ion-list>
+            <mat-accordion multi="true">
+                <mat-expansion-panel *ngFor="let ficha of fichas">
+                    <mat-expansion-panel-header>
+                        Ficha de {{ ficha.data | date : "dd.MM.y" }} do paciente {{ ficha.nome}}
+                    </mat-expansion-panel-header>
+                    <p>Nome: {{ ficha.nome }}</p>
+                    <p>Matrícula: {{ ficha.matricula }}</p>
+                    <p>Data Internacao: {{ ficha.dataInternacao | date : "dd.MM.y" }}</p>
+                    <p>Data da ficha: {{ ficha.data | date : "dd.MM.y" }}</p>
+                    <p>Presença de lesão: {{ ficha.presencaLesao }}</p>
+                    <p *ngIf="ficha.presencaLesao =='sim'">Local da lesão: {{ ficha.localLesao}}</p>
+                    <p>Percepção Sensorial: {{ ficha.percepSens }}</p>
+                    <p>Umidade: {{ ficha.umidade }}</p>
+                    <p>Atividade: {{ ficha.atividade }}</p>
+                    <p>Mobilidade: {{ ficha.mobilidade }}</p>
+                    <p>Nutrição: {{ ficha.nutricao }}</p>
+                    <p>Fricção e Cisalhamento: {{ ficha.fricscisal }}</p>
+                    <p>Score: {{ ficha.score }}</p>
+                    <mat-action-row>
+                        <button mat-raised-button color="warn" (click)="onDelete(ficha.id)">Excluir</button>
+                        <a mat-raised-button color="primary" [routerLink]="['/editar', ficha.id]">Editar</a>
+                    </mat-action-row>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </ion-list>
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content
+          loadingSpinner="bubbles"
+          loadingText="Carregando fichas...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+</ion-content> -->
+
+ <ion-content>
     <mat-accordion multi="true">
         <mat-expansion-panel *ngFor="let ficha of fichas">
             <mat-expansion-panel-header>
-                Ficha de {{ ficha.data }} do paciente {{ ficha.nome}}
+                Ficha de {{ ficha.data | date : "dd.MM.y" }} do paciente {{ ficha.nome}}
             </mat-expansion-panel-header>
             <p>Nome: {{ ficha.nome }}</p>
             <p>Matrícula: {{ ficha.matricula }}</p>
-            <p>Data Internacao: {{ ficha.dataInternacao }}</p>
-            <p>Data da ficha: {{ ficha.data }}</p>
+            <p>Data Internacao: {{ ficha.dataInternacao | date : "dd.MM.y" }}</p>
+            <p>Data da ficha: {{ ficha.data | date : "dd.MM.y" }}</p>
             <p>Presença de lesão: {{ ficha.presencaLesao }}</p>
             <p *ngIf="ficha.presencaLesao =='sim'">Local da lesão: {{ ficha.localLesao}}</p>
             <p>Percepção Sensorial: {{ ficha.percepSens }}</p>

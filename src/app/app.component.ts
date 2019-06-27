@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
     {title: "Ver pacientes", icon: "filing", url: "/pagina-listar-pacientes"},
     {title: "Exibir fichas", icon: "document", url: "/pagina-listar-fichas"},
     {title: "Estatísticas", icon: "analytics", url: "/pagina-base-dados"}
-  ]
+  ];
   private authListenerSubs: Subscription;
   usuarioIsAutenticado = false;
 

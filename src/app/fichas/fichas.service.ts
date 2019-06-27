@@ -8,7 +8,7 @@ import { LoadingController, AlertController } from '@ionic/angular';
 import { environment } from './../../environments/environment';
 import { Ficha } from "./ficha.model";
 import { Chart } from 'chart.js';
-const BACKEND_URL = environment.apiUrl + "/fichas/";
+const BACKEND_URL = environment.apiUrl + "/fichas";
 
 @Injectable({ providedIn: "root" })
 export class FichasService {
