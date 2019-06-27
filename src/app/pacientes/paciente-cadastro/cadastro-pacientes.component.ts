@@ -16,6 +16,10 @@ export class CadastroPaciente implements OnInit{
     nome = '';
     matricula = '';
     dataInternacao = '';
+    dataNascimento = '';
+    patologia = '';
+    comorbidades = '';
+
     private paciente: Paciente;
     form: FormGroup;
     private mode = 'create';
@@ -29,13 +33,19 @@ export class CadastroPaciente implements OnInit{
           this.pacienteService.addPaciente(
             this.form.value.nome,
             this.form.value.matricula,
-            this.form.value.dataInternacao);
+            this.form.value.dataInternacao,
+            this.form.value.dataNascimento,
+            this.form.value.patologia,
+            this.form.value.comorbidades);
         } else {
           this.pacienteService.updatePaciente(
             this.pacienteId,
             this.form.value.nome,
             this.form.value.matricula,
             this.form.value.dataInternacao,
+            this.form.value.dataNascimento,
+            this.form.value.patologia,
+            this.form.value.comorbidades
           );
         }
         this.form.reset();
@@ -49,6 +59,15 @@ export class CadastroPaciente implements OnInit{
     get datainternacao() {
       return this.form.get('dataInternacao');
     }
+    get datanascimento() {
+      return this.form.get('dataNascimento');
+    }
+    get patologiia() {
+      return this.form.get('patologia');
+    }
+    get comorbidadees() {
+      return this.form.get('comorbidades');
+    }
     constructor(public pacienteService: PacienteService, private router: ActivatedRoute) {}
 
     ngOnInit() {
@@ -56,6 +75,9 @@ export class CadastroPaciente implements OnInit{
         'nome': new FormControl('', [Validators.required]),
         'matricula': new FormControl('', [Validators.required]),
         'dataInternacao': new FormControl('', [Validators.required]),
+        'dataNascimento': new FormControl('', [Validators.required]),
+        'patologia': new FormControl('', [Validators.required]),
+        'comorbidades': new FormControl('', [Validators.required])
       });
       this.router.paramMap.subscribe((paramMap: ParamMap) => {
         if (paramMap.has('pacienteId')) {
@@ -66,11 +88,17 @@ export class CadastroPaciente implements OnInit{
               id: dadosPaciente._id,
               nome: dadosPaciente.nome,
               matricula: dadosPaciente.matricula,
-              dataInternacao: dadosPaciente.dataInternacao};
+              dataInternacao: dadosPaciente.dataInternacao,
+              dataNascimento: dadosPaciente.dataNascimento,
+              patologia: dadosPaciente.patologia,
+              comorbidades: dadosPaciente.comorbidades};
             this.form.setValue({
               'nomePaciente': this.paciente.nome,
               'matricula': this.paciente.matricula,
-              'dataInternacao': this.paciente.dataInternacao
+              'dataInternacao': this.paciente.dataInternacao,
+              'dataNascimento': this.paciente.dataNascimento,
+              'patologia': this.paciente.patologia,
+              'comorbidades': this.paciente.comorbidades
             });
           });
         } else {

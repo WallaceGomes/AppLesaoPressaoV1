@@ -15,7 +15,10 @@
             </mat-expansion-panel-header>
             <p>Nome: {{ paciente.nome }}</p>
             <p>Matrícula: {{ paciente.matricula }}</p>
-            <p>Data de internação: {{ paciente.dataInternacao }}</p>
+            <p>Data de nascimento: {{ paciente.dataNascimento | date : "dd.MM.y" }}</p>
+            <p>Data de internação: {{ paciente.dataInternacao | date : "dd.MM.y" }}</p>
+            <p>Patologia: {{ paciente.patologia }}</p>
+            <p>Comorbidades: {{ paciente.comorbidades }}</p>
             <mat-action-row>
                 <button class="float" mat-raised-button color="warn" (click)="onDelete(paciente.id)">Excluir</button>
                 <div fxFlex></div>

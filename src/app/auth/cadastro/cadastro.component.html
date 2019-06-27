@@ -12,6 +12,57 @@
     <h3>Cadastro</h3>
   </mat-card>
   <form (submit)="onCadastro(cadastroForm)" #cadastroForm="ngForm">
+    <div class="formfield"> 
+      <mat-form-field>
+        <input
+          matInput
+          name="nome"
+          ngModel
+          type="text"
+          placeholder="Nome"
+          #nomeInput="ngModel"
+          required
+          email
+        />
+        <mat-error *ngIf="nomeInput.invalid"
+          >Entre com um nome válido</mat-error
+        >
+      </mat-form-field>
+    </div>
+  <div class="formfield"> 
+      <mat-form-field>
+        <input
+          matInput
+          name="matricula"
+          ngModel
+          type="number"
+          placeholder="Matrícula"
+          #matriculaInput="ngModel"
+          required
+          email
+        />
+        <mat-error *ngIf="matriculaInput.invalid"
+          >Entre com uma matrícula</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div class="formfield"> 
+        <mat-form-field>
+          <input
+            matInput
+            name="unidade"
+            ngModel
+            type="text"
+            placeholder="Unidade Hospitalar"
+            #unidadeInput="ngModel"
+            required
+            email
+          />
+          <mat-error *ngIf="unidadeInput.invalid"
+            >Entre com uma unidade hospitalar válida</mat-error
+          >
+        </mat-form-field>
+      </div>
      <div class="formfield"> 
       <mat-form-field>
         <input

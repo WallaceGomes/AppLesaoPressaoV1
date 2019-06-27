@@ -40,7 +40,7 @@ export class AnalisePacientesComponent implements OnInit, OnDestroy {
         this.pacientesService.getPacientes();
         this.pacientesSub = this.pacientesService.getPacientesUpdateListener()
         .subscribe((pacientes: Paciente[]) => {
-            this.pacientes = pacientes;
+            this.pacientes = pacientes.slice(0).reverse();
         });
 
         this.fichasService.getFichas();

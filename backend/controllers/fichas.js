@@ -57,9 +57,17 @@ exports.editFicha = (req, res, next) => {
 }
 
 exports.getFichas = (req, res, next) => {
+    // const pageSize = +req.query.pageSize;
+    // const currentPage = +req.query.page;
+    // const fichaQuery = Ficha.find();
+    // if(pageSize && currentPage) {
+    //     postQuery
+    //         .skip(pageSize * (currentPage -1))
+    //         .limit(pageSize);
+    // }
     Ficha.find().then(documents => {
         res.status(200).json({
-        message: 'fichas carregadas com sucesso!',
+        message: 'Fichas carregadas com sucesso!',
         fichas: documents
         });
     })

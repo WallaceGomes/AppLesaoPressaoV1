@@ -5,7 +5,10 @@ exports.cadastro = (req, res, next) => {
     const paciente = new Paciente({
     nome: req.body.nome,
     matricula: req.body.matricula,
-    dataInternacao: req.body.dataInternacao
+    dataInternacao: req.body.dataInternacao,
+    dataNascimento: req.body.dataNascimento,
+    patologia: req.body.patologia,
+    comorbidades: req.body.comorbidades
     });
     paciente
     .save()
