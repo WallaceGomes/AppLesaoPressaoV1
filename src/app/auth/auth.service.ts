@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 
 import { environment } from './../../environments/environment';
 import { AlertController } from '@ionic/angular';
+import { UserData } from './user-data.model';
 const BACKEND_URL = environment.apiUrl + "/usuario/";
 
 @Injectable({ providedIn: 'root' })
@@ -15,7 +16,44 @@ export class AuthService {
     private authStatusListener = new Subject<boolean>();
     private isAutenticado = false;
 
+    // usuario = '';
+    email = '';
+    // matricula = '';
+    // unidade = '';
+
     constructor(private http: HttpClient, private router: Router, private alertCtrl: AlertController) {}
+
+    // setUsuario(usuario: string) {
+    //     this.usuario = usuario;
+    // }
+
+    setEmail(email: string) {
+        this.email = email;
+    }
+
+    // setMatricula(matricula: string) {
+    //     this.matricula = matricula;
+    // }
+
+    // setUnidade(unidade: string) {
+    //     this.unidade = unidade;
+    // }
+
+    // getUsuario() {
+    //     return this.usuario;
+    // }
+
+    getEmail() {
+       return this.email;
+    }
+
+    // getMatricula() {
+    //     return this.matricula;
+    // }
+
+    // getUnidade() {
+    //     return this.unidade;
+    // }
 
     getToken() {
         return this.token;
@@ -29,9 +67,9 @@ export class AuthService {
         return this.authStatusListener.asObservable();
     }
 
-    createUsuario(email: string, senha: string) {
-        const authData: AuthData = {email: email, senha: senha}
-        this.http.post(BACKEND_URL + '/cadastro', authData)
+    createUsuario(email: string, senha: string, nome: string, matricula: string, unidade) {
+        const userData: UserData = {email: email, senha: senha, nome: nome, matricula: matricula, unidade: unidade}
+        this.http.post(BACKEND_URL + '/cadastro', userData)
         .subscribe(response => {
             console.log(response);
             this.alertConfirm();
@@ -47,6 +85,7 @@ export class AuthService {
             const token = response.token;
             this.token = token;
             if (token) {
+                this.email = email;
                 const expiresInDuration = response.expiresIn;
                 this.setAuthTimer(expiresInDuration);
                 this.isAutenticado = true;

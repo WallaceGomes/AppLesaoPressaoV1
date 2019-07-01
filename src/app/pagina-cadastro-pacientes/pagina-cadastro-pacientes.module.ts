@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { PaginaCadastroPacientesPage } from './pagina-cadastro-pacientes.page';
 import { CadastroPaciente } from '../pacientes/paciente-cadastro/cadastro-pacientes.component';
-import { MatCardModule, MatInputModule, MatButtonModule, MatToolbarModule, MatDividerModule } from '@angular/material';
+import { MatCardModule, MatInputModule, MatButtonModule, MatToolbarModule, MatDividerModule, MatProgressSpinnerModule } from '@angular/material';
 
 const routes: Routes = [
   {
@@ -28,6 +28,7 @@ const routes: Routes = [
     MatButtonModule,
     MatToolbarModule,
     MatDividerModule,
+    MatProgressSpinnerModule
   ],
   declarations: [PaginaCadastroPacientesPage, CadastroPaciente]
 })

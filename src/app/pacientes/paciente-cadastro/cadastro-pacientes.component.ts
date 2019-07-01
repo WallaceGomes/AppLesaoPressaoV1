@@ -20,6 +20,8 @@ export class CadastroPaciente implements OnInit{
     patologia = '';
     comorbidades = '';
 
+    carregando = false;
+
     private paciente: Paciente;
     form: FormGroup;
     private mode = 'create';
@@ -29,6 +31,7 @@ export class CadastroPaciente implements OnInit{
         if (this.form.invalid) {
           return;
         }
+        this.carregando = true;
         if (this.mode === 'create') {
           this.pacienteService.addPaciente(
             this.form.value.nome,

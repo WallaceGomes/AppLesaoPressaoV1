@@ -1,7 +1,7 @@
-:host {
+/* :host {
     display: block;
     margin-top: 1 rem;
-}
+} */
 
 mat-paginator {
     margin-top: 2rem;
@@ -13,4 +13,8 @@ mat-paginator {
 
 excluir-button{
     color: red;
+}
+
+.excluirButton{
+    margin-inline-end: 10rem;
 }

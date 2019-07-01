@@ -4,14 +4,18 @@
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
     <ion-title>Ficha Avaliação de Risco</ion-title>
+    <ion-buttons slot="end">
+        <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <mat-card>
-  <mat-card class="spacep">
+  <mat-spinner *ngIf="carregando"></mat-spinner>
+  <mat-card class="spacep" *ngIf="!carregando">
     <h3>Preencha a ficha de acordo com a escala de Bradem</h3>
   </mat-card>
-  <form [formGroup]="form" (submit)="onSalvarFicha()">
+  <form [formGroup]="form" (submit)="onSalvarFicha()" *ngIf="!carregando">
     <div class="formfield">
       <mat-form-field>
         <!---<ion-label position="stacked">Nome do paciente</ion-label>-->
@@ -44,62 +48,45 @@
         <mat-error *ngIf="(dataFichapaciente.dirty || dataFichapaciente.touched) && dataFichapaciente.invalid">Favor entrar com a data da avaliação.</mat-error>
       </mat-form-field>
     </div>
-    <!-- <div>
-      <label class="labelRadioGroup">Paciente possiu LPP?</label>
-      <mat-radio-group #radioGroup="matRadioGroup" formControlName="presencaLesao" required>
-        <mat-radio-button color="primary" class="radioButton" value="não">Não</mat-radio-button>
-        <mat-radio-button color="primary" class="radioButton" value="sim">Sim</mat-radio-button>
-      </mat-radio-group>
-    </div> -->
 
     <ion-item>
       <ion-label>Paciente possui lesão por pressão?</ion-label>
       <ion-select (ionChange)="selectChangeHandlerPresencaLesao($event)" value="presencaLesao" name="presencaLesao"
         [interfaceOptions]="itemFichaPresencaLesao" interface="popover">
-        <ion-select-option value="sim">SIM</ion-select-option>
-        <ion-select-option value="não">NÃO</ion-select-option>
+        <ion-select-option value="SIM">SIM</ion-select-option>
+        <ion-select-option value="NÃO">NÃO</ion-select-option>
       </ion-select>
     </ion-item>
 
-    <ion-item *ngIf="presencaLesao == 'sim' ">
+    <ion-item *ngIf="presencaLesao == 'SIM' ">
       <ion-label>Local da lesão</ion-label>
       <ion-select (ionChange)="selectChangeHandlerLocalLesao($event)" value="localLesao" name="localLesao"
         [interfaceOptions]="itemFichaLocalLesao" interface="popover">
-        <ion-select-option value="sacra">Sacra</ion-select-option>
-        <ion-select-option value="escapula">Escápula</ion-select-option>
-        <ion-select-option value="ombros">Ombros</ion-select-option>
-        <ion-select-option value="cotovelos">Cotovelo</ion-select-option>
-        <ion-select-option value="isquio">Ísquio</ion-select-option>
-        <ion-select-option value="calcaneo">Calcâneo</ion-select-option>
-        <ion-select-option value="halux">Hálux</ion-select-option>
-        <ion-select-option value="trocanter">Trocanter</ion-select-option>
-        <ion-select-option value="joelho">Joelho</ion-select-option>
-        <ion-select-option value="maleolo">Maléolo</ion-select-option>
+        <ion-select-option value="Sacra">Sacra</ion-select-option>
+        <ion-select-option value="Escapula">Escápula</ion-select-option>
+        <ion-select-option value="Ombros">Ombros</ion-select-option>
+        <ion-select-option value="Cotovelos">Cotovelo</ion-select-option>
+        <ion-select-option value="Isquio">Ísquio</ion-select-option>
+        <ion-select-option value="Calcaneo">Calcâneo</ion-select-option>
+        <ion-select-option value="Halux">Hálux</ion-select-option>
+        <ion-select-option value="Trocanter">Trocanter</ion-select-option>
+        <ion-select-option value="Joelho">Joelho</ion-select-option>
+        <ion-select-option value="Maleolo">Maléolo</ion-select-option>
         <!-- <ion-select-option *ngIf="presencaLesao == 'sim' " value="0">Não possui</ion-select-option> -->
       </ion-select>
     </ion-item>
 
-    <!-- <div *ngIf="presencaLesao">
-      <mat-form-field class="labelRadioGroup">
-        <label>Local da lesão</label>
-        <mat-select [(value)]="localLesao" name="local">
-          <mat-option *ngFor="let local of locais" [value]="local.value">
-            {{local.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div> -->
+    <ion-item *ngIf="presencaLesao == 'SIM' ">
+        <ion-label>Estágio da Lesão</ion-label>
+        <ion-select (ionChange)="selectChangeHandlerEstagioLesao($event)" value="estagioLesao" name="estagioLesao"
+          [interfaceOptions]="itemFichaEstagioLesao" interface="popover">
+          <ion-select-option value="1">Estágio I</ion-select-option>
+          <ion-select-option value="2">Estágio II</ion-select-option>
+          <ion-select-option value="3">Estágio III</ion-select-option>
+          <ion-select-option value="4">Estágio IV</ion-select-option>
+        </ion-select>
+      </ion-item>
 
-    <ion-item>
-      <ion-label>Percepção Sensorial</ion-label>
-      <ion-select (ionChange)="selectChangeHandlerPercpSens($event)" value="percepSens" name="percepSens"
-        [interfaceOptions]="itemFichaPercepSens" interface="popover">
-        <ion-select-option value="1">1- Totalmente Limitada</ion-select-option>
-        <ion-select-option value="2">2- Muito Limitada</ion-select-option>
-        <ion-select-option value="3">3- Levemente Limitada</ion-select-option>
-        <ion-select-option value="4">4- Nenhuma Limitação</ion-select-option>
-      </ion-select>
-    </ion-item>
 
     <ion-item>
       <ion-label>Percepção Sensorial</ion-label>

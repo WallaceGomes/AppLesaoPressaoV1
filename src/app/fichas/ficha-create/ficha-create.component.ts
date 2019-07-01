@@ -24,13 +24,15 @@ export class FichaCreateComponent implements OnInit {
   dataFichaPaciente = '';
   dataInternacao = '';
   presencaLesao = '';
-  localLesao = '0';
+  localLesao = '';
+  estagioLesao = '';
   private ficha: Ficha;
   form: FormGroup;
   private mode = 'create';
   private fichaId: string;
   private pacienteId: string;
   private paciente: Paciente;
+  carregando = false;
 
   // locais: Local[] = [
   //   {value: 'sacra', viewValue: 'Sacra'},
@@ -56,6 +58,11 @@ export class FichaCreateComponent implements OnInit {
   itemFichaLocalLesao: any = {
     subHeader: 'Local da lesão do paciente',
     message: 'Qual o local que houve desenvolvimento da lesão no paciente?'
+  };
+
+  itemFichaEstagioLesao: any = {
+    subHeader: 'Estágio da lesão',
+    message: 'Qual o estágio que a lesão se encontra?'
   };
 
   itemFichaPercepSens: any = {
@@ -113,6 +120,10 @@ export class FichaCreateComponent implements OnInit {
     this.localLesao = (event.target.value);
   }
 
+  selectChangeHandlerEstagioLesao(event: any) {
+    this.estagioLesao = (event.target.value);
+  }
+
   selectChangeHandlerPercpSens(event: any) {
     this.scorePercepSens = (event.target.value);
     this.calculoScore();
@@ -157,6 +168,11 @@ export class FichaCreateComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
+    this.carregando = true;
+    if (this.presencaLesao === 'NÃO') {
+      this.localLesao = '0';
+      this.estagioLesao = '0';
+    }
     if (this.mode === 'create') {
       this.fichasService.addFicha(
         this.form.getRawValue().nomePaciente,
@@ -166,6 +182,7 @@ export class FichaCreateComponent implements OnInit {
         this.form.getRawValue().dataFichaPaciente,
         this.presencaLesao,
         this.localLesao,
+        this.estagioLesao,
         this.scorePercepSens,
         this.scoreUmidade,
         this.scoreAtividade,
@@ -183,6 +200,7 @@ export class FichaCreateComponent implements OnInit {
         this.form.getRawValue().dataFichaPaciente,
         this.presencaLesao,
         this.localLesao,
+        this.estagioLesao,
         this.scorePercepSens,
         this.scoreUmidade,
         this.scoreAtividade,
@@ -230,7 +248,9 @@ export class FichaCreateComponent implements OnInit {
       if (paramMap.has('fichaId')) {
         this.mode = 'edit';
         this.fichaId = paramMap.get('fichaId');
+        this.carregando = true;
         this.fichasService.getFicha(this.fichaId).subscribe(dadosFicha => {
+          this.carregando = false;
           this.ficha = {
             id: dadosFicha._id,
             nome: dadosFicha.nome,
@@ -240,6 +260,7 @@ export class FichaCreateComponent implements OnInit {
             data: dadosFicha.data,
             presencaLesao: dadosFicha.presencaLesao,
             localLesao: dadosFicha.localLesao,
+            estagioLesao: dadosFicha.estagioLesao,
             percepSens: dadosFicha.percepSens,
             umidade: dadosFicha.umidade,
             atividade: dadosFicha.atividade,

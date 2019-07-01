@@ -4,6 +4,9 @@
                 <ion-back-button defaultHref="home"></ion-back-button>
         </ion-buttons>
         <ion-title>Ajuda</ion-title>
+        <ion-buttons slot="end">
+                <ion-menu-button autoHide="false"></ion-menu-button>
+            </ion-buttons>
     </ion-toolbar>
 </ion-header>
 <ion-searchbar placeholder="Filtrar dúvida" debounce="100"></ion-searchbar>
@@ -31,6 +34,22 @@
         <mat-divider></mat-divider>
         <a mat-list-item [routerLink]= "['/fricsis']">
             <h3>Fricção e forças de deslizamento</h3>
+        </a>
+        <mat-divider></mat-divider>
+        <a mat-list-item [routerLink]= "['/estagio1']">
+            <h3>Lesão estágio 1</h3>
+        </a>
+        <mat-divider></mat-divider>
+        <a mat-list-item [routerLink]= "['/estagio2']">
+            <h3>Lesão estágio 2</h3>
+        </a>
+        <mat-divider></mat-divider>
+        <a mat-list-item [routerLink]= "['/estagio3']">
+            <h3>Lesão estágio 3</h3>
+        </a>
+        <mat-divider></mat-divider>
+        <a mat-list-item [routerLink]= "['/estagio4']">
+            <h3>Lesão estágio 4</h3>
         </a>
         <mat-divider></mat-divider>
     </mat-nav-list>

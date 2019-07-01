@@ -10,6 +10,7 @@ exports.createFicha = (req, res, next) => {
         percepSens: req.body.percepSens,
         presencaLesao: req.body.presencaLesao,
         localLesao: req.body.localLesao,
+        estagioLesao: req.body.estagioLesao,
         umidade: req.body.umidade,
         atividade: req.body.umidade,
         mobilidade: req.body.mobilidade,
@@ -41,6 +42,7 @@ exports.editFicha = (req, res, next) => {
         data: req.body.data,
         presencaLesao: req.body.presencaLesao,
         localLesao: req.body.localLesao,
+        estagioLesao: req.body.estagioLesao,
         percepSens: req.body.percepSens,
         umidade: req.body.umidade,
         atividade: req.body.umidade,
@@ -61,14 +63,14 @@ exports.editFicha = (req, res, next) => {
 }
 
 exports.getFichas = (req, res, next) => {
-    // const pageSize = +req.query.pageSize;
-    // const currentPage = +req.query.page;
-    // const fichaQuery = Ficha.find();
-    // if(pageSize && currentPage) {
-    //     postQuery
-    //         .skip(pageSize * (currentPage -1))
-    //         .limit(pageSize);
-    // }
+    //  const pageSize = +req.query.pageSize;
+    //  const currentPage = +req.query.page;
+    //  const fichaQuery = Ficha.find();
+    //  if(pageSize && currentPage) {
+    //      postQuery
+    //          .skip(pageSize * (currentPage -1))
+    //          .limit(pageSize);
+    //  }
     Ficha.find().then(documents => {
         res.status(200).json({
         message: 'Fichas carregadas com sucesso!',
