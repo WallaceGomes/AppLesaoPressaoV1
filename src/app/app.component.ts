@@ -16,10 +16,16 @@ export class AppComponent implements OnInit {
     {title: "Início", icon: "home", url: "/home"},
     {title: "Ver pacientes", icon: "filing", url: "/pagina-listar-pacientes"},
     {title: "Exibir fichas", icon: "document", url: "/pagina-listar-fichas"},
-    {title: "Estatísticas", icon: "analytics", url: "/pagina-base-dados"}
+    {title: "Estatísticas", icon: "analytics", url: "/pagina-base-dados"},
+    {title: "Ajuda", icon: "help", url: "/pagina-ajuda-escala"}
   ];
   private authListenerSubs: Subscription;
   usuarioIsAutenticado = false;
+
+  usuario: any;
+  email: any;
+  matricula: any;
+  unidade: any;
 
   constructor(
     private platform: Platform,

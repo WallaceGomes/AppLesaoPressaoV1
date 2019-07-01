@@ -23,7 +23,7 @@
             <p>Patologia: {{ paciente.patologia }}</p>
             <p>Comorbidades: {{ paciente.comorbidades }}</p>
             <mat-action-row>
-                <button class="float" mat-raised-button color="warn" (click)="onDelete(paciente.id)">Excluir</button>
+                <button class="excluirButton" mat-raised-button color="warn" (click)="onDelete(paciente.id)">Excluir</button>
                 <div fxFlex></div>
                 <a mat-raised-button color="primary" [routerLink]="['/gerarficha', paciente.id]">Gerar ficha</a>
             </mat-action-row>

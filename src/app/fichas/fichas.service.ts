@@ -8,7 +8,7 @@ import { LoadingController, AlertController } from '@ionic/angular';
 import { environment } from './../../environments/environment';
 import { Ficha } from "./ficha.model";
 import { Chart } from 'chart.js';
-const BACKEND_URL = environment.apiUrl + "/fichas";
+const BACKEND_URL = environment.apiUrl + "/fichas/";
 
 @Injectable({ providedIn: "root" })
 export class FichasService {
@@ -38,6 +38,7 @@ export class FichasService {
           data: ficha.data,
           presencaLesao: ficha.presencaLesao,
           localLesao: ficha.localLesao,
+          estagioLesao: ficha.estagioLesao,
           percepSens: ficha.percepSens,
           umidade: ficha.umidade,
           atividade: ficha.atividade,
@@ -97,6 +98,7 @@ export class FichasService {
       data: string,
       presencaLesao: string,
       localLesao: string,
+      estagioLesao: string,
       percepSens: any,
       umidade: any,
       atividade: any,
@@ -114,6 +116,7 @@ export class FichasService {
     data: string,
     presencaLesao: string,
     localLesao: string,
+    estagioLesao: string,
     percepSens: any,
     umidade: any,
     atividade: any,
@@ -131,6 +134,7 @@ export class FichasService {
       data: data,
       presencaLesao: presencaLesao,
       localLesao: localLesao,
+      estagioLesao: estagioLesao,
       percepSens: percepSens,
       umidade: umidade,
       atividade: atividade,
@@ -156,6 +160,7 @@ export class FichasService {
     data: string,
     presencaLesao: string,
     localLesao: string,
+    estagioLesao: string,
     percepSens: any,
     umidade: any,
     atividade: any,
@@ -171,6 +176,7 @@ export class FichasService {
         data: data,
         presencaLesao: presencaLesao,
         localLesao: localLesao,
+        estagioLesao: estagioLesao,
         percepSens: percepSens,
         umidade: umidade,
         atividade: atividade,

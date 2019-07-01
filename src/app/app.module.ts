@@ -19,7 +19,8 @@ import {
   MatButtonModule,
   MatToolbarModule,
   MatPaginatorModule,
-  MatDialogModule
+  MatDialogModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { ErrorInterceptor } from './error-interceptor';
@@ -32,6 +33,10 @@ import { NutricaoDuvidaComponent } from './ajuda/nutricao/nutricao-duvida.compon
 import { FricsisDuvidaComponent } from './ajuda/fricsis/fricsis-duvida.component';
 import { GraficoPacientesComponent } from './analises/graficos/grafico-pacientes.component';
 import { ManejoUmidadeDuvidaComponent } from './ajuda/manejoumidade/umidade-manejo-duvida.component';
+import { Estagio1DuvidaComponent } from './ajuda/estagio1/estagio1-lpp-duvida.component';
+import { Estagio2DuvidaComponent } from './ajuda/estagio2/estagio2-lpp-duvida.component';
+import { Estagio3DuvidaComponent } from './ajuda/estagio3/estagio3-lpp-duvida.component';
+import { Estagio4DuvidaComponent } from './ajuda/estagio4/estagio4-lpp-duvida.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +49,10 @@ import { ManejoUmidadeDuvidaComponent } from './ajuda/manejoumidade/umidade-mane
     NutricaoDuvidaComponent,
     FricsisDuvidaComponent,
     ManejoUmidadeDuvidaComponent,
+    Estagio1DuvidaComponent,
+    Estagio2DuvidaComponent,
+    Estagio3DuvidaComponent,
+    Estagio4DuvidaComponent,
     GraficoPacientesComponent],
   entryComponents: [ErrorComponent],
   imports: [BrowserModule,
@@ -59,7 +68,8 @@ import { ManejoUmidadeDuvidaComponent } from './ajuda/manejoumidade/umidade-mane
     FormsModule,
     MatDividerModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     StatusBar,

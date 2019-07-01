@@ -7,6 +7,7 @@ export interface Ficha {
     data: string;
     presencaLesao: string;
     localLesao: string;
+    estagioLesao: string;
     percepSens: any;
     umidade: any;
     atividade: any;

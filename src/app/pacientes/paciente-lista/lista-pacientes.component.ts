@@ -10,7 +10,8 @@ import { reduce } from 'rxjs/operators';
 
 @Component({
     selector: 'app-lista-pacientes',
-    templateUrl: './lista-pacientes.component.html'
+    templateUrl: './lista-pacientes.component.html',
+    styleUrls: ['./lista-pacientes.component.css']
 })
 export class ListaPacientesComponent implements OnInit, OnDestroy{
 

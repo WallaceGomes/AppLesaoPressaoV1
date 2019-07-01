@@ -44,8 +44,8 @@
         </ion-infinite-scroll-content>
       </ion-infinite-scroll>
 </ion-content> -->
-
- <ion-content>
+<mat-spinner *ngIf="carregando"></mat-spinner>
+ <ion-content *ngIf="!carregando">
     <mat-accordion multi="true">
         <mat-expansion-panel *ngFor="let ficha of fichas">
             <mat-expansion-panel-header>
@@ -56,7 +56,8 @@
             <p>Data Internacao: {{ ficha.dataInternacao | date : "dd.MM.y" }}</p>
             <p>Data da ficha: {{ ficha.data | date : "dd.MM.y" }}</p>
             <p>Presença de lesão: {{ ficha.presencaLesao }}</p>
-            <p *ngIf="ficha.presencaLesao =='sim'">Local da lesão: {{ ficha.localLesao}}</p>
+            <p *ngIf="ficha.presencaLesao =='SIM'">Local da lesão: {{ ficha.localLesao}}</p>
+            <p *ngIf="ficha.presencaLesao =='SIM'">Estágio da lesão: {{ ficha.estagioLesao}}</p>
             <p>Percepção Sensorial: {{ ficha.percepSens }}</p>
             <p>Umidade: {{ ficha.umidade }}</p>
             <p>Atividade: {{ ficha.atividade }}</p>
@@ -65,7 +66,7 @@
             <p>Fricção e Cisalhamento: {{ ficha.fricscisal }}</p>
             <p>Score: {{ ficha.score }}</p>
             <mat-action-row>
-                <button mat-raised-button color="warn" (click)="onDelete(ficha.id)">Excluir</button>
+                <button class="excluirButton" mat-raised-button color="warn" (click)="onDelete(ficha.id)">Excluir</button>
                 <a mat-raised-button color="primary" [routerLink]="['/editar', ficha.id]">Editar</a>
             </mat-action-row>
         </mat-expansion-panel>

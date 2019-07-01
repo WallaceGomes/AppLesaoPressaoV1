@@ -9,8 +9,8 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
-  
-  <mat-card>
+  <mat-spinner *ngIf="carregando"></mat-spinner>
+  <mat-card *ngIf="!carregando">
     <mat-card>
       <h3>Cadastrar novo paciente</h3>
     </mat-card>

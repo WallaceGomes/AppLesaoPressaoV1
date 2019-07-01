@@ -1,5 +1,5 @@
 <ion-app>
-    <ion-menu contentId="content1" *ngIf="usuarioIsAutenticado">
+    <ion-menu contentId="content1" *ngIf="usuarioIsAutenticado" side="end">
         <ion-header>
           <ion-toolbar>
             <ion-title>Menu</ion-title>
@@ -16,6 +16,10 @@
               </ion-item>
             </ion-menu-toggle>
           </ion-list>
+          <!-- <ion-item>
+              <ion-icon name="contact"></ion-icon> {{usuario}}
+              <ion-icon name="mail"></ion-icon> {{email}}
+          </ion-item> -->
         </ion-content>
       </ion-menu>
   <ion-router-outlet id="content1" main></ion-router-outlet>

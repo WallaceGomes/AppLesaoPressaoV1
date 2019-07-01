@@ -10,6 +10,10 @@ import { NutricaoDuvidaComponent } from './ajuda/nutricao/nutricao-duvida.compon
 import { FricsisDuvidaComponent } from './ajuda/fricsis/fricsis-duvida.component';
 import { GraficoPacientesComponent } from './analises/graficos/grafico-pacientes.component';
 import { ManejoUmidadeDuvidaComponent } from './ajuda/manejoumidade/umidade-manejo-duvida.component';
+import { Estagio1DuvidaComponent } from './ajuda/estagio1/estagio1-lpp-duvida.component';
+import { Estagio2DuvidaComponent } from './ajuda/estagio2/estagio2-lpp-duvida.component';
+import { Estagio3DuvidaComponent } from './ajuda/estagio3/estagio3-lpp-duvida.component';
+import { Estagio4DuvidaComponent } from './ajuda/estagio4/estagio4-lpp-duvida.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -38,7 +42,11 @@ const routes: Routes = [
   { path: 'nutricao', component: NutricaoDuvidaComponent},
   { path: 'fricsis', component: FricsisDuvidaComponent},
   { path: 'manejoumidade', component: ManejoUmidadeDuvidaComponent},
-  { path: 'gerargrafico/:matricula', component: GraficoPacientesComponent}
+  { path: 'gerargrafico/:matricula', component: GraficoPacientesComponent},
+  { path: 'estagio1', component: Estagio1DuvidaComponent},
+  { path: 'estagio2', component: Estagio2DuvidaComponent},
+  { path: 'estagio3', component: Estagio3DuvidaComponent},
+  { path: 'estagio4', component: Estagio4DuvidaComponent}
 ];
 
 @NgModule({
