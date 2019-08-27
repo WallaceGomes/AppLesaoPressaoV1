@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: "http://applesaopressaov1-env.md8nxtpwmx.sa-east-1.elasticbeanstalk.com/api"
+  apiUrl: "http://applesaopressao-env.b4mszfzqwr.sa-east-1.elasticbeanstalk.com/api"
 };
