@@ -46,7 +46,8 @@ const routes: Routes = [
   { path: 'estagio1', component: Estagio1DuvidaComponent},
   { path: 'estagio2', component: Estagio2DuvidaComponent},
   { path: 'estagio3', component: Estagio3DuvidaComponent},
-  { path: 'estagio4', component: Estagio4DuvidaComponent}
+  { path: 'estagio4', component: Estagio4DuvidaComponent},
+  { path: 'pagina-indicadores', loadChildren: './pagina-indicadores/pagina-indicadores.module#PaginaIndicadoresPageModule' }
 ];
 
 @NgModule({
