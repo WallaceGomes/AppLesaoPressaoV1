@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { Subscription, from } from 'rxjs';
+import { Subscription} from 'rxjs';
 
 import { PageEvent } from '@angular/material';
 import { Paciente } from '../../pacientes/paciente.model';

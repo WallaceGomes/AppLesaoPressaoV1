@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+                <ion-back-button defaultHref="home"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Indicadores</ion-title>
+        <ion-buttons slot="end">
+                <ion-menu-button autoHide="false"></ion-menu-button>
+            </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<mat-card>
+<mat-spinner *ngIf="carregando"></mat-spinner>
+  <mat-card class="spacep" *ngIf="!carregando">
+    <h3>Insira o intervalo de data para análise</h3>
+  </mat-card>
+  <form>
+    <mat-card>
+        <mat-form-field>
+            <input matInput type="date" placeholder="Inicio" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="date" placeholder="Fim" required>
+        </mat-form-field>
+    </mat-card>
+  </form>
+</mat-card>
+
+<mat-card>
+</mat-card>
+
+<!-- <div style="height:100%">
+    <canvas id="canvas" height="200" width="500">{{chart}}</canvas>
+</div> -->
+<!-- <div>
+    <p>Nome: {{ nome[0] }}</p>
+    <p>Matrícula: {{ matriculaGraf[0] }}</p>
+    <p>Data de internação: {{ dataInternacao[0] }}</p>
+</div> -->
+

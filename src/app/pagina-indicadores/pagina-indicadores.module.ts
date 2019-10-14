@@ -5,7 +5,18 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
+import { IndicadoresPacientesComponent } from './../analises/indicadores/indicadores-pacientes.component';
+
 import { PaginaIndicadoresPage } from './pagina-indicadores.page';
+import { MatCardModule,
+  MatInputModule,
+  MatButtonModule,
+  MatToolbarModule,
+  MatDividerModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatProgressSpinnerModule
+} from '@angular/material';
 
 const routes: Routes = [
   {
@@ -16,11 +27,21 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    CommonModule,
+  CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatDividerModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatProgressSpinnerModule
   ],
-  declarations: [PaginaIndicadoresPage]
+  declarations: [
+    PaginaIndicadoresPage,
+    IndicadoresPacientesComponent]
 })
 export class PaginaIndicadoresPageModule {}

@@ -216,6 +216,12 @@ export class FichasService {
     });
 }
 
+  filtrarItensData(data1, data2) {
+    return this.fichas.filter((item) => {
+    return item.data >= data1 && item.data <= data2;
+    });
+  }
+
 async alertConfirm() {
   const alert = await this.alertCtrl.create({
     header: 'Sucesso!',
