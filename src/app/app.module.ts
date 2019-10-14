@@ -37,6 +37,7 @@ import { Estagio1DuvidaComponent } from './ajuda/estagio1/estagio1-lpp-duvida.co
 import { Estagio2DuvidaComponent } from './ajuda/estagio2/estagio2-lpp-duvida.component';
 import { Estagio3DuvidaComponent } from './ajuda/estagio3/estagio3-lpp-duvida.component';
 import { Estagio4DuvidaComponent } from './ajuda/estagio4/estagio4-lpp-duvida.component';
+import { MostraIndicadoresPacientesComponent } from './analises/mostraindicadores/mostra-indicadores-pacientes.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { Estagio4DuvidaComponent } from './ajuda/estagio4/estagio4-lpp-duvida.co
     Estagio2DuvidaComponent,
     Estagio3DuvidaComponent,
     Estagio4DuvidaComponent,
-    GraficoPacientesComponent],
+    GraficoPacientesComponent,
+    MostraIndicadoresPacientesComponent],
   entryComponents: [ErrorComponent],
   imports: [BrowserModule,
     IonicModule.forRoot(),

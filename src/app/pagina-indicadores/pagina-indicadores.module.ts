@@ -15,7 +15,8 @@ import { MatCardModule,
   MatDividerModule,
   MatRadioModule,
   MatSelectModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatExpansionModule
 } from '@angular/material';
 
 const routes: Routes = [
@@ -38,7 +39,8 @@ const routes: Routes = [
     MatDividerModule,
     MatRadioModule,
     MatSelectModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatExpansionModule
   ],
   declarations: [
     PaginaIndicadoresPage,
