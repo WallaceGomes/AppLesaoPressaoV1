@@ -18,12 +18,15 @@
   <form>
     <mat-card>
         <mat-form-field>
-            <input matInput type="date" placeholder="Inicio" required>
+            <input matInput type="date" placeholder="Inicio" name="daTa1" required>
         </mat-form-field>
         <mat-form-field>
-            <input matInput type="date" placeholder="Fim" required>
+            <input matInput type="date" placeholder="Fim" name="daTa2" required>
         </mat-form-field>
     </mat-card>
+    <mat-action-row>
+        <a mat-raised-button color="primary" [routerLink]= "['/gerarindicadores', daTa1, daTa2]">Gerar Indicadores</a>
+    </mat-action-row>
   </form>
 </mat-card>
 

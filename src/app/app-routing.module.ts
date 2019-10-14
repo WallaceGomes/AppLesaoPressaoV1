@@ -14,6 +14,7 @@ import { Estagio1DuvidaComponent } from './ajuda/estagio1/estagio1-lpp-duvida.co
 import { Estagio2DuvidaComponent } from './ajuda/estagio2/estagio2-lpp-duvida.component';
 import { Estagio3DuvidaComponent } from './ajuda/estagio3/estagio3-lpp-duvida.component';
 import { Estagio4DuvidaComponent } from './ajuda/estagio4/estagio4-lpp-duvida.component';
+import { MostraIndicadoresPacientesComponent } from './analises/mostraindicadores/mostra-indicadores-pacientes.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -47,7 +48,8 @@ const routes: Routes = [
   { path: 'estagio2', component: Estagio2DuvidaComponent},
   { path: 'estagio3', component: Estagio3DuvidaComponent},
   { path: 'estagio4', component: Estagio4DuvidaComponent},
-  { path: 'pagina-indicadores', loadChildren: './pagina-indicadores/pagina-indicadores.module#PaginaIndicadoresPageModule' }
+  { path: 'pagina-indicadores', loadChildren: './pagina-indicadores/pagina-indicadores.module#PaginaIndicadoresPageModule' },
+  { path: 'mostrarindicadores/:datas', component: MostraIndicadoresPacientesComponent}
 ];
 
 @NgModule({
