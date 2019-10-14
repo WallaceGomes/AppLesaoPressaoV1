@@ -52,6 +52,10 @@
       <ion-icon name="analytics" slot="start"></ion-icon>
       Estatísticas
     </ion-button>
+    <ion-button expand="full" (click)="abrirPagina('pagina-indicadores')" *ngIf="usuarioIsAutenticado">
+      <ion-icon name="analytics" slot="start"></ion-icon>
+      Indicadores
+    </ion-button>
     <ion-button expand="full" (click)="abrirPagina('pagina-ajuda-escala')" *ngIf="usuarioIsAutenticado">
       <ion-icon name="help" slot="start"></ion-icon>
       Ajuda

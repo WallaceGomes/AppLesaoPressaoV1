@@ -7,7 +7,15 @@ import { IonicModule } from '@ionic/angular';
 
 import { PaginaFichaAvaliacaoPage } from './pagina-ficha-avaliacao.page';
 import { FichaCreateComponent } from './../fichas/ficha-create/ficha-create.component';
-import { MatCardModule, MatInputModule, MatButtonModule, MatToolbarModule, MatDividerModule, MatRadioModule, MatSelectModule, MatProgressSpinnerModule} from '@angular/material';
+import { MatCardModule,
+  MatInputModule,
+  MatButtonModule,
+  MatToolbarModule,
+  MatDividerModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatProgressSpinnerModule
+} from '@angular/material';
 
 const routes: Routes = [
   {
