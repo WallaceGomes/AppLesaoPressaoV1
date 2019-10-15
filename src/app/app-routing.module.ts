@@ -49,7 +49,7 @@ const routes: Routes = [
   { path: 'estagio3', component: Estagio3DuvidaComponent},
   { path: 'estagio4', component: Estagio4DuvidaComponent},
   { path: 'pagina-indicadores', loadChildren: './pagina-indicadores/pagina-indicadores.module#PaginaIndicadoresPageModule' },
-  { path: 'mostrarindicadores/:datas', component: MostraIndicadoresPacientesComponent}
+  { path: 'gerarindicadores/:datas', component: MostraIndicadoresPacientesComponent}
 ];
 
 @NgModule({

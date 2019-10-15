@@ -9,7 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {
   MatInputModule,
@@ -68,6 +68,7 @@ import { MostraIndicadoresPacientesComponent } from './analises/mostraindicadore
     MatToolbarModule,
     MatPaginatorModule,
     FormsModule,
+    ReactiveFormsModule,
     MatDividerModule,
     HttpClientModule,
     MatDialogModule,
