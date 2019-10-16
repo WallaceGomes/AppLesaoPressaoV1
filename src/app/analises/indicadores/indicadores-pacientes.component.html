@@ -11,33 +11,21 @@
 </ion-header>
 
 <mat-card>
+<mat-spinner *ngIf="carregando"></mat-spinner>
   <mat-card class="spacep" *ngIf="!carregando">
     <h3>Insira o intervalo de data para análise</h3>
   </mat-card>
-  <form [formGroup]="datasIndForm" (Submit)="onSubmit()">
+  <form>
     <mat-card>
         <mat-form-field>
-            <input matInput type="date" placeholder="Inicio" formControlName="data1" required>
+            <input matInput type="date" placeholder="Inicio" [(ngModel)]="daTa1" name="data1" required>
         </mat-form-field>
         <mat-form-field>
-            <input matInput type="date" placeholder="Fim" formControlName="data2" required>
+            <input matInput type="date" placeholder="Fim" [(ngModel)]="daTa2" name="data2" required>
         </mat-form-field>
     </mat-card>
     <mat-action-row>
-        <a mat-raised-button color="primary" type="submit">Gerar Indicadores</a>
+        <a mat-raised-button color="primary" (click)="onEnviarDatas()">Gerar Indicadores</a>
     </mat-action-row>
   </form>
 </mat-card>
-
-<mat-card>
-</mat-card>
-
-<!-- <div style="height:100%">
-    <canvas id="canvas" height="200" width="500">{{chart}}</canvas>
-</div> -->
-<!-- <div>
-    <p>Nome: {{ nome[0] }}</p>
-    <p>Matrícula: {{ matriculaGraf[0] }}</p>
-    <p>Data de internação: {{ dataInternacao[0] }}</p>
-</div> -->
-

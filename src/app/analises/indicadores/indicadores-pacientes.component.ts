@@ -14,22 +14,20 @@ import { Indicadores } from './indicadores.model';
     templateUrl: './indicadores-pacientes.component.html',
     styleUrls: ['./indicadores-pacientes.component.css']
 })
-export class IndicadoresPacientesComponent implements OnInit{
+export class IndicadoresPacientesComponent {
 
-    datasIndForm: FormGroup;
+    daTa1: Date;
+    daTa2: Date;
     data1: Date;
     data2: Date;
 
-    onSubmit(datas) {
-        console.log(datas);
-    }
+    carregando = false;
 
-    ngOnInit() {
-        this.datasIndForm = new FormGroup({
-            data1: new FormControl({value: ''}),
-            data2: new FormControl({value: ''})
-        });
+    onEnviarDatas() {
+        this.data1 = this.daTa1;
+        this.data2 = this.daTa2;
+        console.log(this.data1);
+        console.log(this.data2);
     }
-
 
 }
