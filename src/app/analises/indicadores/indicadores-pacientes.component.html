@@ -10,22 +10,30 @@
     </ion-toolbar>
 </ion-header>
 
-<mat-card>
 <mat-spinner *ngIf="carregando"></mat-spinner>
-  <mat-card class="spacep" *ngIf="!carregando">
+<mat-card *ngIf="!carregando && !mostrandoIndicadores">
+  <mat-card class="spacep">
     <h3>Insira o intervalo de data para análise</h3>
   </mat-card>
   <form>
     <mat-card>
         <mat-form-field>
-            <input matInput type="date" placeholder="Inicio" [(ngModel)]="daTa1" name="data1" required>
+            <input matInput type="date" placeholder="Inicio" [(ngModel)]="daTa1" name="daTa1" required>
         </mat-form-field>
         <mat-form-field>
-            <input matInput type="date" placeholder="Fim" [(ngModel)]="daTa2" name="data2" required>
+            <input matInput type="date" placeholder="Fim" [(ngModel)]="daTa2" name="daTa2" required>
         </mat-form-field>
     </mat-card>
     <mat-action-row>
-        <a mat-raised-button color="primary" (click)="onEnviarDatas()">Gerar Indicadores</a>
+        <button mat-raised-button color="primary" (click)="onGerarInds()">Gerar Indicadores</button>
     </mat-action-row>
   </form>
+</mat-card>
+<mat-card class="spacep" *ngIf="mostrandoIndicadores">
+  <h3>Indicadores</h3>
+  {{daTa1}}
+  {{daTa2}}
+  <mat-action-row>
+    <button mat-raised-button color="primary" (click)="onResetInds()">Inserir novas datas</button>
+  </mat-action-row>
 </mat-card>
