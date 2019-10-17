@@ -133,6 +133,12 @@ export class PacienteService {
         });
     }
 
+    filtrarItensPorData(data1, data2) {
+        return this.pacientes.filter((item) => {
+        return item.dataInternacao >= data1 && item.dataInternacao <= data2;
+        });
+    }
+
     async alertConfirm() {
         const alert = await this.alertCtrl.create({
           header: 'Sucesso!',

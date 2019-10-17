@@ -22,16 +22,42 @@ export class IndicadoresPacientesComponent {
     data2: Date;
 
     carregando = false;
-    mostrandoIndicadores = false
+    mostrandoIndicadores = false;
 
-    constructor(private router: Router) {}
+    pacientes: Paciente[] = [];
+    fichas: Ficha[] = [];
+
+    private pacientesSub: Subscription;
+    private fichasSub: Subscription;
+
+    constructor(public pacientesService: PacienteService, public fichasService: FichasService, private router: Router) {}
 
     onGerarInds() {
+
+        this.pacientesService.getPacientes();
+        this.pacientesSub = this.pacientesService.getPacientesUpdateListener()
+        .subscribe((pacientes: Paciente[]) => {
+            this.pacientes = pacientes.slice(0).reverse();
+        });
+
+        this.fichasService.getFichas();
+        this.fichasSub = this.fichasService.getFichasUpdateListener()
+        .subscribe((fichas: Ficha[]) => {
+            this.fichas = fichas;
+        });
+
+        this.filtrar();
+
         this.mostrandoIndicadores = true;
         this.data1 = this.daTa1;
         this.data2 = this.daTa2;
         console.log(this.data1);
         console.log(this.data2);
+    }
+
+    filtrar() {
+        this.pacientes = this.pacientesService.filtrarItensPorData(this.data1, this.data2);
+        this.fichas = this.fichasService.filtrarItensPorData(this.data1, this.data2);
     }
 
     // Inserir métodos de filtrar as fichas e pacientes
