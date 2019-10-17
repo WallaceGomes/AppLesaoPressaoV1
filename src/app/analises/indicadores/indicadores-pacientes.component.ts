@@ -22,12 +22,25 @@ export class IndicadoresPacientesComponent {
     data2: Date;
 
     carregando = false;
+    mostrandoIndicadores = false
 
-    onEnviarDatas() {
+    constructor(private router: Router) {}
+
+    onGerarInds() {
+        this.mostrandoIndicadores = true;
         this.data1 = this.daTa1;
         this.data2 = this.daTa2;
         console.log(this.data1);
         console.log(this.data2);
+    }
+
+    // Inserir métodos de filtrar as fichas e pacientes
+
+    onResetInds() {
+        this.mostrandoIndicadores = false;
+        this.carregando = true;
+        this.router.navigate(["/pagina-indicadores"]);
+        this.carregando = false;
     }
 
 }
