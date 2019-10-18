@@ -218,7 +218,9 @@ export class FichasService {
 
   filtrarItensPorData(data1, data2) {
     return this.fichas.filter((item) => {
-    return item.data >= data1 && item.data <= data2;
+      if (item.data >= data1 && item.data <= data2) {
+        return item;
+      }
     });
   }
 
