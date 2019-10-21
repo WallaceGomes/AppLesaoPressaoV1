@@ -6,14 +6,14 @@ const router = express.Router();
 
 const FichaController = require("../controllers/fichas");
 
-router.post("", checkAuth, FichaController.createFicha);
+router.post("", checkAuth, FichaController.createFicha); // Cria uma ficha
 
-router.put("/:id", checkAuth, FichaController.editFicha);
+router.put("/:id", checkAuth, FichaController.editFicha); // Envia uma ficha para o front editar a mesma
 
-router.get("", checkAuth, FichaController.getFichas);
+router.get("", checkAuth, FichaController.getFichas); // Envia todas as fichas para o front
 
-router.get("/:id", FichaController.getFicha);
+router.get("/:id", FichaController.getFicha); // Envia uma ficha específica para o front
 
-router.delete("/:id", checkAuth, FichaController.deleteFicha);
+router.delete("/:id", checkAuth, FichaController.deleteFicha); // Deleta uma ficha
 
 module.exports = router;

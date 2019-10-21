@@ -16,7 +16,7 @@ const fichaSchema = mongoose.Schema({
     nutricao: { type: String, required: true },
     fricscisal: { type: String, required: true },
     score: { type: String, required: true },
-    criador: { type: mongoose.Schema.Types.ObjectId, ref: "Usuario", require: true}
+    criador: { type: mongoose.Schema.Types.ObjectId, ref: "Usuario", require: true} // coloca o id de usuário de quem cria na ficha
 });
 
 module.exports = mongoose.model('Ficha', fichaSchema);

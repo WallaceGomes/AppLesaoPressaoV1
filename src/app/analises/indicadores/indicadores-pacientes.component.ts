@@ -40,7 +40,6 @@ export class IndicadoresPacientesComponent {
         console.log(this.data1);
         console.log(this.data2);
         this.percPacRiscAdm();
-        console.log(this.fichas);
     }
 
     percPacRiscAdm() { // Percentual de pacientes submetidos a avaliacao de risco para UPP na admissao (data de internacao)
@@ -48,7 +47,7 @@ export class IndicadoresPacientesComponent {
         // comparar quantidade de fichas x qtde de pacientes internados nas datas
         this.carregarFichasePacientes();
         this.fichas = this.fichasService.filtrarItensPorData(this.data1, this.data2);
-        this.fichas = this.fichasService.filtrarItensPorData(this.data1, this.data2);
+        console.log(this.fichas);
     }
 
     percPacAvalDiaria(data1, data2) { // Percentual de pacoentes de risco recebendo cuidado preventido apropriado para UPP
