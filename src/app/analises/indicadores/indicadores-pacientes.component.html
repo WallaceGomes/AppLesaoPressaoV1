@@ -29,10 +29,13 @@
     </mat-action-row>
   </form>
 </mat-card>
-<mat-card class="spacep" *ngIf="mostrandoIndicadores">
+<mat-card class="indicadores" *ngIf="mostrandoIndicadores">
   <h3>Indicadores</h3>
   {{daTa1}}
   {{daTa2}}
+  <div>
+    Percentual de pacientes submetidos a avaliacao de risco para UPP na admissão {{percPacRiscAdm}}%.
+  </div>
   <mat-action-row>
     <button mat-raised-button color="primary" (click)="onResetInds()">Inserir novas datas</button>
   </mat-action-row>

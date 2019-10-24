@@ -18,14 +18,17 @@ export class IndicadoresPacientesComponent implements OnInit, OnDestroy{
 
     daTa1: Date;
     daTa2: Date;
-    data1: Date;
-    data2: Date;
+    percPacRiscAdm: number;
+    percPacAvalDiaria: number;
+    incidLesao: number;
 
     carregando = false;
     mostrandoIndicadores = false;
 
     pacientes: Paciente[] = [];
     fichas: Ficha[] = [];
+
+    pacientesInternados: Paciente[] = [];
 
     private pacientesSub: Subscription;
     private fichasSub: Subscription;
@@ -49,32 +52,53 @@ export class IndicadoresPacientesComponent implements OnInit, OnDestroy{
     onGerarInds() { // Insere na tela os graficos a partir dos calculos das funcoes dos indicadores
 
         this.mostrandoIndicadores = true;
-        this.data1 = this.daTa1;
-        this.data2 = this.daTa2;
-        console.log(this.data1);
-        console.log(this.data2);
-        this.percPacRiscAdm();
+        console.log(this.daTa1);
+        console.log(this.daTa2);
+        this.percPacRiscAdm = this.calculaPercPacRiscAdm();
+        // this.calculaPercPacAvalDiaria();
+        // this.calculaIncidLesao();
     }
 
-    percPacRiscAdm() { // Percentual de pacientes submetidos a avaliacao de risco para UPP na admissao (data de internacao)
-        // fichas com data de internacao igual a data da ficha
-        // comparar quantidade de fichas x qtde de pacientes internados nas datas
+    calculaPercPacRiscAdm() {
+        // Percentual de pacientes submetidos a avaliacao de risco para UPP na admissao
+        // (data de internacao). Fichas com data de internacao igual a data da ficha
+        // comparar quantidade de fichas x qtde de pacientes internados nas datas*
         // this.carregarFichasePacientes();
-        this.fichas = this.fichasService.filtrarItensPorData(this.data1, this.data2);
+        this.fichas = this.fichasService.filtrarItensPorData(this.daTa1, this.daTa2);
+        this.pacientesInternados = this.pacientesService.filtrarItensPorData(this.daTa1, this.daTa2);
         console.log(this.fichas);
+        console.log(this.pacientesInternados);
+        const fichasLength = this.fichas.length;
+        const internadosLength = this.pacientesInternados.length;
+
+        let qtdeFichas = 0;
+        for (let i = 0; i < fichasLength; i++) {
+            // qtde de Fichas com data de internacao igual a data da ficha
+            if (this.fichas[i].dataInternacao === this.fichas[i].data) {
+                qtdeFichas ++;
+            }
+        }
+        let x = (qtdeFichas * 100) / internadosLength;
+        x = parseFloat(x.toFixed(2));
+        console.log(qtdeFichas);
+        console.log(internadosLength);
+        console.log(x);
+        return x;
     }
 
-    percPacAvalDiaria(data1, data2) { // Percentual de pacoentes de risco recebendo cuidado preventido apropriado para UPP
+    calculaPercPacAvalDiaria() { // Percentual de pacoentes de risco recebendo cuidado preventido apropriado para UPP
         // pacientes tem que ter todas as fichas
         // qtde de fichas = qtde de dias internado
         // this.carregarFichasePacientes();
+        this.fichas = this.fichasService.filtrarItensPorData(this.daTa1, this.daTa2);
 
     }
 
-    incidLesao(data1, data2) { // Incidencia de UPP (Total de pacientes que apresentaram lesao ao menos uma vez)
+    calculaIncidLesao() { // Incidencia de UPP (Total de pacientes que apresentaram lesao ao menos uma vez)
         // qtde de pacientes com lesao em pelo menos uma ficha - break
         // ecluidos os pacientes com lesao na primeira ficha de avaliacao
         // this.carregarFichasePacientes();
+        this.fichas = this.fichasService.filtrarItensPorData(this.daTa1, this.daTa2);
 
     }
 
@@ -85,13 +109,11 @@ export class IndicadoresPacientesComponent implements OnInit, OnDestroy{
     //     .subscribe((pacientes: Paciente[]) => {
     //         this.pacientes = pacientes.slice(0).reverse();
     //     });
-
     //     this.fichasService.getFichas();
     //     this.fichasSub = this.fichasService.getFichasUpdateListener()
     //     .subscribe((fichas: Ficha[]) => {
     //         this.fichas = fichas;
     //     });
-
     // }
 
     // Inserir métodos de filtrar as fichas e pacientes

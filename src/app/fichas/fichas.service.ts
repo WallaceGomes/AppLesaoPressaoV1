@@ -224,6 +224,14 @@ export class FichasService {
     });
   }
 
+  filtrarItensPorDataInternacao(data1, data2) {
+    return this.fichas.filter ((item) => {
+      if (item.dataInternacao >= data1 && item.dataInternacao <= data2) {
+        return item;
+      }
+    });
+  }
+
 async alertConfirm() {
   const alert = await this.alertCtrl.create({
     header: 'Sucesso!',
