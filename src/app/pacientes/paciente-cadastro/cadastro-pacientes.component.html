@@ -14,9 +14,9 @@
     <mat-card>
       <h3>Cadastrar novo paciente</h3>
     </mat-card>
-    <form [formGroup]="form" (submit)="onCadastrarPaciente()">
+    <form [formGroup]="form" (submit)="onCadastrarPaciente()" margin-top="5px">
        <div class="formfield"> 
-        <mat-form-field>
+        <mat-form-field appearance="outline">
           <input
             matInput
             formControlName="nome"
@@ -29,70 +29,80 @@
           >
         </mat-form-field>
       </div>
-      <mat-form-field>
-        <input
-          matInput
-          formControlName="matricula"
-          type="number"
-          placeholder="Matrícula"
-          required
-        />
-        <mat-error *ngIf="(matriculapaciente.dirty || matriculapaciente.touched) && matriculapaciente.invalid"
-          >Matricula inválida</mat-error
+      <div class="formfield">
+        <mat-form-field appearance="outline">
+          <input
+            matInput
+            formControlName="matricula"
+            type="number"
+            placeholder="Matrícula"
+            required
+          />
+          <mat-error *ngIf="(matriculapaciente.dirty || matriculapaciente.touched) && matriculapaciente.invalid"
+            >Matricula inválida</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <div class="formfield">
+        <mat-form-field appearance="outline">
+          <input
+            matInput
+            formControlName="dataNascimento"
+            type="date"
+            placeholder="Data de nascimento"
+            required
+            display-format="DD/MM/YYYY"
+          />
+          <mat-error *ngIf="(datanascimento.dirty || datanascimento.touched) && datanascimento.invalid"
+            >Formato de data errado</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <div class="formfield">
+        <mat-form-field appearance="outline">
+          <input
+            matInput
+            formControlName="dataInternacao"
+            type="date"
+            placeholder="Data da internação"
+            required
+            display-format="DD/MM/YYYY"
+          />
+          <mat-error *ngIf="(datainternacao.dirty || datainternacao.touched) && datainternacao.invalid"
+            >Formato de data errado</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <div class="formfield">
+        <mat-form-field appearance="outline">
+          <textarea
+            matInput
+            formControlName="patologia"
+            type="text"
+            placeholder="Patologia(as) do paciente"
+            required
         >
-      </mat-form-field>
-      <mat-form-field>
-        <input
-          matInput
-          formControlName="dataNascimento"
-          type="date"
-          placeholder="Data de nascimento"
-          required
-          display-format="DD/MM/YYYY"
-        />
-        <mat-error *ngIf="(datanascimento.dirty || datanascimento.touched) && datanascimento.invalid"
-          >Formato de data errado</mat-error
+          <mat-error *ngIf="(patologiia.dirty || patologiia.touched) && patologiia.invalid"
+            >Campo obrigatório</mat-error
+          >
+        </textarea>
+        </mat-form-field>
+      </div>
+      <div class="formfield">
+        <mat-form-field appearance="outline">
+          <textarea
+            matInput
+            formControlName="comorbidades"
+            type="text"
+            placeholder="Comorbidades do paciente"
+            required
         >
-      </mat-form-field>
-      <mat-form-field>
-        <input
-          matInput
-          formControlName="dataInternacao"
-          type="date"
-          placeholder="Data da internação"
-          required
-          display-format="DD/MM/YYYY"
-        />
-        <mat-error *ngIf="(datainternacao.dirty || datainternacao.touched) && datainternacao.invalid"
-          >Formato de data errado</mat-error
-        >
-      </mat-form-field>
-      <mat-form-field>
-        <textarea
-          matInput
-          formControlName="patologia"
-          type="text"
-          placeholder="Descreva a(as) patologia(as) do paciente"
-          required
-      >
-        <mat-error *ngIf="(patologiia.dirty || patologiia.touched) && patologiia.invalid"
-          >Campo obrigatório</mat-error
-        >
-      </textarea>
-      </mat-form-field>
-      <mat-form-field>
-        <textarea
-          matInput
-          formControlName="comorbidades"
-          type="text"
-          placeholder="Descreva as comorbidades do paciente"
-          required
-      >
-        <mat-error *ngIf="(comorbidadees.dirty || comorbidadees.touched) && comorbidadees.invalid"
-          >Campo obrigatório</mat-error
-        >
-      </textarea>
-      </mat-form-field>
+          <mat-error *ngIf="(comorbidadees.dirty || comorbidadees.touched) && comorbidadees.invalid"
+            >Campo obrigatório</mat-error
+          >
+        </textarea>
+        </mat-form-field>
+      </div>
       <ion-button expand="block" color="primary" type="submit">
         Cadastrar paciente
       </ion-button>
