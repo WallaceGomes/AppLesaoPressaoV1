@@ -6,6 +6,7 @@
           </ion-toolbar>
         </ion-header>
         <ion-content>
+          Usuário: {{email}}
           <ion-list>
             <ion-menu-toggle auto-hide="false" *ngFor="let paginas of paginas">
               <ion-item [routerDirection]="'root'" [routerLink]="[paginas.url]">

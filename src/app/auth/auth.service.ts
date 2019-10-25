@@ -74,7 +74,6 @@ export class AuthService {
             console.log(response);
             this.alertConfirm();
             this.login(email, senha);
-            // this.router.navigate(['/']);
         });
     }
 
@@ -85,13 +84,13 @@ export class AuthService {
             const token = response.token;
             this.token = token;
             if (token) {
-                this.email = email;
+                this.setEmail(email);
                 const expiresInDuration = response.expiresIn;
                 this.setAuthTimer(expiresInDuration);
                 this.isAutenticado = true;
                 this.authStatusListener.next(true);
                 const now = new Date();
-                const expirationDate = new Date(now.getTime() + expiresInDuration * 10000);
+                const expirationDate = new Date(now.getTime() + expiresInDuration * 1000000);
                 this.saveAuthData(token, expirationDate);
                 this.router.navigate(['/']);
             }
