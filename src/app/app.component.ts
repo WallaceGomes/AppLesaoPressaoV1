@@ -12,12 +12,14 @@ import { Subscription } from 'rxjs';
 })
 export class AppComponent implements OnInit {
 
-  paginas : any[] = [
+  paginas: any[] = [
     {title: "Início", icon: "home", url: "/home"},
-    {title: "Ver pacientes", icon: "filing", url: "/pagina-listar-pacientes"},
+    {title: "Cadastrar paciente", icon: "filing", url: "/pagina-cadastro-pacientes"},
+    {title: "Ver pacientes", icon: "document", url: "/pagina-listar-pacientes"},
     {title: "Exibir fichas", icon: "document", url: "/pagina-listar-fichas"},
     {title: "Estatísticas", icon: "analytics", url: "/pagina-base-dados"},
-    {title: "Ajuda", icon: "help", url: "/pagina-ajuda-escala"}
+    {title: "Ajuda", icon: "help", url: "/pagina-ajuda-escala"},
+    {title: "Logout", icon: "log-out"}
   ];
   private authListenerSubs: Subscription;
   usuarioIsAutenticado = false;
@@ -41,6 +43,7 @@ export class AppComponent implements OnInit {
     this.authListenerSubs = this.authService.getAuthStatusListener()
     . subscribe(isAutenticado => {
       this.usuarioIsAutenticado = isAutenticado;
+      this.email = this.authService.getEmail;
     });
   }
 
@@ -50,6 +53,10 @@ export class AppComponent implements OnInit {
       this.splashScreen.hide();
     });
   }
+
+  // onLogout() {
+  //   this.authService.logout();
+  // }
 
   ngOnDestroy() {
     this.authListenerSubs.unsubscribe();

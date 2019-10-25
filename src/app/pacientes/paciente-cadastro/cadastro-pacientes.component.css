@@ -1,3 +1,11 @@
 mat-spinner {
-    margin: auto;
-  }
+  margin: auto;
+}
+
+.formfield {
+  display: flex;
+  flex-direction: column;
+}
+.formfield > * {
+  width: 100%;
+}
