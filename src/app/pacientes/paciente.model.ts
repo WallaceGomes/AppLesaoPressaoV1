@@ -7,3 +7,5 @@ export class Paciente {
     patologia: string;
     comorbidades: string;
 }
+
+// ver a possibilidade de criar uma flag paciente internado/ de alta

@@ -79,26 +79,30 @@ export class IndicadoresPacientesComponent implements OnInit, OnDestroy{
             }
         }
         let x = (qtdeFichas * 100) / internadosLength;
-        x = parseFloat(x.toFixed(2));
-        console.log(qtdeFichas);
-        console.log(internadosLength);
-        console.log(x);
+        x = parseFloat(x.toFixed(2)); // Limita a quantidade de casas decimais para no máximo 2
         return x;
-    }
-
-    calculaPercPacAvalDiaria() { // Percentual de pacoentes de risco recebendo cuidado preventido apropriado para UPP
-        // pacientes tem que ter todas as fichas
-        // qtde de fichas = qtde de dias internado
-        // this.carregarFichasePacientes();
-        this.fichas = this.fichasService.filtrarItensPorData(this.daTa1, this.daTa2);
-
     }
 
     calculaIncidLesao() { // Incidencia de UPP (Total de pacientes que apresentaram lesao ao menos uma vez)
         // qtde de pacientes com lesao em pelo menos uma ficha - break
-        // ecluidos os pacientes com lesao na primeira ficha de avaliacao
+        // excluidos os pacientes com lesao na primeira ficha de avaliacao
         // this.carregarFichasePacientes();
         this.fichas = this.fichasService.filtrarItensPorData(this.daTa1, this.daTa2);
+
+
+    }
+
+    calculaPercPacAvalDiaria() {
+        // Percentual de pacoentes de risco recebendo cuidado preventido apropriado para UPP
+        // pacientes tem que ter todas as fichas
+        // qtde de fichas = qtde de dias internado
+        // this.carregarFichasePacientes();
+        this.fichas = this.fichasService.filtrarItensPorData(this.daTa1, this.daTa2);
+        this.pacientesInternados = this.pacientesService.filtrarItensPorData(this.daTa1, this.daTa2);
+        const fichasLength = this.fichas.length;
+        const internadosLength = this.pacientesInternados.length;
+
+        let qtdeFichas = 0;
 
     }
 
