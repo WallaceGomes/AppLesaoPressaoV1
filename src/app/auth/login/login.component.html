@@ -11,9 +11,10 @@
   <mat-card>
     <h3>Login</h3>
   </mat-card>
-  <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
+  <form (submit)="onLogin(loginForm)" #loginForm="ngForm" class="formMargin">
      <div class="formfield"> 
-      <mat-form-field>
+      <mat-form-field  [floatLabel]="options.value.floatLabel" appearance="outline">
+          <mat-label>E-mail</mat-label>
         <input
           matInput
           name="email"
@@ -29,20 +30,23 @@
         >
       </mat-form-field>
     </div>
-    <mat-form-field>
-      <input
-        type="password"
-        name="senha"
-        ngModel
-        matInput
-        placeholder="Senha"
-        #senhaInput="ngModel"
-        required
-      />
-      <mat-error *ngIf="senhaInput.invalid"
-        >Senha inválida</mat-error
-      >
-    </mat-form-field>
+    <div class="formfield">
+      <mat-form-field [floatLabel]="options.value.floatLabel" appearance="outline">
+          <mat-label>Senha</mat-label>
+        <input
+          type="password"
+          name="senha"
+          ngModel
+          matInput
+          placeholder="Senha"
+          #senhaInput="ngModel"
+          required
+        />
+        <mat-error *ngIf="senhaInput.invalid"
+          >Senha inválida</mat-error
+        >
+      </mat-form-field>
+    </div>
     <ion-button expand="block" color="primary" type="submit">
       Login
     </ion-button>
