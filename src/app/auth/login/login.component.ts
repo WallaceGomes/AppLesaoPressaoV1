@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -9,7 +9,13 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent {
 
-    constructor(public authService: AuthService) {}
+    options: FormGroup;
+    constructor(public authService: AuthService, fb: FormBuilder) {
+        this.options = fb.group({
+            hideRequired: false,
+            floatLabel: 'auto',
+          });
+    }
 
     onLogin(form: NgForm) {
         if (form.invalid) {

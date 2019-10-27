@@ -14,9 +14,10 @@
   <mat-card>
     <h3>Cadastro</h3>
   </mat-card>
-  <form (submit)="onCadastro(cadastroForm)" #cadastroForm="ngForm">
+  <form (submit)="onCadastro(cadastroForm)" #cadastroForm="ngForm" class="formMargin">
     <div class="formfield"> 
-      <mat-form-field>
+      <mat-form-field [floatLabel]="options.value.floatLabel" appearance="outline">
+          <mat-label>Nome</mat-label>
         <input
           matInput
           name="nome"
@@ -32,7 +33,8 @@
       </mat-form-field>
     </div>
   <div class="formfield"> 
-      <mat-form-field>
+      <mat-form-field [floatLabel]="options.value.floatLabel" appearance="outline">
+          <mat-label>Matrícula</mat-label>
         <input
           matInput
           name="matricula"
@@ -48,7 +50,8 @@
       </mat-form-field>
     </div>
     <div class="formfield"> 
-        <mat-form-field>
+        <mat-form-field [floatLabel]="options.value.floatLabel" appearance="outline">
+            <mat-label>Unidade Hospitalar</mat-label>
           <input
             matInput
             name="unidade"
@@ -64,7 +67,8 @@
         </mat-form-field>
       </div>
      <div class="formfield"> 
-      <mat-form-field>
+      <mat-form-field [floatLabel]="options.value.floatLabel" appearance="outline">
+          <mat-label>E-mail</mat-label>
         <input
           matInput
           name="email"
@@ -80,7 +84,8 @@
         >
       </mat-form-field>
     </div>
-    <mat-form-field>
+    <mat-form-field [floatLabel]="options.value.floatLabel" appearance="outline">
+        <mat-label>Senha</mat-label>
       <input
         matInput
         name="senha"

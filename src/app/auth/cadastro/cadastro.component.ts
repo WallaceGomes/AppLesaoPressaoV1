@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgForm} from '@angular/forms';
+import { NgForm, FormBuilder, FormGroup} from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
@@ -10,7 +10,13 @@ import { Router } from '@angular/router';
 })
 export class CadastroComponent {
 
-    constructor(public authService: AuthService, private router: Router) {}
+    options: FormGroup;
+    constructor(public authService: AuthService, private router: Router, fb: FormBuilder) {
+        this.options = fb.group({
+            hideRequired: false,
+            floatLabel: 'auto',
+          });
+    }
 
     // form: FormGroup;
 

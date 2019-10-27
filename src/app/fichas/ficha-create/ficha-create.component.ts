@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { FichasService } from '../fichas.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Ficha } from './../ficha.model';
@@ -27,6 +27,7 @@ export class FichaCreateComponent implements OnInit {
   localLesao = '';
   estagioLesao = '';
   private ficha: Ficha;
+  options: FormGroup;
   form: FormGroup;
   private mode = 'create';
   private fichaId: string;
@@ -234,7 +235,15 @@ export class FichaCreateComponent implements OnInit {
     return this.form.get('presencaLesao');
   }
 
-  constructor(public fichasService: FichasService, public route: ActivatedRoute, public pacientesService: PacienteService) { }
+  constructor(public fichasService: FichasService,
+              public route: ActivatedRoute, 
+              public pacientesService: PacienteService, 
+              fb: FormBuilder) {
+    this.options = fb.group({
+        hideRequired: false,
+        floatLabel: 'auto',
+      });
+}
 
   ngOnInit() {
     this.form = new FormGroup({
