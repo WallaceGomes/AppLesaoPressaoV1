@@ -7,7 +7,8 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 @Component({
     selector: 'app-grafico-pacientes',
-    templateUrl: './grafico-pacientes.component.html'
+    templateUrl: './grafico-pacientes.component.html',
+    styleUrls: ['./grafico-pacientes.component.css']
 })
 export class GraficoPacientesComponent implements OnInit {
 
