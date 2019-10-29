@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-analise-pacientes',
-    templateUrl: './analise-pacientes.component.html'
+    templateUrl: './analise-pacientes.component.html',
+    styleUrls: ['./analise-pacientes.component.css']
 })
 export class AnalisePacientesComponent implements OnInit, OnDestroy {
 
