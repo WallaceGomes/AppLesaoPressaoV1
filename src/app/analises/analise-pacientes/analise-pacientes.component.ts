@@ -19,7 +19,7 @@ export class AnalisePacientesComponent implements OnInit, OnDestroy {
     chart = [];
     teste = this.fichasService.chart;
     pacientes: Paciente[] = [];
-    pesquisa: any = "";
+    pesquisa: any = '';
 
     fichas: Ficha[] = [];
 
@@ -61,89 +61,6 @@ export class AnalisePacientesComponent implements OnInit, OnDestroy {
 
     filtrarItens() {
         this.pacientes = this.pacientesService.filtrarItens(this.pesquisa);
-        // this.fichas = this.fichasService.filtrarItens(this.pesquisa);
-
-        // this.percepSens = this.fichas.map((dadosFicha) => {
-        //     return dadosFicha.percepSens;
-        // });
-        // this.umidade = this.fichas.map((dadosFicha) => {
-        //     return dadosFicha.umidade;
-        // });
-        // this.atividade = this.fichas.map((dadosFicha) => {
-        //     return dadosFicha.atividade;
-        // });
-        // this.mobilidade = this.fichas.map((dadosFicha) => {
-        //     return dadosFicha.mobilidade;
-        // });
-        // this.nutricao = this.fichas.map((dadosFicha) => {
-        //     return dadosFicha.nutricao;
-        // });
-        // this.fricscisal = this.fichas.map((dadosFicha) => {
-        //     return dadosFicha.fricscisal;
-        // });
-        // this.score = this.fichas.map((dadosFicha) => {
-        //     return dadosFicha.score;
-        // });
-        // this.datas = this.fichas.map((dadosFicha) => {
-        //     return dadosFicha.data;
-        // });
-        // console.log(this.fichas);
-
-        // this.chart = new Chart('canvas', {
-        //     type: 'line',
-        //     data: {
-        //         labels: this.datas,
-        //         datasets: [{
-        //             label: 'Score',
-        //             fill: false,
-        //             backgroundColor: 'rgb(255, 99, 132)',
-        //              borderColor: 'rgb(255, 99, 132)',
-        //             data: this.score
-        //          },
-        //          {
-        //             label: 'PercepSens',
-        //             fill: false,
-        //             backgroundColor: 'rgb(36, 26, 16)',
-        //              borderColor: 'rgb(36, 26, 16)',
-        //             data: this.percepSens
-        //          },
-        //          {
-        //             label: 'Umidade',
-        //             fill: false,
-        //             backgroundColor: 'rgb(161, 141, 16)',
-        //              borderColor: 'rgb(161, 141, 16)',
-        //             data: this.umidade
-        //          },
-        //          {
-        //             label: 'Atividade',
-        //             fill: false,
-        //             backgroundColor: 'rgb(27, 184, 57)',
-        //              borderColor: 'rgb(27, 184, 57)',
-        //             data: this.atividade
-        //          },
-        //          {
-        //             label: 'Mobilidade',
-        //             fill: false,
-        //             backgroundColor: 'rgb(27, 184, 192)',
-        //              borderColor: 'rgb(27, 184, 192)',
-        //             data: this.mobilidade
-        //          },
-        //          {
-        //             label: 'Nutrição',
-        //             fill: false,
-        //             backgroundColor: 'rgb(202, 15, 192)',
-        //              borderColor: 'rgb(202, 15, 192)',
-        //             data: this.nutricao
-        //          },
-        //          {
-        //             label: 'Fricção',
-        //             fill: false,
-        //             backgroundColor: 'rgb(82, 78, 183)',
-        //              borderColor: 'rgb(82, 78, 183)',
-        //             data: this.fricscisal
-        //          }]
-        //      }
-        //  })
     }
 
     verStats(matricula) {
@@ -235,10 +152,10 @@ export class AnalisePacientesComponent implements OnInit, OnDestroy {
                     hidden: true
                  }]
              }
-         })
-        //this.fichasService.setChart(this.chart);
+         });
+        // this.fichasService.setChart(this.chart);
         // this.fichasService.chart = this.chart;
-        //this.teste = this.fichasService.chart;
+        // this.teste = this.fichasService.chart;
         // this.router.navigate(['pagina-ver-graficos']);
         // this.teste = this.fichasService.getChart();
 
