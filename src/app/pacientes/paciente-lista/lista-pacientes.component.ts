@@ -16,7 +16,7 @@ import { reduce } from 'rxjs/operators';
 export class ListaPacientesComponent implements OnInit, OnDestroy{
 
     pacientes: Paciente[] = [];
-    pesquisa: any = "";
+    pesquisa: any = '';
 
     private pacientesSub: Subscription;
     constructor(public pacientesService: PacienteService, private alertCtrl: AlertController, private router: Router) {}
