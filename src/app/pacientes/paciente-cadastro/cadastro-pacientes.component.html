@@ -16,7 +16,8 @@
     </mat-card>
     <form [formGroup]="form" (submit)="onCadastrarPaciente()" margin-top="5px">
        <div class="formfield"> 
-        <mat-form-field appearance="outline">
+        <mat-form-field [floatLabel]="options.value.floatLabel" appearance="outline">
+            <mat-label>Nome do paciente</mat-label>
           <input
             matInput
             formControlName="nome"
@@ -30,7 +31,8 @@
         </mat-form-field>
       </div>
       <div class="formfield">
-        <mat-form-field appearance="outline">
+        <mat-form-field [floatLabel]="options.value.floatLabel" appearance="outline">
+            <mat-label>Matrícula</mat-label>
           <input
             matInput
             formControlName="matricula"
@@ -44,7 +46,8 @@
         </mat-form-field>
       </div>
       <div class="formfield">
-        <mat-form-field appearance="outline">
+        <mat-form-field [floatLabel]="options.value.floatLabel" appearance="outline">
+            <mat-label>Data de nascimento</mat-label>
           <input
             matInput
             formControlName="dataNascimento"
@@ -59,7 +62,8 @@
         </mat-form-field>
       </div>
       <div class="formfield">
-        <mat-form-field appearance="outline">
+        <mat-form-field [floatLabel]="options.value.floatLabel" appearance="outline">
+            <mat-label>Data da internação</mat-label>
           <input
             matInput
             formControlName="dataInternacao"
@@ -74,7 +78,8 @@
         </mat-form-field>
       </div>
       <div class="formfield">
-        <mat-form-field appearance="outline">
+        <mat-form-field [floatLabel]="options.value.floatLabel" appearance="outline">
+            <mat-label>Patologia(as) do paciente</mat-label>
           <textarea
             matInput
             formControlName="patologia"
@@ -89,7 +94,8 @@
         </mat-form-field>
       </div>
       <div class="formfield">
-        <mat-form-field appearance="outline">
+        <mat-form-field [floatLabel]="options.value.floatLabel" appearance="outline">
+            <mat-label>Comorbidades do paciente</mat-label>
           <textarea
             matInput
             formControlName="comorbidades"
