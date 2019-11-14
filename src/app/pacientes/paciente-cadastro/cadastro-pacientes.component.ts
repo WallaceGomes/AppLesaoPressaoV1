@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { ParamMap, ActivatedRoute } from '@angular/router';
 import { PacienteService } from '../paciente.service';
 import { Paciente } from '../paciente.model';
@@ -23,6 +23,7 @@ export class CadastroPaciente implements OnInit{
     carregando = false;
 
     private paciente: Paciente;
+    options: FormGroup;
     form: FormGroup;
     private mode = 'create';
     private pacienteId: string;
@@ -71,7 +72,13 @@ export class CadastroPaciente implements OnInit{
     get comorbidadees() {
       return this.form.get('comorbidades');
     }
-    constructor(public pacienteService: PacienteService, private router: ActivatedRoute) {}
+    constructor(public pacienteService: PacienteService, private router: ActivatedRoute,
+      fb: FormBuilder) {
+      this.options = fb.group({
+      hideRequired: false,
+      floatLabel: 'auto',
+        });
+      }
 
     ngOnInit() {
       this.form = new FormGroup({
