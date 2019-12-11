@@ -49,11 +49,11 @@
     <mat-accordion multi="true">
         <mat-expansion-panel *ngFor="let ficha of fichas">
             <mat-expansion-panel-header>
-                Ficha de {{ ficha.data | date : "dd.MM.y" }} do paciente {{ ficha.nome}}
+                Ficha de {{ ficha.data | date : "dd/MM/y" }} do(a) paciente {{ ficha.nome}}
             </mat-expansion-panel-header>
             <p>Nome: {{ ficha.nome }}</p>
             <p>Matrícula: {{ ficha.matricula }}</p>
-            <p>Data Internacao: {{ ficha.dataInternacao | date : "dd.MM.y" }}</p>
+            <p>Data Internacao: {{ ficha.dataInternacao | date : "dd/MM/y" }}</p>
             <p>Data da ficha: {{ ficha.data | date : "dd.MM.y" }}</p>
             <p>Presença de lesão: {{ ficha.presencaLesao }}</p>
             <p *ngIf="ficha.presencaLesao =='SIM'">Local da lesão: {{ ficha.localLesao}}</p>

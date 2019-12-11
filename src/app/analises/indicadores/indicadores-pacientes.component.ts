@@ -18,7 +18,7 @@ export class IndicadoresPacientesComponent implements OnInit, OnDestroy{
 
     daTa1: Date;
     daTa2: Date;
-    percPacRiscAdm: number;
+    percPacRiscAdm: any;
     percPacAvalDiaria: number;
     incidLesao: number;
 
@@ -78,9 +78,14 @@ export class IndicadoresPacientesComponent implements OnInit, OnDestroy{
                 qtdeFichas ++;
             }
         }
-        let x = (qtdeFichas * 100) / internadosLength;
-        x = parseFloat(x.toFixed(2)); // Limita a quantidade de casas decimais para no máximo 2
-        return x;
+
+        if (internadosLength > 0 && qtdeFichas > 0) {
+            let x = (qtdeFichas * 100) / internadosLength;
+            x = parseFloat(x.toFixed(2)); // Limita a quantidade de casas decimais para no máximo 2
+            return x;
+        } else {
+            return 'Quantidade de fichas ou pacientes insuficientes para análise';
+        }
     }
 
     calculaIncidLesao() { // Incidencia de UPP (Total de pacientes que apresentaram lesao ao menos uma vez)
