@@ -18,7 +18,7 @@
             </mat-expansion-panel-header>
             <p>Nome: {{ paciente.nome }}</p>
             <p>Matrícula: {{ paciente.matricula }}</p>
-            <p>Data de internação: {{ paciente.dataInternacao | date : "dd.MM.y" }}</p>
+            <p>Data de internação: {{ paciente.dataInternacao | date : "dd/MM/y" }}</p>
             <mat-action-row>
                 <a mat-raised-button color="primary" [routerLink]= "['/gerargrafico', paciente.matricula]">Ver estatísticas</a>
             </mat-action-row>

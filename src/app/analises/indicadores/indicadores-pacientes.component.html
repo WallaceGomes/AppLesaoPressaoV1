@@ -31,12 +31,11 @@
 </mat-card>
 <mat-card class="indicadores" *ngIf="mostrandoIndicadores">
   <h3>Indicadores</h3>
-  {{daTa1}}
-  {{daTa2}}
   <div>
-    Percentual de pacientes submetidos a avaliacao de risco para UPP na admissão {{percPacRiscAdm}}%.
+    Percentual de pacientes submetidos a avaliacao de risco para UPP na admissão entre as datas {{daTa1 | date : "dd/MM/y"}} e {{daTa2 | date : "dd/MM/y"}}:<br>
+    {{percPacRiscAdm}}%<br>
   </div>
   <mat-action-row>
-    <button mat-raised-button color="primary" (click)="onResetInds()">Inserir novas datas</button>
+    <button mat-raised-button color="primary" (click)="onResetInds()">Nova análise</button>
   </mat-action-row>
 </mat-card>

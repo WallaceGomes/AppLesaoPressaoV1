@@ -14,10 +14,11 @@ export class AppComponent implements OnInit, OnDestroy {
 
   paginas: any[] = [
     {title: "Início", icon: "home", url: "/home"},
-    {title: "Cadastrar paciente", icon: "filing", url: "/pagina-cadastro-pacientes"},
-    {title: "Ver pacientes", icon: "document", url: "/pagina-listar-pacientes"},
+    {title: "Cadastrar paciente", icon: "clipboard", url: "/pagina-cadastro-pacientes"},
+    {title: "Ver pacientes", icon: "filing", url: "/pagina-listar-pacientes"},
     {title: "Exibir fichas", icon: "document", url: "/pagina-listar-fichas"},
     {title: "Estatísticas", icon: "analytics", url: "/pagina-base-dados"},
+    {title: "Indicadores", icon: "analytics", url: "/pagina-indicadores"},
     {title: "Ajuda", icon: "help", url: "/pagina-ajuda-escala"},
     {title: "Logout", icon: "log-out"}
   ];
