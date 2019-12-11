@@ -15,7 +15,7 @@
   <mat-card class="spacep">
     <h3>Insira o intervalo de data para análise</h3>
   </mat-card>
-  <form>
+  <form margin-top="5px">
     <mat-card>
         <mat-form-field>
             <input matInput type="date" placeholder="Inicio" [(ngModel)]="daTa1" name="daTa1" required>
@@ -24,9 +24,9 @@
             <input matInput type="date" placeholder="Fim" [(ngModel)]="daTa2" name="daTa2" required>
         </mat-form-field>
     </mat-card>
-    <mat-action-row>
-        <button mat-raised-button color="primary" (click)="onGerarInds()">Gerar Indicadores</button>
-    </mat-action-row>
+    <div margin-top="5px">
+      <button mat-raised-button color="primary" (click)="onGerarInds()">Gerar Indicadores</button>
+    </div>
   </form>
 </mat-card>
 <mat-card class="indicadores" *ngIf="mostrandoIndicadores">
@@ -35,7 +35,7 @@
     Percentual de pacientes submetidos a avaliacao de risco para UPP na admissão entre as datas {{daTa1 | date : "dd/MM/y"}} e {{daTa2 | date : "dd/MM/y"}}:<br>
     {{percPacRiscAdm}}%<br>
   </div>
-  <mat-action-row>
+  <div margin-top="5px">
     <button mat-raised-button color="primary" (click)="onResetInds()">Nova análise</button>
-  </mat-action-row>
+  </div>
 </mat-card>
