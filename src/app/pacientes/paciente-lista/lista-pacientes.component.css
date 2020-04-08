@@ -16,5 +16,9 @@ excluir-button{
 }
 
 .excluirButton{
-    margin-inline-end: 10rem;
+    margin-inline-end: 45%;
 }
+
+/* .gerarfichaButton{
+    text-align: center;
+} */
